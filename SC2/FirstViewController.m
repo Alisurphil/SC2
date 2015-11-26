@@ -8,7 +8,7 @@
 
 #import "FirstViewController.h"
 
-@interface FirstViewController ()
+@interface FirstViewController ()<UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIView *headerView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
