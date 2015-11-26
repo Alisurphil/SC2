@@ -15,4 +15,6 @@
 #import <Parse/Parse.h>
 #import "Utilities.h"
 #import "ECSlidingViewController.h"
+#import "storageMgr.h"
+#import "Constants.h"
 #endif /* PrefixHeader_pch */
