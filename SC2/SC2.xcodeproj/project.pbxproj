@@ -17,6 +17,7 @@
 		F469D00E1C040C6D0070CFD5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F469D00C1C040C6D0070CFD5 /* LaunchScreen.storyboard */; };
 		F469D0191C040C6D0070CFD5 /* SC2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = F469D0181C040C6D0070CFD5 /* SC2Tests.m */; };
 		F469D0241C040C6D0070CFD5 /* SC2UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F469D0231C040C6D0070CFD5 /* SC2UITests.m */; };
+		F47021EA1C06D21300F68FEC /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = F47021E91C06D21300F68FEC /* Utilities.m */; };
 		F4A0BE481C0442AC00378166 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4A0BE461C0442AC00378166 /* Bolts.framework */; };
 		F4A0BE491C0442AC00378166 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4A0BE471C0442AC00378166 /* Parse.framework */; };
 		F4A0BE4B1C0442F100378166 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4A0BE4A1C0442F100378166 /* AudioToolbox.framework */; };
@@ -73,6 +74,8 @@
 		F469D01F1C040C6D0070CFD5 /* SC2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SC2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F469D0231C040C6D0070CFD5 /* SC2UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SC2UITests.m; sourceTree = "<group>"; };
 		F469D0251C040C6E0070CFD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F47021E81C06D21300F68FEC /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utilities.h; path = SC2/Utilities.h; sourceTree = "<group>"; };
+		F47021E91C06D21300F68FEC /* Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Utilities.m; path = SC2/Utilities.m; sourceTree = "<group>"; };
 		F48F95891C04108B009CF797 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		F4A0BE461C0442AC00378166 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = SC2/Bolts.framework; sourceTree = "<group>"; };
 		F4A0BE471C0442AC00378166 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = SC2/Parse.framework; sourceTree = "<group>"; };
@@ -270,6 +273,8 @@
 		F469D0341C040CB30070CFD5 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				F47021E81C06D21300F68FEC /* Utilities.h */,
+				F47021E91C06D21300F68FEC /* Utilities.m */,
 			);
 			name = Utility;
 			path = ..;
@@ -472,6 +477,7 @@
 				F469D0031C040C6D0070CFD5 /* ViewController.m in Sources */,
 				FE73BDD31C05C25C009BB4E7 /* RegisteredViewController.m in Sources */,
 				FE6ADBA11C0584FC008F966F /* FirstViewController.m in Sources */,
+				F47021EA1C06D21300F68FEC /* Utilities.m in Sources */,
 				FE6ADBAD1C05A5BA008F966F /* LoginViewController.m in Sources */,
 				F469D0001C040C6D0070CFD5 /* AppDelegate.m in Sources */,
 				FEDCBBCF1C06942A00D9A76B /* LeftViewController.m in Sources */,
