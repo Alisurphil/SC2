@@ -9,7 +9,7 @@
 #import "LoginViewController.h"
 
 @interface LoginViewController ()
-@property (weak, nonatomic) IBOutlet UIButton *signIn;
+
 
 
 @end
