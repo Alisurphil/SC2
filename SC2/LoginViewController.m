@@ -223,7 +223,7 @@
     [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser *user, NSError *error) {
         [aiv stopAnimating];
         if (user) {
-            [Utilities setUserDefaults:@"userName" content:username];
+            [Utilities setUserDefaults:@"eamil" content:username];
             _passwordTF.text = @"";
             [self popUpHomeTab];
         } else if (error.code == 101) {
