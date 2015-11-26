@@ -18,18 +18,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    self.navigationController.navigationBarHidden = YES;
-    if (![[Utilities getUserDefaults:@"userName"] isKindOfClass:[NSNull class]]) {
-        _usernameTF.text = [Utilities getUserDefaults:@"userName"];
-    }
-- (void)viewDidAppear:(BOOL)animated {
-        [super viewDidAppear:animated];
-        if ([[[storageMgr singletonStorageMgr] objectForKey:@"signUp"] integerValue] == 1) {
-            [[storageMgr singletonStorageMgr] removeObjectForKey:@"signUp"];
-            [self popUpHomeTab];
-        }
-    }
+//    // Do any additional setup after loading the view.
+//    self.navigationController.navigationBarHidden = YES;
+//    if (![[Utilities getUserDefaults:@"userName"] isKindOfClass:[NSNull class]]) {
+//        _usernameTF.text = [Utilities getUserDefaults:@"userName"];
+//    }
+//- (void)viewDidAppear:(BOOL)animated {
+//        [super viewDidAppear:animated];
+//        if ([[[storageMgr singletonStorageMgr] objectForKey:@"signUp"] integerValue] == 1) {
+//            [[storageMgr singletonStorageMgr] removeObjectForKey:@"signUp"];
+//            [self popUpHomeTab];
+//        }
+//    }
 
     
 }
@@ -52,29 +52,29 @@
 
 
 - (IBAction)signIn:(UIButton *)sender forEvent:(UIEvent *)event {
-    NSString *username = _usernameTF.text;
-    NSString *password = _passwordTF.text;
-    
-    if ([username isEqualToString:@""] || [password isEqualToString:@""]) {
-        [Utilities popUpAlertViewWithMsg:@"请填写所有信息" andTitle:nil];
-        return;
-    }
-    
-    UIActivityIndicatorView *aiv = [Utilities getCoverOnView:self.view];
-    [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser *user, NSError *error) {
-        [aiv stopAnimating];
-        if (user) {
-            [Utilities setUserDefaults:@"userName" content:username];
-            _passwordTF.text = @"";
-            [self popUpHomeTab];
-        } else if (error.code == 101) {
-            [Utilities popUpAlertViewWithMsg:@"用户名或密码错误" andTitle:nil];
-        } else if (error.code == 100) {
-            [Utilities popUpAlertViewWithMsg:@"网络不给力，请稍后再试" andTitle:nil];
-        } else {
-            [Utilities popUpAlertViewWithMsg:nil andTitle:nil];
-        }
-    }];
+//    NSString *username = _usernameTF.text;
+//    NSString *password = _passwordTF.text;
+//    
+//    if ([username isEqualToString:@""] || [password isEqualToString:@""]) {
+//        [Utilities popUpAlertViewWithMsg:@"请填写所有信息" andTitle:nil];
+//        return;
+//    }
+//    
+//    UIActivityIndicatorView *aiv = [Utilities getCoverOnView:self.view];
+//    [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser *user, NSError *error) {
+//        [aiv stopAnimating];
+//        if (user) {
+//            [Utilities setUserDefaults:@"userName" content:username];
+//            _passwordTF.text = @"";
+//            [self popUpHomeTab];
+//        } else if (error.code == 101) {
+//            [Utilities popUpAlertViewWithMsg:@"用户名或密码错误" andTitle:nil];
+//        } else if (error.code == 100) {
+//            [Utilities popUpAlertViewWithMsg:@"网络不给力，请稍后再试" andTitle:nil];
+//        } else {
+//            [Utilities popUpAlertViewWithMsg:nil andTitle:nil];
+//        }
+//    }];
 
 }
 @end
