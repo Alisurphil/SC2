@@ -52,7 +52,7 @@
     _slidingViewController.topViewAnchoredGesture = ECSlidingViewControllerAnchoredGestureTapping | ECSlidingViewControllerAnchoredGesturePanning;
     [naviVC.view addGestureRecognizer:self.slidingViewController.panGesture];
     
-    LeftViewController *leftVC = [Utilities getStoryboardInstanceByIdentity:@"Left"];
+    LeftViewController *leftVC = [Utilities getStoryboardInstanceByIdentity:@"left"];
     _slidingViewController.underLeftViewController = leftVC;
     _slidingViewController.anchorRightPeekAmount = UI_SCREEN_W / 4;
     

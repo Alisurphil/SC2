@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
@@ -107,7 +107,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uD8-PF-Txp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1103" y="-302"/>
+            <point key="canvasLocation" x="-859" y="-450"/>
         </scene>
         <!--Registered View Controller-->
         <scene sceneID="il3-Ae-TtD">
@@ -138,28 +138,28 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="输入邮箱：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ctf-2x-IbZ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="输入邮箱：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ctf-2x-IbZ">
                                 <rect key="frame" x="40" y="202" width="85" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="输入密码：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sv5-1T-0t7">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="输入密码：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sv5-1T-0t7">
                                 <rect key="frame" x="40" y="253" width="85" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="确认密码：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3mW-gy-FFq">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="确认密码：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3mW-gy-FFq">
                                 <rect key="frame" x="40" y="303" width="85" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nMx-jc-PgN">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nMx-jc-PgN">
                                 <rect key="frame" x="42" y="454" width="60" height="30"/>
                                 <animations/>
                                 <state key="normal" title="完成注册"/>
@@ -173,25 +173,25 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1vn-Zx-RpX">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1vn-Zx-RpX">
                                 <rect key="frame" x="130" y="202" width="150" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tk6-H4-lXi">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tk6-H4-lXi">
                                 <rect key="frame" x="130" y="253" width="150" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ej2-a7-BDe">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ej2-a7-BDe">
                                 <rect key="frame" x="130" y="303" width="150" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3xU-kE-zn6">
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3xU-kE-zn6">
                                 <rect key="frame" x="202" y="454" width="103" height="30"/>
                                 <animations/>
                                 <state key="normal" title="取消注册"/>
@@ -247,7 +247,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GFo-pS-R7Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1103" y="434"/>
+            <point key="canvasLocation" x="-859" y="226"/>
         </scene>
         <!--Left View Controller-->
         <scene sceneID="fOi-B7-s8k">
@@ -304,11 +304,11 @@
                                                 <rect key="frame" x="0.0" y="28" width="240" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YDl-zw-8Wh" id="uJi-FX-8Xf">
-                                                    <rect key="frame" x="0.0" y="0.0" width="207" height="43"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="207" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="z8r-lC-YTy">
-                                                            <rect key="frame" x="15" y="0.0" width="190" height="43"/>
+                                                            <rect key="frame" x="15" y="0.0" width="190" height="43.5"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <animations/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -358,10 +358,10 @@
             </objects>
             <point key="canvasLocation" x="-317" y="-450"/>
         </scene>
-        <!--View Controller-->
+        <!--Collection View Controller-->
         <scene sceneID="fNR-HX-j9U">
             <objects>
-                <viewController storyboardIdentifier="Collection" useStoryboardIdentifierAsRestorationIdentifier="YES" id="1k1-Jt-N2P" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="collection" useStoryboardIdentifierAsRestorationIdentifier="YES" id="1k1-Jt-N2P" customClass="CollectionViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="j3X-Ee-Y2x"/>
                         <viewControllerLayoutGuide type="bottom" id="IuW-lx-3Om"/>
@@ -374,21 +374,34 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="WkJ-3e-3cj">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WkJ-3e-3cj" id="ufz-UD-AaY">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <animations/>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="edW-MC-A9P"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uiA-Ro-6rC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-667" y="232"/>
+            <point key="canvasLocation" x="-317" y="211"/>
         </scene>
-        <!--View Controller-->
+        <!--Background View Controller-->
         <scene sceneID="y7k-hL-o87">
             <objects>
-                <viewController storyboardIdentifier="background" useStoryboardIdentifierAsRestorationIdentifier="YES" id="h56-ji-lDv" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="background" useStoryboardIdentifierAsRestorationIdentifier="YES" id="h56-ji-lDv" customClass="BackgroundViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="grk-Bg-QpF"/>
                         <viewControllerLayoutGuide type="bottom" id="gzl-yT-zof"/>
@@ -396,14 +409,32 @@
                     <view key="view" contentMode="scaleToFill" id="4WV-VZ-iZP">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bih-fM-39q">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">《星际争霸Ⅱ：虚空之遗》是大型军事科幻即时战略游戏《星际争霸Ⅱ：虫群之心》的续集，星际争霸Ⅱ三部曲的第三部分，第二部分是《星际争霸Ⅱ：虫群之心》。
+这个续集将会加入一些游戏单位的变化，并且以神族为中心继续上一部的剧情。战役大概会有二十个，主角将会是阿塔尼斯。《星际争霸Ⅱ：虚空之遗》将延续获奖游戏《星际争霸Ⅱ》第二个资料片《虫群之心》的故事，用全新的战役为这个科幻故事带来史诗般的结尾。星灵传奇人物阿塔尼斯和泽拉图试图将他们的族人团结一致，共同对抗来自虚空中威胁着整个宇宙的远古邪恶力量。人类英雄吉姆·雷诺和刀锋女王凯瑞甘的命运也仍然悬而未决。神族的战役将会环绕神族内部部落的纷争展开。玩家将会与不同的部落合作，以此获得联盟并进行下一部分的剧情，但是同时其他的部落也会变为敌人。玩家最终的目标是集合所有的部落，组成一个强大的力量以保证星灵的存活。</string>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="bih-fM-39q" firstAttribute="leading" secondItem="4WV-VZ-iZP" secondAttribute="leading" id="MuP-O1-Pzg"/>
+                            <constraint firstItem="gzl-yT-zof" firstAttribute="top" secondItem="bih-fM-39q" secondAttribute="bottom" id="TTr-1h-M1B"/>
+                            <constraint firstItem="bih-fM-39q" firstAttribute="top" secondItem="4WV-VZ-iZP" secondAttribute="top" id="fEq-Wm-UQ6"/>
+                            <constraint firstAttribute="trailing" secondItem="bih-fM-39q" secondAttribute="trailing" id="zgo-VI-rr7"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="QQG-ur-nX2"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gev-ra-rvJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-317" y="232"/>
+            <point key="canvasLocation" x="85" y="211"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="wnG-lO-61P">
@@ -416,14 +447,66 @@
                     <view key="view" contentMode="scaleToFill" id="vJv-cU-TbM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="iT6-q5-ndV">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <mutableString key="text">版本信息
+《星际争霸II：虚空之遗》已经正式上线！购买了《虚空之遗》的玩家现在可以畅玩以下所有内容。
+		见证《星际争霸II》三部曲的大结局。
+	◦	在19个关卡里纵横多个星球，指挥高贵的星灵战士拯救银河系。
+	◦	操纵古代星灵方舟：亚顿之矛。在战场上召唤毁灭性打击。
+	◦	加入8种不同的地形，让您探索神秘的新星球
+	◦	在完成《虚空之遗》战役以后，你将可解锁共有3个关卡的终章战役：《进入虚空》。体验吉姆·雷诺、莎拉·凯瑞甘和阿塔尼斯故事线的结局。从《星际争霸》开始的这个故事，将在此走到顶点。
+		在《星际争霸II》多人竞技体验的最终版本中一决雌雄。
+	◦	人类、星灵和异虫加入了六个全新的兵种。
+	◦	大量《自由之翼》和《虫群之心》的原有兵种现在也都获得了全新的技能和升级。
+	◦	在10张全新的多人地图中展开激战，今后的每个天梯赛季都会加入更多的新地图。
+		新游戏模式：合作任务
+	◦	与你的朋友携手合作，或是与你水平相近的玩家进行合作匹配。
+	◦	两名玩家各自选择一名星际争霸系列中的传奇指挥官，指挥官会影响各自的部队配置。
+	◦	在战役风格的关卡中进行合作，完成关卡任务以获得胜利。
+	◦	完成任务会给予经验值，并升级您的指挥官。
+	◦	每个等级会解锁新的强大技能，提高您的指挥官的战斗力。
+		新的多人对战选项：执政官模式
+	◦	两名玩家同组共同控制一个基地。
+	◦	以全新的角度展开竞技，协同操作使双方都能施展出更复杂的策略。
+	◦	在天梯上争锋，甚至冲上宗师联赛！
+		在自动锦标赛中成为《星际争霸II》的日常冠军。
+	◦	报名自动锦标赛，参与《星际争霸II》终极竞技体验。
+	◦	锦标赛每天每两小时开展一次，在锦标赛中的表现会影响到您的1v1 排名和联赛排名。
+	◦	工作日的锦标赛共进行三轮，周末的锦标赛进行六轮。
+	◦	赢得游戏内奖杯，向其它玩家展示你的战利品！
+		以及更多：
+	◦	等级上限提高到150（每个种族的等级上限提高15）。大量的新成就和奖励。
+	◦	修改了战术和脚本AI，使其能适应《虚空之遗》中的全新改动。
+	◦	新玩家可以通过全新的手把手的教程了解三个不同种族。
+	◦	更新了多人游戏训练任务以体现出《虚空之遗》中的改动。
+	◦	设定集结点和路径时将使用各个种族的独立确认光标。
+	◦	可破坏的岩石和萨尔纳加瞭望塔将显示在小地图上。
+		《虚空之遗》包含了最近的3.0以及3.0.3补丁中加入的所有新功能，包括免费的《湮灭低语》序章战役、完全重制的UI、重新设计后的聊天系统、更新的游戏大厅、地区性的游戏服务器、新的SC2编辑器功能等等！
+　　如果您遇到任何问题，请来官方论坛联系我们。
+　　GG, HF!</mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="iT6-q5-ndV" firstAttribute="leading" secondItem="vJv-cU-TbM" secondAttribute="leading" id="QGM-hr-iXO"/>
+                            <constraint firstAttribute="trailing" secondItem="iT6-q5-ndV" secondAttribute="trailing" id="VBn-Ex-c8J"/>
+                            <constraint firstItem="iT6-q5-ndV" firstAttribute="top" secondItem="vJv-cU-TbM" secondAttribute="top" id="VRT-E9-lmi"/>
+                            <constraint firstItem="PlX-Dj-9el" firstAttribute="top" secondItem="iT6-q5-ndV" secondAttribute="bottom" id="bmR-GE-hcN"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="US4-wW-LaD"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lvH-99-NVa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="47" y="232"/>
+            <point key="canvasLocation" x="485" y="211"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="V3j-pI-J4g">
@@ -439,7 +522,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="otO-13-dkt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="494" y="-54"/>
+            <point key="canvasLocation" x="1214" y="-418"/>
         </scene>
         <!--First View Controller-->
         <scene sceneID="Hhx-qa-Rxf">
@@ -480,11 +563,11 @@
                                         <rect key="frame" x="0.0" y="175" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DWs-gB-Q6y" id="X2t-lO-cgn">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CHK-9l-DhF">
-                                                    <rect key="frame" x="15" y="0.0" width="290" height="43"/>
+                                                    <rect key="frame" x="15" y="0.0" width="290" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -517,12 +600,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="muv-ly-OJj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="859" y="-54"/>
+            <point key="canvasLocation" x="1675" y="-418"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail View Controller-->
         <scene sceneID="Eij-Ye-mXU">
             <objects>
-                <viewController id="qVU-hZ-i13" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="detail" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qVU-hZ-i13" customClass="DetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="E8o-UG-CnA"/>
                         <viewControllerLayoutGuide type="bottom" id="3qX-6y-euM"/>
@@ -530,14 +613,83 @@
                     <view key="view" contentMode="scaleToFill" id="BYn-iG-RD8">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="3O1-DG-sXb">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tmc-zJ-epc">
+                                <rect key="frame" x="254" y="518" width="46" height="30"/>
+                                <animations/>
+                                <state key="normal" title="评论"/>
+                            </button>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="eWN-bs-dIS"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5PF-GQ-zlL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="859" y="599"/>
+            <point key="canvasLocation" x="1675" y="226"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="fWZ-n3-z3j">
+            <objects>
+                <viewController storyboardIdentifier="comment" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wOT-cA-eNp" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="JEb-28-H5O"/>
+                        <viewControllerLayoutGuide type="bottom" id="YX6-0E-ozZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bqT-Wd-M3W">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gNy-GE-HCY">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="537"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2p0-V7-byk">
+                                <rect key="frame" x="0.0" y="538" width="244" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="244" id="E6G-H5-Ciz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kDS-EA-X9H">
+                                <rect key="frame" x="252" y="538" width="68" height="30"/>
+                                <animations/>
+                                <state key="normal" title="发送"/>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="2p0-V7-byk" firstAttribute="leading" secondItem="bqT-Wd-M3W" secondAttribute="leading" id="8mJ-M4-A2N"/>
+                            <constraint firstItem="2p0-V7-byk" firstAttribute="top" secondItem="gNy-GE-HCY" secondAttribute="bottom" constant="1" id="9Xk-ct-MdX"/>
+                            <constraint firstItem="YX6-0E-ozZ" firstAttribute="top" secondItem="kDS-EA-X9H" secondAttribute="bottom" id="Edc-Up-zU8"/>
+                            <constraint firstAttribute="trailing" secondItem="kDS-EA-X9H" secondAttribute="trailing" id="Fw6-2h-rbH"/>
+                            <constraint firstItem="gNy-GE-HCY" firstAttribute="top" secondItem="bqT-Wd-M3W" secondAttribute="top" id="V99-dw-q18"/>
+                            <constraint firstItem="kDS-EA-X9H" firstAttribute="leading" secondItem="2p0-V7-byk" secondAttribute="trailing" constant="8" symbolic="YES" id="tx0-yN-EAM"/>
+                            <constraint firstItem="2p0-V7-byk" firstAttribute="top" secondItem="kDS-EA-X9H" secondAttribute="top" id="unP-UX-WsI"/>
+                            <constraint firstItem="2p0-V7-byk" firstAttribute="leading" secondItem="gNy-GE-HCY" secondAttribute="leading" id="wSJ-qc-MUN"/>
+                            <constraint firstItem="gNy-GE-HCY" firstAttribute="trailing" secondItem="kDS-EA-X9H" secondAttribute="trailing" id="wZN-X7-7Gr"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="hug-W9-pOo"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LMc-fL-b7c" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2067" y="226"/>
         </scene>
     </scenes>
     <resources>
