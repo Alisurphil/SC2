@@ -44,7 +44,7 @@
 //    PFQuery *query = [PFQuery queryWithClassName:@"announcement" predicate:predicate];
 //    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
 //        PFObject *annou = objects[0];
-//    
+//
 //       NSLog(@"%@", annou[@"name"]);
 //        annou[@"name"] = @"不测试";
 //       [annou saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
