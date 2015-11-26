@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-
+#import "SCViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -19,6 +19,18 @@
     // Override point for customization after application launch.
     [Parse setApplicationId:@"7tSVXFxpH5iTVYQcl5jBE3GeiLtGIcvAUlNo21RB" clientKey:@"gwd6RddU5QQkQv88MiI0WLuV7e78FybRr4eIBb73"];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    //初始化主窗口并将主窗口设置为屏幕大小
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    //将该窗口设置为keywindow
+    [self.window makeKeyAndVisible];
+    //获得main。story实例
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    //在main.story中找到名为tab的页面
+    SCViewController *SCVC = [storyboard instantiateViewControllerWithIdentifier:@"login"];
+    UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:SCVC];
+    //将上述页面设置为app入口
+    self.window.rootViewController = navi;
+
     return YES;
 }
 

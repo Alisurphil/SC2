@@ -25,24 +25,25 @@
 //            NSLog(@"成功");
 //        }
 //    }];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name == '测试'"];
-    PFQuery *query = [PFQuery queryWithClassName:@"announcement" predicate:predicate];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        PFObject *annou = objects.firstObject;
-//        NSLog(@"%@", annou[@"content"]);
-//        annou[@"content"] = @"不测试不测试";
-//        [annou saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+//    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name == '测试'"];
+//    PFQuery *query = [PFQuery queryWithClassName:@"announcement" predicate:predicate];
+//    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//        PFObject *annou = objects.firstObject;
+////        NSLog(@"%@", annou[@"content"]);
+////        annou[@"content"] = @"不测试不测试";
+////        [annou saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+////            NSLog(@"成功");
+////        }];
+//        [annou deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
 //            NSLog(@"成功");
 //        }];
-        [annou deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-            NSLog(@"成功");
-        }];
-    }];
+//    }];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 @end
