@@ -24,15 +24,14 @@
     if (![[Utilities getUserDefaults:@"userName"] isKindOfClass:[NSNull class]]) {
         _usernameTF.text = [Utilities getUserDefaults:@"userName"];
     }
-- (void)viewDidAppear:(BOOL)animated {
-        [super viewDidAppear:animated];
-        if ([[[storageMgr singletonStorageMgr] objectForKey:@"signUp"] integerValue] == 1) {
-            [[storageMgr singletonStorageMgr] removeObjectForKey:@"signUp"];
-            [self popUpHomeTab];
-        }
+}
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    if ([[[storageMgr singletonStorageMgr] objectForKey:@"signUp"] integerValue] == 1) {
+        [[storageMgr singletonStorageMgr] removeObjectForKey:@"signUp"];
+        [self popUpHomeTab];
     }
 
-    
 }
 
 - (void)didReceiveMemoryWarning {
