@@ -52,7 +52,7 @@
     _slidingViewController.topViewAnchoredGesture = ECSlidingViewControllerAnchoredGestureTapping | ECSlidingViewControllerAnchoredGesturePanning;
     [naviVC.view addGestureRecognizer:self.slidingViewController.panGesture];
     
-    LeftViewController *leftVC = [Utilities getStoryboardInstanceByIdentity:@"Left"];
+    LeftViewController *leftVC = [Utilities getStoryboardInstanceByIdentity:@"left"];
     _slidingViewController.underLeftViewController = leftVC;
     _slidingViewController.anchorRightPeekAmount = UI_SCREEN_W / 4;
     
@@ -223,7 +223,7 @@
     [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser *user, NSError *error) {
         [aiv stopAnimating];
         if (user) {
-            [Utilities setUserDefaults:@"userName" content:username];
+            [Utilities setUserDefaults:@"eamil" content:username];
             _passwordTF.text = @"";
             [self popUpHomeTab];
         } else if (error.code == 101) {
