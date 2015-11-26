@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'AD6EA53A852233488E0AFAE5'
-               BlueprintName = 'AFNetworking'
+               BlueprintIdentifier = 'E3338E184976E89F895F22C7'
+               BlueprintName = 'ECSlidingViewController'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libAFNetworking.a'>
+               BuildableName = 'libECSlidingViewController.a'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
