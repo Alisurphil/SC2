@@ -9,9 +9,8 @@
 #import "LoginViewController.h"
 
 @interface LoginViewController ()
+
 - (IBAction)signIn:(UIButton *)sender forEvent:(UIEvent *)event;
-
-
 
 @end
 
