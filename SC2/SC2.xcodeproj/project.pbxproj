@@ -32,6 +32,7 @@
 		FE6ADBAA1C0585C4008F966F /* SCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE6ADBA91C0585C4008F966F /* SCViewController.m */; };
 		FE6ADBAD1C05A5BA008F966F /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE6ADBAC1C05A5BA008F966F /* LoginViewController.m */; };
 		FE73BDD31C05C25C009BB4E7 /* RegisteredViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE73BDD21C05C25C009BB4E7 /* RegisteredViewController.m */; };
+		FEDCBBCF1C06942A00D9A76B /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEDCBBCE1C06942A00D9A76B /* LeftViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +95,8 @@
 		FE6ADBAC1C05A5BA008F966F /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		FE73BDD11C05C25C009BB4E7 /* RegisteredViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisteredViewController.h; sourceTree = "<group>"; };
 		FE73BDD21C05C25C009BB4E7 /* RegisteredViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisteredViewController.m; sourceTree = "<group>"; };
+		FEDCBBCD1C06942A00D9A76B /* LeftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftViewController.h; sourceTree = "<group>"; };
+		FEDCBBCE1C06942A00D9A76B /* LeftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +224,8 @@
 		F469D0311C040C760070CFD5 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				FEDCBBCD1C06942A00D9A76B /* LeftViewController.h */,
+				FEDCBBCE1C06942A00D9A76B /* LeftViewController.m */,
 				F469D0011C040C6D0070CFD5 /* ViewController.h */,
 				F469D0021C040C6D0070CFD5 /* ViewController.m */,
 				F469D00A1C040C6D0070CFD5 /* Assets.xcassets */,
@@ -469,6 +474,7 @@
 				FE6ADBA11C0584FC008F966F /* FirstViewController.m in Sources */,
 				FE6ADBAD1C05A5BA008F966F /* LoginViewController.m in Sources */,
 				F469D0001C040C6D0070CFD5 /* AppDelegate.m in Sources */,
+				FEDCBBCF1C06942A00D9A76B /* LeftViewController.m in Sources */,
 				F469CFFD1C040C6D0070CFD5 /* main.m in Sources */,
 				FE6ADBA71C058522008F966F /* ThirdViewController.m in Sources */,
 			);

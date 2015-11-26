@@ -1,25 +1,22 @@
 //
-//  LoginViewController.m
+//  LeftViewController.m
 //  SC2
 //
-//  Created by 袁文轶 on 15/11/25.
+//  Created by 袁文轶 on 15/11/26.
 //  Copyright © 2015年 wx. All rights reserved.
 //
 
-#import "LoginViewController.h"
+#import "LeftViewController.h"
 
-@interface LoginViewController ()
-
-
+@interface LeftViewController ()
 @end
 
-@implementation LoginViewController
+@implementation LeftViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationController.navigationBarHidden = YES;
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -36,6 +33,5 @@
     // Pass the selected object to the new view controller.
 }
 */
-
 
 @end
