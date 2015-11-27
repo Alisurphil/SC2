@@ -8,6 +8,7 @@
 
 #import "RegisteredViewController.h"
 #import "SCViewController.h"
+#import <EaseMobSDKFull/EaseMob.h>
 
 @interface RegisteredViewController ()
 
@@ -84,12 +85,20 @@
     user[@"nickName"] = nickname;
     
     UIActivityIndicatorView *aiv = [Utilities getCoverOnView:self.view];
+    
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         [aiv stopAnimating];
         if (!error) {
             [Utilities setUserDefaults:@"userName" content:username];
             [[storageMgr singletonStorageMgr] addKeyAndValue:@"signUp" And:@1];
             [self.navigationController popViewControllerAnimated:YES];
+            
+            [[EaseMob sharedInstance].chatManager asyncRegisterNewAccount:_inPutName.text password:_inPutPwd.text withCompletion:^(NSString *username, NSString *password, EMError *error) {
+                NSLog(@"进来了");
+                if (!error) {
+                    NSLog(@"注册成功");
+                }
+            } onQueue:nil];
         } else if (error.code == 202) {
             [Utilities popUpAlertViewWithMsg:@"该用户名已被使用，请尝试其它名称" andTitle:nil];
         } else if (error.code == 203) {
@@ -102,7 +111,9 @@
             [Utilities popUpAlertViewWithMsg:nil andTitle:nil];
         }
     }];
-}
+
+    
+    }
 
 - (IBAction)cancelAction:(UIButton *)sender forEvent:(UIEvent *)event {
     [self.navigationController popViewControllerAnimated:YES];
