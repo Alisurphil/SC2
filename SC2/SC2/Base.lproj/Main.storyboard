@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
@@ -306,6 +307,9 @@
                                                 <integer key="value" value="40"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="userImage:forEvent:" destination="pHE-Dg-giY" eventType="touchUpInside" id="ZVg-eV-HIX"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F6C-xa-CVc">
                                         <rect key="frame" x="96" y="81" width="42" height="20.5"/>
@@ -343,6 +347,16 @@
                                             <segue destination="X3K-dy-dw5" kind="show" id="9LL-La-rUG"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gjr-k2-9n1">
+                                        <rect key="frame" x="8" y="530" width="224" height="30"/>
+                                        <animations/>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="退出当前账号"/>
+                                        <connections>
+                                            <action selector="exitID:forEvent:" destination="pHE-Dg-giY" eventType="touchUpInside" id="yis-cv-d5m"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <animations/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -351,13 +365,17 @@
                                     <constraint firstItem="Zdh-US-XJ0" firstAttribute="top" secondItem="GEY-u6-8lm" secondAttribute="bottom" constant="8" id="15H-KB-qe3"/>
                                     <constraint firstItem="TyI-xu-c60" firstAttribute="leading" secondItem="I6m-2g-2Zi" secondAttribute="leading" constant="8" id="2fU-Zv-aDe"/>
                                     <constraint firstItem="F6C-xa-CVc" firstAttribute="leading" secondItem="TyI-xu-c60" secondAttribute="trailing" constant="8" id="6wf-fp-DDn"/>
+                                    <constraint firstItem="gjr-k2-9n1" firstAttribute="bottom" secondItem="I6m-2g-2Zi" secondAttribute="bottomMargin" id="Bf6-ho-FyR"/>
                                     <constraint firstItem="Zdh-US-XJ0" firstAttribute="width" secondItem="Ld9-5q-4ir" secondAttribute="width" id="Iok-Ey-0f3"/>
+                                    <constraint firstItem="gjr-k2-9n1" firstAttribute="leading" secondItem="I6m-2g-2Zi" secondAttribute="leadingMargin" id="Isc-iN-19g"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="gjr-k2-9n1" secondAttribute="trailing" id="WBb-4Y-jfd"/>
                                     <constraint firstItem="GEY-u6-8lm" firstAttribute="width" secondItem="Ld9-5q-4ir" secondAttribute="width" id="WoR-3v-rLT"/>
                                     <constraint firstItem="Zdh-US-XJ0" firstAttribute="leading" secondItem="Ld9-5q-4ir" secondAttribute="leading" id="X2E-vE-GsH"/>
                                     <constraint firstItem="Ld9-5q-4ir" firstAttribute="top" secondItem="TyI-xu-c60" secondAttribute="bottom" constant="32" id="Xv4-cu-IJ9"/>
                                     <constraint firstItem="GEY-u6-8lm" firstAttribute="leading" secondItem="Ld9-5q-4ir" secondAttribute="leading" id="aPJ-Ev-Nn7"/>
                                     <constraint firstItem="GEY-u6-8lm" firstAttribute="top" secondItem="Ld9-5q-4ir" secondAttribute="bottom" constant="8" id="cJo-vs-HKG"/>
                                     <constraint firstItem="Ld9-5q-4ir" firstAttribute="leading" secondItem="I6m-2g-2Zi" secondAttribute="leading" constant="20" id="jQE-Vj-iiX"/>
+                                    <constraint firstItem="gjr-k2-9n1" firstAttribute="top" secondItem="Zdh-US-XJ0" secondAttribute="bottom" constant="231" id="md5-KV-yF3"/>
                                     <constraint firstItem="TyI-xu-c60" firstAttribute="top" secondItem="I6m-2g-2Zi" secondAttribute="top" constant="81" id="nwZ-Dl-u30"/>
                                     <constraint firstItem="F6C-xa-CVc" firstAttribute="top" secondItem="TyI-xu-c60" secondAttribute="top" id="zg1-rU-lxL"/>
                                 </constraints>
@@ -502,7 +520,7 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <mutableString key="text">《星际争霸II：虚空之遗》已经正式上线！购买了《虚空之遗》的玩家现在可以畅玩以下所有内容。
+                                <string key="text">《星际争霸II：虚空之遗》已经正式上线！购买了《虚空之遗》的玩家现在可以畅玩以下所有内容。
 		见证《星际争霸II》三部曲的大结局。
 	◦	在19个关卡里纵横多个星球，指挥高贵的星灵战士拯救银河系。
 	◦	操纵古代星灵方舟：亚顿之矛。在战场上召唤毁灭性打击。
@@ -536,7 +554,7 @@
 	◦	可破坏的岩石和萨尔纳加瞭望塔将显示在小地图上。
 		《虚空之遗》包含了最近的3.0以及3.0.3补丁中加入的所有新功能，包括免费的《湮灭低语》序章战役、完全重制的UI、重新设计后的聊天系统、更新的游戏大厅、地区性的游戏服务器、新的SC2编辑器功能等等！
 　　如果您遇到任何问题，请来官方论坛联系我们。
-　　GG, HF!</mutableString>
+　　GG, HF!</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>

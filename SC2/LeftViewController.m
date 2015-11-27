@@ -9,6 +9,8 @@
 #import "LeftViewController.h"
 
 @interface LeftViewController ()
+- (IBAction)exitID:(UIButton *)sender forEvent:(UIEvent *)event;
+- (IBAction)userImage:(UIButton *)sender forEvent:(UIEvent *)event;
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @end
 
@@ -38,4 +40,9 @@
 }
 */
 
+- (IBAction)exitID:(UIButton *)sender forEvent:(UIEvent *)event {
+}
+
+- (IBAction)userImage:(UIButton *)sender forEvent:(UIEvent *)event {
+}
 @end
