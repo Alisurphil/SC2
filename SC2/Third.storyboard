@@ -55,20 +55,34 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W40-v5-oy8">
-                                <rect key="frame" x="20" y="90" width="65" height="66"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W40-v5-oy8">
+                                <rect key="frame" x="10" y="59" width="80" height="80"/>
                                 <animations/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="Button"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="W40-v5-oy8" secondAttribute="height" multiplier="1:1" id="AYE-uL-CSZ"/>
+                                </constraints>
+                                <state key="normal" image="default"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UjQ-4g-9Hz">
+                                <rect key="frame" x="217" y="134" width="83" height="22"/>
+                                <animations/>
+                                <state key="normal" title="编辑资料"/>
+                                <connections>
+                                    <segue destination="Bv8-Bj-wvu" kind="show" id="awm-V2-8nV"/>
+                                </connections>
                             </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="W40-v5-oy8" firstAttribute="top" secondItem="ZhL-EA-5W5" secondAttribute="bottom" constant="39" id="0z2-qq-BNd"/>
                             <constraint firstItem="TFQ-Ev-lON" firstAttribute="top" secondItem="AVJ-ZT-qIP" secondAttribute="top" id="2L1-kd-GCC"/>
                             <constraint firstItem="TFQ-Ev-lON" firstAttribute="leading" secondItem="AVJ-ZT-qIP" secondAttribute="leading" id="EH5-Lb-12N"/>
+                            <constraint firstItem="W40-v5-oy8" firstAttribute="leading" secondItem="AVJ-ZT-qIP" secondAttribute="leading" constant="10" id="Ete-wq-03I"/>
                             <constraint firstItem="pR8-6c-p9J" firstAttribute="top" secondItem="shu-uD-UH3" secondAttribute="bottom" id="KpE-1Z-9w8"/>
                             <constraint firstItem="shu-uD-UH3" firstAttribute="leading" secondItem="AVJ-ZT-qIP" secondAttribute="leading" id="OUq-Cz-3En"/>
+                            <constraint firstItem="shu-uD-UH3" firstAttribute="top" secondItem="W40-v5-oy8" secondAttribute="bottom" constant="25" id="Pgi-rR-UGd"/>
                             <constraint firstAttribute="trailing" secondItem="shu-uD-UH3" secondAttribute="trailing" id="U5C-P4-xU6"/>
                             <constraint firstAttribute="trailing" secondItem="TFQ-Ev-lON" secondAttribute="trailing" id="s74-Py-bJO"/>
                             <constraint firstItem="shu-uD-UH3" firstAttribute="top" secondItem="TFQ-Ev-lON" secondAttribute="bottom" constant="1" id="tbQ-sv-uSS"/>
@@ -80,8 +94,50 @@
             </objects>
             <point key="canvasLocation" x="167" y="290"/>
         </scene>
+        <!--Person Main View Controller-->
+        <scene sceneID="pmZ-z8-zdK">
+            <objects>
+                <viewController storyboardIdentifier="person" useStoryboardIdentifierAsRestorationIdentifier="YES" id="um8-cB-kAQ" customClass="PersonMainViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="maH-Db-4mN"/>
+                        <viewControllerLayoutGuide type="bottom" id="Asq-VP-gxO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="CoC-xw-jUu">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="kbr-fZ-Rez"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3bo-UO-huC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="944" y="290"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="oqs-TV-NDm">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Bv8-Bj-wvu" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3Xr-7f-HnO">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="um8-cB-kAQ" kind="relationship" relationship="rootViewController" id="H6f-gi-F2g"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nt8-Op-361" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="531" y="290"/>
+        </scene>
     </scenes>
     <resources>
         <image name="backimage" width="800" height="500"/>
+        <image name="default" width="40" height="40"/>
     </resources>
 </document>

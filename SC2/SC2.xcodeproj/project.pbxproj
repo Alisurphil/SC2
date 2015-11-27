@@ -27,6 +27,7 @@
 		F4A0BE531C044A1800378166 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4A0BE521C044A1800378166 /* Social.framework */; };
 		F4A0BE551C044A2C00378166 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4A0BE541C044A2C00378166 /* Accounts.framework */; };
 		FE049DF11C07EAD200CBA7B8 /* commentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE049DF01C07EAD200CBA7B8 /* commentViewController.m */; };
+		FE5ACCC11C083C62009529D3 /* PersonMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE5ACCC01C083C62009529D3 /* PersonMainViewController.m */; };
 		FE6ADB9C1C058495008F966F /* Second.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE6ADB9B1C058495008F966F /* Second.storyboard */; };
 		FE6ADB9E1C0584A2008F966F /* Third.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE6ADB9D1C0584A2008F966F /* Third.storyboard */; };
 		FE6ADBA11C0584FC008F966F /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE6ADBA01C0584FC008F966F /* FirstViewController.m */; };
@@ -95,6 +96,8 @@
 		F4A0BE541C044A2C00378166 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		FE049DEF1C07EAD200CBA7B8 /* commentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = commentViewController.h; sourceTree = "<group>"; };
 		FE049DF01C07EAD200CBA7B8 /* commentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = commentViewController.m; sourceTree = "<group>"; };
+		FE5ACCBF1C083C62009529D3 /* PersonMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonMainViewController.h; sourceTree = "<group>"; };
+		FE5ACCC01C083C62009529D3 /* PersonMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonMainViewController.m; sourceTree = "<group>"; };
 		FE6ADB9B1C058495008F966F /* Second.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Second.storyboard; sourceTree = "<group>"; };
 		FE6ADB9D1C0584A2008F966F /* Third.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Third.storyboard; sourceTree = "<group>"; };
 		FE6ADB9F1C0584FC008F966F /* FirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
@@ -274,6 +277,8 @@
 				FE6ADBA31C05850D008F966F /* SecondViewController.m */,
 				FE6ADBA51C058522008F966F /* ThirdViewController.h */,
 				FE6ADBA61C058522008F966F /* ThirdViewController.m */,
+				FE5ACCBF1C083C62009529D3 /* PersonMainViewController.h */,
+				FE5ACCC01C083C62009529D3 /* PersonMainViewController.m */,
 			);
 			name = Controller;
 			path = ..;
@@ -521,6 +526,7 @@
 				F47021ED1C06DC0D00F68FEC /* storageMgr.m in Sources */,
 				FE049DF11C07EAD200CBA7B8 /* commentViewController.m in Sources */,
 				F47021EA1C06D21300F68FEC /* Utilities.m in Sources */,
+				FE5ACCC11C083C62009529D3 /* PersonMainViewController.m in Sources */,
 				FE8F51B51C07105600007569 /* CollectionViewController.m in Sources */,
 				FE6ADBAD1C05A5BA008F966F /* LoginViewController.m in Sources */,
 				F469D0001C040C6D0070CFD5 /* AppDelegate.m in Sources */,
