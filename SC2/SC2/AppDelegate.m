@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "SCViewController.h"
+#import <EaseMobSDKFull/EaseMob.h>
 
 @interface AppDelegate ()
 
@@ -18,6 +19,22 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+#warning 初始化环信SDK，详细内容在AppDelegate+EaseMob.m 文件中
+#warning SDK注册 APNS文件的名字, 需要与后台上传证书时的名字一一对应
+    NSString *apnsCertName = nil;
+#if DEBUG
+    apnsCertName = @"chatdemoui_dev";
+#else
+    apnsCertName = @"chatdemoui";
+#endif
+    //registerSDKWithAppKey:注册的appKey，详细见下面注释。
+    //apnsCertName:推送证书名(不需要加后缀)，详细见下面注释。
+    [[EaseMob sharedInstance] registerSDKWithAppKey:@"easemob-demo#chatdemoui" apnsCertName:@"chatdemoui_dev"];
+    [[EaseMob sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
+    //    [[EaseMob sharedInstance].chatManager asyncRegisterNewAccount:@"800123" password:@"111111"];
+    [[EaseMob sharedInstance].chatManager enableDeliveryNotification];
+
+
     // Override point for customization after application launch.
     [Parse setApplicationId:@"7tSVXFxpH5iTVYQcl5jBE3GeiLtGIcvAUlNo21RB" clientKey:@"gwd6RddU5QQkQv88MiI0WLuV7e78FybRr4eIBb73"];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
@@ -44,10 +61,12 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    [[EaseMob sharedInstance] applicationDidEnterBackground:application];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    [[EaseMob sharedInstance] applicationWillEnterForeground:application];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
@@ -57,6 +76,7 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     // Saves changes in the application's managed object context before the application terminates.
+     [[EaseMob sharedInstance] applicationWillTerminate:application];
     [self saveContext];
 }
 
