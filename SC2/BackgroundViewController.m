@@ -9,6 +9,8 @@
 #import "BackgroundViewController.h"
 
 @interface BackgroundViewController ()
+- (IBAction)backGroundBack:(UIBarButtonItem *)sender;
+
 
 @end
 
@@ -34,4 +36,6 @@
 }
 */
 
+- (IBAction)backGroundBack:(UIBarButtonItem *)sender {
+}
 @end

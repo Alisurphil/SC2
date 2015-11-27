@@ -9,6 +9,7 @@
 #import "InformationViewController.h"
 
 @interface InformationViewController ()
+- (IBAction)informationBack:(UIBarButtonItem *)sender;
 
 @end
 
@@ -34,4 +35,6 @@
 }
 */
 
+- (IBAction)informationBack:(UIBarButtonItem *)sender {
+}
 @end
