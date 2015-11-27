@@ -40,6 +40,4 @@
 - (IBAction)collect:(UIBarButtonItem *)sender {
 }
 
-- (IBAction)cmmt:(UIBarButtonItem *)sender {
-}
 @end

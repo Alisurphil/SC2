@@ -9,6 +9,7 @@
 #import "LeftViewController.h"
 
 @interface LeftViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @end
 
 @implementation LeftViewController
