@@ -18,6 +18,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationController.navigationBarHidden = YES;
+    
+    PFUser *currentUser = [PFUser currentUser];
+    _userNameLabel.text = [NSString stringWithFormat:@"昵称：%@", currentUser[@"nickName"]];
 }
 
 - (void)didReceiveMemoryWarning {
