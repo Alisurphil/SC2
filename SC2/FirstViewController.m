@@ -74,8 +74,7 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    NSLog(@"滚动中");
-    CGFloat scrollviewW = _headerView.frame.size.width;
+       CGFloat scrollviewW = _headerView.frame.size.width;
     CGFloat x = scrollView.contentOffset.x;
     int page = (x + scrollviewW / 2) /  scrollviewW;
     self.pageControl.currentPage = page;

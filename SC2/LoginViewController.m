@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import "SCViewController.h"
 #import "LeftViewController.h"
+#import <EaseMobSDKFull/EaseMob.h>
 
 @interface LoginViewController ()
 
@@ -31,7 +32,8 @@
     [super viewDidAppear:animated];
     if ([[[storageMgr singletonStorageMgr] objectForKey:@"signUp"] integerValue] == 1) {
         [[storageMgr singletonStorageMgr] removeObjectForKey:@"signUp"];
-        [self popUpHomeTab];
+        
+        [self loginWithUsername:[Utilities getUserDefaults:@"userName"] andPassword:[Utilities getUserDefaults:@"password"]];
     }
 
 
@@ -214,22 +216,36 @@
     NSString *username = _usernameTF.text;
     NSString *password = _passwordTF.text;
     
-    if ([username isEqualToString:@""] || [password isEqualToString:@""]) {
+    [self loginWithUsername:username andPassword:password];
+}
+
+- (void)loginWithUsername:(NSString *)un andPassword:(NSString *)pwd {
+    if ([un isEqualToString:@""] || [pwd isEqualToString:@""]) {
         [Utilities popUpAlertViewWithMsg:@"请填写所有信息" andTitle:nil];
         return;
     }
     
     UIActivityIndicatorView *aiv = [Utilities getCoverOnView:self.view];
     
-    [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser *user, NSError *error) {
+    [PFUser logInWithUsernameInBackground:un password:pwd block:^(PFUser *user, NSError *error) {
         [aiv stopAnimating];
         if (user) {
-            [Utilities setUserDefaults:@"username" content:username];
-            _passwordTF.text = @"";
+            [aiv startAnimating];
+            [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:un password:pwd completion:^(NSDictionary *loginInfo, EMError *error) {
+                [aiv stopAnimating];
+                NSLog(@"进来了");
+                if (!error && loginInfo) {
+                    NSLog(@"登陆成功");
+                    [Utilities setUserDefaults:@"username" content:un];
+                    [Utilities setUserDefaults:@"password" content:pwd];
+                    _passwordTF.text = @"";
+                    [self popUpHomeTab];
+                } else {
+                    NSLog(@"error = %@",error);
+                }
+                
+            } onQueue:nil];
             
-            
-            
-            [self popUpHomeTab];
         } else if (error.code == 101) {
             [Utilities popUpAlertViewWithMsg:@"用户名或密码错误" andTitle:nil];
         } else if (error.code == 100) {
@@ -238,6 +254,6 @@
             [Utilities popUpAlertViewWithMsg:nil andTitle:nil];
         }
     }];
-
 }
+
 @end
