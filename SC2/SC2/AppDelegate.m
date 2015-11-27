@@ -45,7 +45,7 @@
     //获得main。story实例
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
     //在main.story中找到名为tab的页面
-    SCViewController *SCVC = [storyboard instantiateViewControllerWithIdentifier:@"login"];
+    SCViewController *SCVC = [storyboard instantiateViewControllerWithIdentifier:@"detail"];
     UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:SCVC];
     //将上述页面设置为app入口
     self.window.rootViewController = navi;
