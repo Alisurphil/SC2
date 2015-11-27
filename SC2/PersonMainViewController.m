@@ -9,6 +9,11 @@
 #import "PersonMainViewController.h"
 
 @interface PersonMainViewController ()
+- (IBAction)finishChange:(UIBarButtonItem *)sender;
+@property (weak, nonatomic) IBOutlet UITextField *changeNikName;
+@property (weak, nonatomic) IBOutlet UITextField *setYearOld;
+@property (weak, nonatomic) IBOutlet UITextField *Locail;
+@property (weak, nonatomic) IBOutlet UITextField *faVourite;
 
 @end
 
@@ -34,4 +39,6 @@
 }
 */
 
+- (IBAction)finishChange:(UIBarButtonItem *)sender {
+}
 @end
