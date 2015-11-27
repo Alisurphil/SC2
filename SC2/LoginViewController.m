@@ -220,11 +220,15 @@
     }
     
     UIActivityIndicatorView *aiv = [Utilities getCoverOnView:self.view];
+    
     [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser *user, NSError *error) {
         [aiv stopAnimating];
         if (user) {
             [Utilities setUserDefaults:@"username" content:username];
             _passwordTF.text = @"";
+            
+            
+            
             [self popUpHomeTab];
         } else if (error.code == 101) {
             [Utilities popUpAlertViewWithMsg:@"用户名或密码错误" andTitle:nil];
