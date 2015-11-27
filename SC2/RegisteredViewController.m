@@ -89,14 +89,18 @@
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         [aiv stopAnimating];
         if (!error) {
-            [Utilities setUserDefaults:@"userName" content:username];
-            [[storageMgr singletonStorageMgr] addKeyAndValue:@"signUp" And:@1];
-            [self.navigationController popViewControllerAnimated:YES];
-            
+            [aiv startAnimating];
             [[EaseMob sharedInstance].chatManager asyncRegisterNewAccount:_inPutName.text password:_inPutPwd.text withCompletion:^(NSString *username, NSString *password, EMError *error) {
-                NSLog(@"进来了");
+//                NSLog(@"进来了");
+                [aiv stopAnimating];
                 if (!error) {
                     NSLog(@"注册成功");
+                    [Utilities setUserDefaults:@"userName" content:username];
+                    [Utilities setUserDefaults:@"password" content:password];
+                    [[storageMgr singletonStorageMgr] addKeyAndValue:@"signUp" And:@1];
+                    [self.navigationController popViewControllerAnimated:YES];
+                } else {
+                    [Utilities popUpAlertViewWithMsg:@"该用户名已被使用，请尝试其它名称" andTitle:nil];
                 }
             } onQueue:nil];
         } else if (error.code == 202) {
