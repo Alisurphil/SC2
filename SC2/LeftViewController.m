@@ -41,8 +41,13 @@
 */
 
 - (IBAction)exitID:(UIButton *)sender forEvent:(UIEvent *)event {
+    [PFUser logOut];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)userImage:(UIButton *)sender forEvent:(UIEvent *)event {
+    UIActionSheet *actionSheet =[[UIActionSheet alloc] initWithTitle:@"提示" delegate:self cancelButtonTitle:@"取消"destructiveButtonTitle:nil otherButtonTitles:@"相册",@"拍照", nil];
+    //在视图上展示
+    [actionSheet showInView:self.view];
 }
 @end
