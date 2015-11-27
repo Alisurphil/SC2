@@ -66,6 +66,7 @@
     NSString *email = _inPutID.text;
     NSString *password = _inPutPwd.text;
     NSString *confirmPwd = _pwdAgain.text;
+    NSString *nickname = _inPutNikname.text;
     
     if ([username isEqualToString:@""] || [email isEqualToString:@""] || [password isEqualToString:@""] || [confirmPwd isEqualToString:@""]) {
         [Utilities popUpAlertViewWithMsg:@"请填写所有信息" andTitle:nil];
@@ -80,7 +81,7 @@
     user.username = username;
     user.password = password;
     user.email = email;
-    user[@"greedCoin"] = @10000;
+    user[@"nickName"] = nickname;
     
     UIActivityIndicatorView *aiv = [Utilities getCoverOnView:self.view];
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
