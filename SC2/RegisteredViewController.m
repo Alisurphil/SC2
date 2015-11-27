@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *inPutID;
 @property (weak, nonatomic) IBOutlet UITextField *inPutPwd;
 @property (weak, nonatomic) IBOutlet UITextField *pwdAgain;
+@property (weak, nonatomic) IBOutlet UITextField *inPutNikname;
 
 
 @end
