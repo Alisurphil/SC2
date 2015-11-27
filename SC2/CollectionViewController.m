@@ -9,6 +9,8 @@
 #import "CollectionViewController.h"
 
 @interface CollectionViewController ()
+- (IBAction)collectionBack:(UIBarButtonItem *)sender;
+
 
 @end
 
@@ -34,4 +36,6 @@
 }
 */
 
+- (IBAction)collectionBack:(UIBarButtonItem *)sender {
+}
 @end

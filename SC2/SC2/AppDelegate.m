@@ -8,61 +8,14 @@
 
 #import "AppDelegate.h"
 #import "SCViewController.h"
-#import "ECSlidingViewController.h"
-#import "LeftViewController.h"
-@interface AppDelegate ()<UIViewControllerAnimatedTransitioning, ECSlidingViewControllerDelegate, ECSlidingViewControllerLayout>
 
-@property (strong,nonatomic) ECSlidingViewController *slidingViewController;
-//关于滑动操作类型的整型枚举（common点进去看）
-@property (assign, nonatomic) ECSlidingViewControllerOperation operation;
+@interface AppDelegate ()
+
+
 @end
 
 @implementation AppDelegate
 
--(void)initializeRootView{
-    //根据名称center找到对应的页面实例
-    UINavigationController *SC = [Utilities getStoryboardInstanceByIdentity:@"SC"];
-    //初始化ECSlidingViewController对象，将center对象设置为门框的中间门板（ECSlidingViewController对象的中间页面）
-    _slidingViewController = [[ECSlidingViewController alloc]initWithTopViewController:SC];
-    //注册协议
-    _slidingViewController.delegate = self;
-    //设置滑动动画执行时间
-    _slidingViewController.defaultTransitionDuration = 0.25;
-    //设置中间视图能对哪些配置好的手势响应（tapping以及panning）
-    _slidingViewController.topViewAnchoredGesture = ECSlidingViewControllerAnchoredGestureTapping | ECSlidingViewControllerAnchoredGesturePanning;
-    //将上述已选配的手势加到需要的页面上
-    [SC.view addGestureRecognizer:self.slidingViewController.panGesture];
-    LeftViewController *lvc = [Utilities getStoryboardInstanceByIdentity:@"Left"];
-    //设置_slidingViewController的左侧页面（门框的左门板）
-    _slidingViewController.underLeftViewController = lvc;
-    //设置中间页面向右滑动后，留在屏幕上的宽度
-    _slidingViewController.anchorRightPeekAmount = UI_SCREEN_W / 4;
-    //注册名为LeftSwitch的通知，该通知回触发leftSwitchAction方法
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(leftSwitchAction) name:@"LeftSwitch" object:nil];
-    //注册两个通知观察者执行同意滑动与不同意滑动
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(enableSwitchAction) name:@"EnableSwitch" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(disableSwitchAction) name:@"DisableSwitch" object:nil];
-}
-//处理侧滑行为的方法
--(void)leftSwitchAction{
-    NSLog(@"侧滑");
-    //判断中间页面当前所处的位置，如果当前位置为已展开（被滑倒右侧），则需要出发关门操作；反之（未展开），则执行开门操作
-    if (_slidingViewController.currentTopViewPosition == ECSlidingViewControllerTopViewPositionAnchoredRight) {
-        [_slidingViewController resetTopViewAnimated:YES];
-    } else {
-        [_slidingViewController anchorTopViewToRightAnimated:YES];
-    }
-}
-//同意滑动
--(void)enableSwitchAction{
-    NSLog(@"可滑");
-    _slidingViewController.panGesture.enabled = YES;
-}
-//不同意滑动
--(void)disableSwitchAction{
-    NSLog(@"不可滑");
-    _slidingViewController.panGesture.enabled = NO;
-}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
