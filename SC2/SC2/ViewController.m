@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import <EaseMobSDKFull/EaseMob.h>
 
 @interface ViewController ()
 
@@ -16,6 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     // Do any additional setup after loading the view, typically from a nib.
 //    PFObject *annou = [PFObject objectWithClassName:@"announcement"];
 //    annou[@"name"] = @"测试";
