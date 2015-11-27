@@ -1,21 +1,20 @@
 //
-//  DetailViewController.m
+//  commentViewController.m
 //  SC2
 //
-//  Created by 袁文轶 on 15/11/26.
+//  Created by 袁文轶 on 15/11/27.
 //  Copyright © 2015年 wx. All rights reserved.
 //
 
-#import "DetailViewController.h"
+#import "commentViewController.h"
 
-@interface DetailViewController ()
-- (IBAction)collect:(UIBarButtonItem *)sender;
-
-
+@interface commentViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *inPutcommt;
+- (IBAction)sendCommt:(UIButton *)sender forEvent:(UIEvent *)event;
 
 @end
 
-@implementation DetailViewController
+@implementation commentViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -37,9 +36,6 @@
 }
 */
 
-- (IBAction)collect:(UIBarButtonItem *)sender {
-}
-
-- (IBAction)cmmt:(UIBarButtonItem *)sender {
+- (IBAction)sendCommt:(UIButton *)sender forEvent:(UIEvent *)event {
 }
 @end
