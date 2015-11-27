@@ -36,5 +36,6 @@
 */
 
 - (IBAction)informationBack:(UIBarButtonItem *)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 @end
