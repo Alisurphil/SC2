@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Third View Controller-->
@@ -17,22 +18,41 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TFQ-Ev-lON">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TFQ-Ev-lON">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="163"/>
                                 <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="TFQ-Ev-lON" secondAttribute="height" multiplier="320:163" id="SGV-nm-caI"/>
+                                </constraints>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="shu-uD-UH3">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="shu-uD-UH3">
                                 <rect key="frame" x="0.0" y="164" width="320" height="404"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="shu-uD-UH3" secondAttribute="height" multiplier="80:101" id="tu5-Fk-o4u"/>
+                                </constraints>
                             </tableView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hsn-JK-ixS">
-                                <rect key="frame" x="40" y="18" width="240" height="128"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hsn-JK-ixS">
+                                <rect key="frame" x="20" y="79" width="72" height="77"/>
                                 <animations/>
                             </imageView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="TFQ-Ev-lON" firstAttribute="top" secondItem="AVJ-ZT-qIP" secondAttribute="top" id="2L1-kd-GCC"/>
+                            <constraint firstItem="TFQ-Ev-lON" firstAttribute="leading" secondItem="AVJ-ZT-qIP" secondAttribute="leading" id="EH5-Lb-12N"/>
+                            <constraint firstItem="pR8-6c-p9J" firstAttribute="top" secondItem="shu-uD-UH3" secondAttribute="bottom" id="KpE-1Z-9w8"/>
+                            <constraint firstItem="shu-uD-UH3" firstAttribute="leading" secondItem="AVJ-ZT-qIP" secondAttribute="leading" id="OUq-Cz-3En"/>
+                            <constraint firstAttribute="trailing" secondItem="shu-uD-UH3" secondAttribute="trailing" id="U5C-P4-xU6"/>
+                            <constraint firstAttribute="trailing" secondItem="hsn-JK-ixS" secondAttribute="trailing" constant="228" id="dHf-BZ-kG1"/>
+                            <constraint firstItem="shu-uD-UH3" firstAttribute="top" secondItem="hsn-JK-ixS" secondAttribute="bottom" constant="8" id="fnN-vo-PBc"/>
+                            <constraint firstItem="hsn-JK-ixS" firstAttribute="top" secondItem="ZhL-EA-5W5" secondAttribute="bottom" constant="59" id="jTE-If-Dz0"/>
+                            <constraint firstItem="hsn-JK-ixS" firstAttribute="leading" secondItem="AVJ-ZT-qIP" secondAttribute="leading" constant="20" id="l6K-ML-iwC"/>
+                            <constraint firstAttribute="trailing" secondItem="TFQ-Ev-lON" secondAttribute="trailing" id="s74-Py-bJO"/>
+                            <constraint firstItem="shu-uD-UH3" firstAttribute="top" secondItem="TFQ-Ev-lON" secondAttribute="bottom" constant="1" id="tbQ-sv-uSS"/>
+                        </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
