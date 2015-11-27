@@ -386,7 +386,7 @@
             </objects>
             <point key="canvasLocation" x="-317" y="-450"/>
         </scene>
-        <!--Collection View Controller-->
+        <!--收藏-->
         <scene sceneID="fNR-HX-j9U">
             <objects>
                 <viewController storyboardIdentifier="collection" useStoryboardIdentifierAsRestorationIdentifier="YES" id="1k1-Jt-N2P" customClass="CollectionViewController" sceneMemberID="viewController">
@@ -429,7 +429,7 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="edW-MC-A9P">
+                    <navigationItem key="navigationItem" title="收藏" id="edW-MC-A9P">
                         <barButtonItem key="leftBarButtonItem" systemItem="reply" id="VDI-oX-dem">
                             <connections>
                                 <action selector="collectionBack:" destination="1k1-Jt-N2P" id="J3m-Nv-N0Y"/>
@@ -442,7 +442,7 @@
             </objects>
             <point key="canvasLocation" x="56" y="211"/>
         </scene>
-        <!--Background View Controller-->
+        <!--游戏背景-->
         <scene sceneID="y7k-hL-o87">
             <objects>
                 <viewController storyboardIdentifier="background" useStoryboardIdentifierAsRestorationIdentifier="YES" id="h56-ji-lDv" customClass="BackgroundViewController" sceneMemberID="viewController">
@@ -473,7 +473,7 @@
                             <constraint firstAttribute="trailing" secondItem="bih-fM-39q" secondAttribute="trailing" id="zgo-VI-rr7"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="QQG-ur-nX2">
+                    <navigationItem key="navigationItem" title="游戏背景" id="QQG-ur-nX2">
                         <barButtonItem key="leftBarButtonItem" systemItem="reply" id="oj3-bU-QkP">
                             <connections>
                                 <action selector="backGroundBack:" destination="h56-ji-lDv" id="aiz-PX-pOZ"/>
@@ -486,7 +486,7 @@
             </objects>
             <point key="canvasLocation" x="873" y="219"/>
         </scene>
-        <!--Information View Controller-->
+        <!--版本信息-->
         <scene sceneID="wnG-lO-61P">
             <objects>
                 <viewController storyboardIdentifier="information" useStoryboardIdentifierAsRestorationIdentifier="YES" id="E4v-LD-L2c" customClass="InformationViewController" sceneMemberID="viewController">
@@ -502,8 +502,7 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">版本信息
-《星际争霸II：虚空之遗》已经正式上线！购买了《虚空之遗》的玩家现在可以畅玩以下所有内容。
+                                <mutableString key="text">《星际争霸II：虚空之遗》已经正式上线！购买了《虚空之遗》的玩家现在可以畅玩以下所有内容。
 		见证《星际争霸II》三部曲的大结局。
 	◦	在19个关卡里纵横多个星球，指挥高贵的星灵战士拯救银河系。
 	◦	操纵古代星灵方舟：亚顿之矛。在战场上召唤毁灭性打击。
@@ -537,7 +536,7 @@
 	◦	可破坏的岩石和萨尔纳加瞭望塔将显示在小地图上。
 		《虚空之遗》包含了最近的3.0以及3.0.3补丁中加入的所有新功能，包括免费的《湮灭低语》序章战役、完全重制的UI、重新设计后的聊天系统、更新的游戏大厅、地区性的游戏服务器、新的SC2编辑器功能等等！
 　　如果您遇到任何问题，请来官方论坛联系我们。
-　　GG, HF!</string>
+　　GG, HF!</mutableString>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -551,7 +550,7 @@
                             <constraint firstItem="iT6-q5-ndV" firstAttribute="top" secondItem="1is-G8-hh0" secondAttribute="bottom" id="tUf-3n-Gls"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="US4-wW-LaD">
+                    <navigationItem key="navigationItem" title="版本信息" id="US4-wW-LaD">
                         <barButtonItem key="leftBarButtonItem" systemItem="reply" id="ftR-DU-jiW">
                             <connections>
                                 <action selector="informationBack:" destination="E4v-LD-L2c" id="IZK-g2-c58"/>
@@ -635,7 +634,7 @@
                                         </tableViewCellContentView>
                                         <animations/>
                                         <connections>
-                                            <segue destination="qVU-hZ-i13" kind="show" id="LrP-l9-Otk"/>
+                                            <segue destination="NEs-K3-4cz" kind="show" id="LrP-l9-Otk"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -661,7 +660,7 @@
             </objects>
             <point key="canvasLocation" x="1851" y="-618"/>
         </scene>
-        <!--Detail View Controller-->
+        <!--详情-->
         <scene sceneID="Eij-Ye-mXU">
             <objects>
                 <viewController storyboardIdentifier="detail" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qVU-hZ-i13" customClass="DetailViewController" sceneMemberID="viewController">
@@ -685,7 +684,7 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="eWN-bs-dIS">
+                    <navigationItem key="navigationItem" title="详情" id="eWN-bs-dIS">
                         <rightBarButtonItems>
                             <barButtonItem image="collection" id="PP5-Ob-suF">
                                 <connections>
@@ -703,9 +702,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5PF-GQ-zlL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1859" y="59"/>
+            <point key="canvasLocation" x="2396" y="161"/>
         </scene>
-        <!--Comment View Controller-->
+        <!--评论-->
         <scene sceneID="fWZ-n3-z3j">
             <objects>
                 <viewController storyboardIdentifier="comment" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wOT-cA-eNp" customClass="commentViewController" sceneMemberID="viewController">
@@ -754,7 +753,7 @@
                             <constraint firstItem="gNy-GE-HCY" firstAttribute="trailing" secondItem="kDS-EA-X9H" secondAttribute="trailing" id="wZN-X7-7Gr"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="hug-W9-pOo"/>
+                    <navigationItem key="navigationItem" title="评论" id="hug-W9-pOo"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="inPutcommt" destination="2p0-V7-byk" id="k9g-Fi-U10"/>
@@ -762,7 +761,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LMc-fL-b7c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2248" y="59"/>
+            <point key="canvasLocation" x="2780" y="59"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="iMD-Q2-UJc">
@@ -823,6 +822,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="um9-cU-FAv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-208" y="867"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="bgU-xd-gxN">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NEs-K3-4cz" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6Dq-S7-KGW">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="qVU-hZ-i13" kind="relationship" relationship="rootViewController" id="ef7-VB-Ej7"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rEi-Io-T2k" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1864" y="161"/>
         </scene>
     </scenes>
     <resources>

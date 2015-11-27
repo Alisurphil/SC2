@@ -94,7 +94,7 @@
             </objects>
             <point key="canvasLocation" x="167" y="290"/>
         </scene>
-        <!--Person Main View Controller-->
+        <!--编辑资料-->
         <scene sceneID="pmZ-z8-zdK">
             <objects>
                 <viewController storyboardIdentifier="person" useStoryboardIdentifierAsRestorationIdentifier="YES" id="um8-cB-kAQ" customClass="PersonMainViewController" sceneMemberID="viewController">
@@ -108,7 +108,9 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="kbr-fZ-Rez"/>
+                    <navigationItem key="navigationItem" title="编辑资料" id="kbr-fZ-Rez">
+                        <barButtonItem key="rightBarButtonItem" title="完成" style="done" id="wab-V4-hnz"/>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3bo-UO-huC" userLabel="First Responder" sceneMemberID="firstResponder"/>
