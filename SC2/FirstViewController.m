@@ -20,7 +20,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self dataPreparation];
+    [self uiConfiguration];
     CGRect rect = _headerView.frame;
     rect.size.height = self.view.frame.size.width / 2;
     _headerView.frame = rect;
@@ -61,7 +62,42 @@
     self.scrollView.delegate = self;
     [self addTimer];
 }
-
+- (void)dataPreparation {
+    _objectsForShow = nil;
+    _objectsForShow = [NSMutableArray new];
+    _aiv = [Utilities getCoverOnView:[[UIApplication sharedApplication] keyWindow]];
+    [self initializeData];
+}
+//下拉刷新：刷新器+初始数据（第一页数据）
+- (void)initializeData {
+    loadCount = 1;
+    perPage = 3;
+    loadingMore = NO;
+    [self urlAction];
+}
+-(void)urlAction{
+    [_aiv stopAnimating];
+    [self loadDataEnd];
+}
+- (void)uiConfiguration {
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    NSString *title = [NSString stringWithFormat:@"下拉即可刷新"];
+    NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+    [style setAlignment:NSTextAlignmentCenter];
+    [style setLineBreakMode:NSLineBreakByWordWrapping];
+    NSDictionary *attrsDictionary = @{NSUnderlineStyleAttributeName:@(NSUnderlineStyleNone),
+                                      NSFontAttributeName:[UIFont preferredFontForTextStyle:UIFontTextStyleBody],
+                                      NSParagraphStyleAttributeName:style,
+                                      NSForegroundColorAttributeName:[UIColor brownColor]};
+    NSAttributedString *attributedTitle = [[NSAttributedString alloc] initWithString:title attributes:attrsDictionary];
+    refreshControl.attributedTitle = attributedTitle;
+    refreshControl.tintColor = [UIColor brownColor];
+    refreshControl.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    refreshControl.tag = 8001;
+    [refreshControl addTarget:self action:@selector(initializeData) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:refreshControl];
+    self.tableView.tableFooterView = [[UIView alloc] init];
+}
 - (void)nextImage{
     int page = (int)self.pageControl.currentPage;
     if (page == 4) {
@@ -84,9 +120,9 @@
     [self removeTimer];
 }
 
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
-    [self addTimer];
-}
+//- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+//    [self addTimer];
+//}
 
 - (void)addTimer{
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(nextImage) userInfo:nil repeats:YES];
@@ -102,6 +138,62 @@
     
 }
 
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    if (scrollView.contentSize.height > scrollView.frame.size.height) {
+        if (!loadingMore && scrollView.contentOffset.y > (scrollView.contentSize.height - scrollView.frame.size.height)) {
+            [self loadDataBegin];
+        }
+    } else {
+        if (!loadingMore && scrollView.contentOffset.y > 0) {
+            [self loadDataBegin];
+        }
+    }
+}
+
+- (void)loadDataBegin {
+    if (loadingMore == NO) {
+        loadingMore = YES;
+        [self createTableFooter];
+        _tableFooterAI = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake((UI_SCREEN_W - 86.0f) / 2 - 30.0f, 10.0f, 20.0f, 20.0f)];
+        [_tableFooterAI setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleGray];
+        [self.tableView.tableFooterView addSubview:_tableFooterAI];
+        [_tableFooterAI startAnimating];
+        [self loadDataing];
+    }
+}
+
+- (void)loadDataing {
+    if (totalPage > loadCount) {
+        loadCount ++;
+        [self urlAction];
+    } else {
+        [self performSelector:@selector(beforeLoadEnd) withObject:nil afterDelay:0.25];
+    }
+}
+
+- (void)beforeLoadEnd {
+    UILabel *label = (UILabel *)[self.tableView.tableFooterView viewWithTag:9001];
+    [label setText:@"当前已无更多数据"];
+    [_tableFooterAI stopAnimating];
+    _tableFooterAI = nil;
+    [self performSelector:@selector(loadDataEnd) withObject:nil afterDelay:0.25];
+}
+
+- (void)loadDataEnd {
+    self.tableView.tableFooterView = [[UIView alloc] init];
+    loadingMore = NO;
+}
+
+- (void)createTableFooter {
+    UIView *tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.tableView.bounds.size.width, 40.0f)];
+    UILabel *loadMoreText = [[UILabel alloc] initWithFrame:CGRectMake((UI_SCREEN_W - 86.0f) / 2, 0.0f, 116.0f, 40.0f)];
+    loadMoreText.tag = 9001;
+    [loadMoreText setFont:[UIFont systemFontOfSize:B_Font]];
+    [loadMoreText setText:@"上拉显示更多数据"];
+    [tableFooterView addSubview:loadMoreText];
+    loadMoreText.textColor = [UIColor grayColor];
+    self.tableView.tableFooterView = tableFooterView;
+}
 /*
 #pragma mark - Navigation
 

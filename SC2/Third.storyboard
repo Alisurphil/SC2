@@ -40,7 +40,14 @@
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="EBw-Fn-VNy" secondAttribute="height" multiplier="1:1" id="aNC-LN-dy8"/>
                                                     </constraints>
-                                                    <state key="normal" title="Button"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="30"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="userImag:forEvent:" destination="RJT-JZ-0FB" eventType="touchUpInside" id="FUQ-Jj-9pn"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KqS-1K-MvK">
                                                     <rect key="frame" x="241" y="117" width="71" height="30"/>
@@ -102,6 +109,10 @@
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="thirdTableView" destination="3Cq-S3-Cu2" id="bm3-bV-jny"/>
+                        <outlet property="userImag2" destination="EBw-Fn-VNy" id="NN9-Yr-Vd2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bx8-l7-1od" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -299,11 +310,27 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="编辑资料" id="zf9-Em-O23">
-                        <barButtonItem key="leftBarButtonItem" systemItem="reply" id="FPW-fo-FOn"/>
-                        <barButtonItem key="rightBarButtonItem" title="完成" id="hZX-Dx-4ih"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="reply" id="FPW-fo-FOn">
+                            <connections>
+                                <action selector="backToMe:" destination="9g2-cx-ECP" id="asW-6I-Jho"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="完成" id="hZX-Dx-4ih">
+                            <connections>
+                                <action selector="finishChange:" destination="9g2-cx-ECP" id="6yx-Aw-NeK"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="changeFavourite" destination="nbP-43-TxZ" id="Yiv-jD-2Qb"/>
+                        <outlet property="changeLocation" destination="hmZ-ZP-fNh" id="wVI-Ke-Yvq"/>
+                        <outlet property="changeNikName" destination="ZTy-NG-1M7" id="frv-Zb-h2Z"/>
+                        <outlet property="changeOld" destination="5EO-Pj-o9j" id="FLZ-O3-aMp"/>
+                        <outlet property="changeSex" destination="hXm-Qk-VpU" id="x58-rF-rFH"/>
+                        <outlet property="tablView" destination="tZ4-ir-b7s" id="SkH-Al-CML"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fKT-lU-h1T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
