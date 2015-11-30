@@ -235,7 +235,7 @@
                 [aiv stopAnimating];
                 NSLog(@"进来了");
                 if (!error && loginInfo) {
-                    NSLog(@"登陆成功");
+                    NSLog(@"环信登陆成功");
                     [Utilities setUserDefaults:@"username" content:un];
                     [Utilities setUserDefaults:@"password" content:pwd];
                     _passwordTF.text = @"";

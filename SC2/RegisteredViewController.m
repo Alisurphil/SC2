@@ -94,7 +94,7 @@
 //                NSLog(@"进来了");
                 [aiv stopAnimating];
                 if (!error) {
-                    NSLog(@"注册成功");
+                    NSLog(@"环信注册成功");
                     [Utilities setUserDefaults:@"userName" content:username];
                     [Utilities setUserDefaults:@"password" content:password];
                     [[storageMgr singletonStorageMgr] addKeyAndValue:@"signUp" And:@1];
