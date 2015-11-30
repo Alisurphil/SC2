@@ -49,6 +49,9 @@
                                     <constraint firstAttribute="width" secondItem="uOn-9O-ZFv" secondAttribute="height" multiplier="23:15" id="oLq-Bh-7jX"/>
                                 </constraints>
                                 <state key="normal" title="编辑资料"/>
+                                <connections>
+                                    <segue destination="iaF-0w-AgX" kind="show" id="RQp-Z5-gDk"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UU3-zP-SzM">
                                 <rect key="frame" x="20" y="76" width="80" height="80"/>
@@ -87,33 +90,83 @@
             </objects>
             <point key="canvasLocation" x="71" y="-81"/>
         </scene>
-        <!--Table View Controller-->
+        <!--编辑资料-->
         <scene sceneID="Q0b-md-Hd0">
             <objects>
                 <tableViewController id="9g2-cx-ECP" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="tZ4-ir-b7s">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="tZ4-ir-b7s">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="vf9-jQ-nzX">
-                                <rect key="frame" x="0.0" y="92" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vf9-jQ-nzX" id="UlM-eX-3YH">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <animations/>
-                                </tableViewCellContentView>
-                                <animations/>
-                            </tableViewCell>
-                        </prototypes>
+                        <sections>
+                            <tableViewSection id="fhP-44-yEg">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="vf9-jQ-nzX">
+                                        <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vf9-jQ-nzX" id="UlM-eX-3YH">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="昵称：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mHb-7c-XQI">
+                                                    <rect key="frame" x="14" y="14" width="51" height="21"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZTy-NG-1M7">
+                                                    <rect key="frame" x="66" y="10" width="246" height="30"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <animations/>
+                                            <constraints>
+                                                <constraint firstItem="ZTy-NG-1M7" firstAttribute="leading" secondItem="mHb-7c-XQI" secondAttribute="trailing" constant="1" id="7K9-dH-txT"/>
+                                                <constraint firstAttribute="bottom" secondItem="ZTy-NG-1M7" secondAttribute="bottom" constant="3.5" id="OYD-2r-r6u"/>
+                                                <constraint firstAttribute="trailing" secondItem="ZTy-NG-1M7" secondAttribute="trailing" constant="8" id="Te7-mM-VAv"/>
+                                                <constraint firstAttribute="bottom" secondItem="mHb-7c-XQI" secondAttribute="bottom" constant="8.5" id="Weh-fy-4PF"/>
+                                                <constraint firstItem="mHb-7c-XQI" firstAttribute="leading" secondItem="UlM-eX-3YH" secondAttribute="leading" constant="14" id="kDJ-ei-idO"/>
+                                                <constraint firstItem="mHb-7c-XQI" firstAttribute="top" secondItem="UlM-eX-3YH" secondAttribute="top" constant="14" id="ooQ-Zn-6D8"/>
+                                                <constraint firstItem="ZTy-NG-1M7" firstAttribute="top" secondItem="UlM-eX-3YH" secondAttribute="top" constant="10" id="yff-KZ-QIP"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="vAy-9F-WVR">
+                                        <rect key="frame" x="0.0" y="108" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vAy-9F-WVR" id="jWM-UR-pyo">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <animations/>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KRC-eu-rr9">
+                                        <rect key="frame" x="0.0" y="152" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KRC-eu-rr9" id="ZCZ-8p-mxd">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <animations/>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
                         <connections>
                             <outlet property="dataSource" destination="9g2-cx-ECP" id="ZwV-Ty-PN2"/>
                             <outlet property="delegate" destination="9g2-cx-ECP" id="dI9-ar-vvO"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="zf9-Em-O23"/>
+                    <navigationItem key="navigationItem" title="编辑资料" id="zf9-Em-O23">
+                        <barButtonItem key="rightBarButtonItem" title="完成" id="hZX-Dx-4ih"/>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fKT-lU-h1T" userLabel="First Responder" sceneMemberID="firstResponder"/>
