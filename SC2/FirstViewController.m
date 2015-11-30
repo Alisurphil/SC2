@@ -78,6 +78,10 @@
 -(void)urlAction{
     [_aiv stopAnimating];
     [self loadDataEnd];
+    UIRefreshControl *refreshControl=[self.tableView viewWithTag:8001];
+    
+    //将上述下拉刷新控件停止刷新
+    [refreshControl endRefreshing];
 }
 - (void)uiConfiguration {
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
@@ -97,6 +101,10 @@
     [refreshControl addTarget:self action:@selector(initializeData) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:refreshControl];
     self.tableView.tableFooterView = [[UIView alloc] init];
+}
+-(void)refreshData:(UIRefreshControl *)sender{
+    //假装话了2秒请求数据并更新tableView
+    [self performSelector:@selector(endRefreshing) withObject:nil afterDelay:2];
 }
 - (void)nextImage{
     int page = (int)self.pageControl.currentPage;
