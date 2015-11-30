@@ -54,7 +54,7 @@
         _imagePickerController = nil;
         _imagePickerController = [[UIImagePickerController alloc] init];
         _imagePickerController.delegate = self;
-        _imagePickerController.allowsEditing = NO;
+        _imagePickerController.allowsEditing = YES;
         _imagePickerController.sourceType = temp;
         _imagePickerController.mediaTypes=@[(NSString *)kUTTypeImage];
         [self presentViewController:_imagePickerController animated:YES completion:nil];
@@ -69,15 +69,23 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
-    //UIImage *image = [info valueForKey:UIImagePickerControllerEditedImage];
-    [_userImage2 setBackgroundImage:image forState:UIControlStateNormal];
     [self dismissViewControllerAnimated:YES completion:nil];
+    UIImage *image = [info valueForKey:UIImagePickerControllerEditedImage];
+    //UIImage *image = [info valueForKey:UIImagePickerControllerEditedImage];
+    NSData *imageData = UIImagePNGRepresentation(image);
+    PFFile *imageFile = [PFFile fileWithName:@"image.png" data:imageData];
+    PFUser *userPhoto = [PFUser currentUser];
+    userPhoto[@"avatar"] = imageFile;
+    [userPhoto saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        [_userImage2 setBackgroundImage:image forState:UIControlStateNormal];
+        NSLog(@"Done");
+    }];
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+   
 }
 
 
