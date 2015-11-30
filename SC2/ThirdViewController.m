@@ -18,6 +18,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    if (self.navigationController.tabBarItem.tag == 0) {
+        self.navigationItem.title = @"首页";
+    } else if(self.navigationController.tabBarItem.tag == 1){
+        self.navigationItem.title = @"聊天";
+    }else {
+        self.navigationItem.title = @"我";
+    }
 }
 
 - (void)didReceiveMemoryWarning {
