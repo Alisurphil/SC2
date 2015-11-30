@@ -103,6 +103,7 @@
 */
 
 - (IBAction)backToMe:(UIBarButtonItem *)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)finishChange:(UIBarButtonItem *)sender {

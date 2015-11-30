@@ -11,7 +11,7 @@
 #import "LeftViewController.h"
 #import <EaseMobSDKFull/EaseMob.h>
 
-@interface LoginViewController ()
+@interface LoginViewController () <UITextFieldDelegate>
 
 - (IBAction)signIn:(UIButton *)sender forEvent:(UIEvent *)event;
 
@@ -24,8 +24,22 @@
 
     // Do any additional setup after loading the view.
     self.navigationController.navigationBarHidden = YES;
+    _avatarImg.layer.borderColor = [[UIColor colorWithRed:123.f/255.f green:236.f/255.f blue:255.f/255.f alpha:1.f] CGColor];
+    
     if (![[Utilities getUserDefaults:@"userName"] isKindOfClass:[NSNull class]]) {
         _usernameTF.text = [Utilities getUserDefaults:@"userName"];
+        NSString *currentStr = _usernameTF.text;
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        NSArray *directories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentDirectory = [directories objectAtIndex:0];
+        __block NSString *filePath = nil;
+        filePath = [documentDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", currentStr]];
+        if ([fileManager fileExistsAtPath:filePath]) {
+            UIImage *image = [UIImage imageWithContentsOfFile:filePath];
+            [_avatarImg setBackgroundImage:image forState:UIControlStateNormal];
+        } else {
+            [_avatarImg setBackgroundImage:[UIImage imageNamed:@"default"] forState:UIControlStateNormal];
+        }
     }
 }
 -(void)viewDidAppear:(BOOL)animated{
@@ -239,6 +253,24 @@
                     [Utilities setUserDefaults:@"userName" content:un];
                     [Utilities setUserDefaults:@"password" content:pwd];
                     _passwordTF.text = @"";
+                    PFUser *currentUser = [PFUser currentUser];
+                    PFFile *avatar = currentUser[@"avatar"];
+                    [avatar getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+                        NSFileManager *fileManager = [NSFileManager defaultManager];
+                        NSArray *directories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+                        NSString *documentDirectory = [directories objectAtIndex:0];
+                        __block NSString *filePath = nil;
+                        filePath = [documentDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", currentUser.username]];
+                        if (![fileManager fileExistsAtPath:filePath]) {
+                            static dispatch_queue_t backgroundQueue;
+                            if (backgroundQueue == nil) {
+                                backgroundQueue = dispatch_queue_create("com.beilyton.queue", NULL);
+                            }
+                            dispatch_async(backgroundQueue, ^(void) {
+                                [data writeToFile:filePath atomically:YES];
+                            });
+                        }
+                    }];
                     [self popUpHomeTab];
                 } else {
                     NSLog(@"error = %@",error);
@@ -254,6 +286,28 @@
             [Utilities popUpAlertViewWithMsg:nil andTitle:nil];
         }
     }];
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    NSLog(@"string = %@", string);
+    NSString *currentStr = textField.text;
+    if (string.length == 0) {
+        currentStr = [currentStr substringToIndex:(currentStr.length - 1)];
+    } else {
+        currentStr = [NSString stringWithFormat:@"%@%@", currentStr, string];
+    }
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSArray *directories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentDirectory = [directories objectAtIndex:0];
+    __block NSString *filePath = nil;
+    filePath = [documentDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", currentStr]];
+    if ([fileManager fileExistsAtPath:filePath]) {
+        UIImage *image = [UIImage imageWithContentsOfFile:filePath];
+        [_avatarImg setBackgroundImage:image forState:UIControlStateNormal];
+    } else {
+        [_avatarImg setBackgroundImage:[UIImage imageNamed:@"default"] forState:UIControlStateNormal];
+    }
+    return YES;
 }
 
 @end
