@@ -11,6 +11,7 @@
 @interface LeftViewController ()
 - (IBAction)exitID:(UIButton *)sender forEvent:(UIEvent *)event;
 - (IBAction)userImage:(UIButton *)sender forEvent:(UIEvent *)event;
+@property (weak, nonatomic) IBOutlet UIButton *userImage2;
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @end
 
