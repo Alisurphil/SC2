@@ -24,12 +24,62 @@
     
     PFUser *currentUser = [PFUser currentUser];
     _userNameLabel.text = [NSString stringWithFormat:@"昵称：%@", currentUser[@"nickName"]];
+    [_userImage2 addTarget:self action:@selector(avatarAction:forEvent:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (void)avatarAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"拍照", @"从相册选择", nil];
+    [actionSheet setExclusiveTouch:YES];
+    actionSheet.actionSheetStyle = UIActionSheetStyleDefault;
+    [actionSheet showInView:self.view];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 2)
+        return;
+    //根据actionSheet中选择的按钮决定照片选择器控制器会打开拍照还是照片应用
+    UIImagePickerControllerSourceType temp;
+    if (buttonIndex == 0) {
+        temp = UIImagePickerControllerSourceTypeCamera;
+    } else if (buttonIndex == 1) {
+        temp = UIImagePickerControllerSourceTypePhotoLibrary;
+    }
+    //判断设备上的UIImagePickerController是否具有上述选择的UIImagePickerControllerSourceType的功能
+    if ([UIImagePickerController isSourceTypeAvailable:temp]) {
+        _imagePickerController = nil;
+        _imagePickerController = [[UIImagePickerController alloc] init];
+        _imagePickerController.delegate = self;
+        _imagePickerController.allowsEditing = NO;
+        _imagePickerController.sourceType = temp;
+        _imagePickerController.mediaTypes=@[(NSString *)kUTTypeImage];
+        [self presentViewController:_imagePickerController animated:YES completion:nil];
+    } else {
+        //如果无照相功能则弹出提示框“当前设备无照相功能”
+        if (temp == UIImagePickerControllerSourceTypeCamera) {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"当前设备无照相功能" delegate:nil cancelButtonTitle:@"知道了" otherButtonTitles:nil];
+            [alertView show];
+        }
+    }
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
+    //UIImage *image = [info valueForKey:UIImagePickerControllerEditedImage];
+    [_userImage2 setBackgroundImage:image forState:UIControlStateNormal];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
 
 /*
 #pragma mark - Navigation
@@ -47,57 +97,7 @@
 }
 
 - (IBAction)userImage:(UIButton *)sender forEvent:(UIEvent *)event {
-    UIActionSheet *actionSheet =[[UIActionSheet alloc] initWithTitle:@"提示" delegate:self cancelButtonTitle:@"取消"destructiveButtonTitle:nil otherButtonTitles:@"相册",@"拍照", nil];
-    //在视图上展示
-    [actionSheet showInView:self.view];
+    
 }
 
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:                                                       (NSInteger)buttonIndex {
-    // 相册 0 拍照 1
-    switch (buttonIndex) {         case 0:
-            //从相册中读取
-            [self readImageFromAlbum];
-            break;
-        case 1:
-            //拍照
-        [self readImageFromCamera];
-        break;
-        default:
-        break;
-    } }
-//从相册中读取
-- (void)readImageFromAlbum {
-    //创建对象
-    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
-    //（选择类型）表示仅仅从相册中选取照片
-    imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    //指定代理，因此我们要实现UIImagePickerControllerDelegate,UINavigationControllerDelegate协议
-    imagePicker.delegate = self;
-    //设置在相册选完照片后，是否跳到编辑模式进行图片剪裁。(允许用户编辑)
-    imagePicker.allowsEditing = YES;
-    //显示相册
-    [self presentViewController:imagePicker animated:YES completion:nil];
-}
-- (void)readImageFromCamera {
-    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
-    {
-        UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];         imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
-        imagePicker.delegate = self;
-        imagePicker.allowsEditing = YES;
-        //允许用户编辑
-        [self presentViewController:imagePicker animated:YES completion:nil];
-    } else {
-            //弹出窗口响应点击事件
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"警告"message:@"未检测到摄像头" delegate:         nil cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
-        [alert show];
-    }
-}
-//图片完成之后处理
-- (void)imagePickerController:(UIImagePickerController *)picker
-        didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo {
-    //image 就是修改后的照片
-    //将图片添加到对应的视图上
-    [_userImage2 setImage:image forState:UIControlStateNormal];
-    //结束操作
-    [self dismissViewControllerAnimated:YES completion:nil]; }
 @end
