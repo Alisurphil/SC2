@@ -97,7 +97,7 @@
         didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo {
     //image 就是修改后的照片
     //将图片添加到对应的视图上
-    [:image forState:UIControlStateNormal];
+    [_userImage2 setImage:image forState:UIControlStateNormal];
     //结束操作
     [self dismissViewControllerAnimated:YES completion:nil]; }
 @end
