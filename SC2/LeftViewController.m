@@ -24,12 +24,62 @@
     
     PFUser *currentUser = [PFUser currentUser];
     _userNameLabel.text = [NSString stringWithFormat:@"昵称：%@", currentUser[@"nickName"]];
+    [_userImage2 addTarget:self action:@selector(avatarAction:forEvent:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (void)avatarAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"拍照", @"从相册选择", nil];
+    [actionSheet setExclusiveTouch:YES];
+    actionSheet.actionSheetStyle = UIActionSheetStyleDefault;
+    [actionSheet showInView:self.view];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 2)
+        return;
+    //根据actionSheet中选择的按钮决定照片选择器控制器会打开拍照还是照片应用
+    UIImagePickerControllerSourceType temp;
+    if (buttonIndex == 0) {
+        temp = UIImagePickerControllerSourceTypeCamera;
+    } else if (buttonIndex == 1) {
+        temp = UIImagePickerControllerSourceTypePhotoLibrary;
+    }
+    //判断设备上的UIImagePickerController是否具有上述选择的UIImagePickerControllerSourceType的功能
+    if ([UIImagePickerController isSourceTypeAvailable:temp]) {
+        _imagePickerController = nil;
+        _imagePickerController = [[UIImagePickerController alloc] init];
+        _imagePickerController.delegate = self;
+        _imagePickerController.allowsEditing = NO;
+        _imagePickerController.sourceType = temp;
+        _imagePickerController.mediaTypes=@[(NSString *)kUTTypeImage];
+        [self presentViewController:_imagePickerController animated:YES completion:nil];
+    } else {
+        //如果无照相功能则弹出提示框“当前设备无照相功能”
+        if (temp == UIImagePickerControllerSourceTypeCamera) {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"当前设备无照相功能" delegate:nil cancelButtonTitle:@"知道了" otherButtonTitles:nil];
+            [alertView show];
+        }
+    }
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
+    //UIImage *image = [info valueForKey:UIImagePickerControllerEditedImage];
+    [_userImage2 setBackgroundImage:image forState:UIControlStateNormal];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
 
 /*
 #pragma mark - Navigation
@@ -42,8 +92,12 @@
 */
 
 - (IBAction)exitID:(UIButton *)sender forEvent:(UIEvent *)event {
+    [PFUser logOut];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)userImage:(UIButton *)sender forEvent:(UIEvent *)event {
+    
 }
+
 @end
