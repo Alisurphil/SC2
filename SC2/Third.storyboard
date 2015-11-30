@@ -35,10 +35,24 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gSH-Ml-zqZ">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="165"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="gSH-Ml-zqZ" secondAttribute="height" multiplier="64:33" id="bJd-Nc-KRv"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uOn-9O-ZFv">
+                                <rect key="frame" x="240" y="117" width="60" height="39"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="uOn-9O-ZFv" secondAttribute="height" multiplier="23:15" id="oLq-Bh-7jX"/>
+                                </constraints>
+                                <state key="normal" title="编辑资料"/>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UU3-zP-SzM">
                                 <rect key="frame" x="20" y="76" width="80" height="80"/>
                                 <animations/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="UU3-zP-SzM" secondAttribute="height" multiplier="1:1" id="wY8-Lc-0Lh"/>
                                 </constraints>
@@ -49,21 +63,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uOn-9O-ZFv">
-                                <rect key="frame" x="240" y="117" width="60" height="39"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="uOn-9O-ZFv" secondAttribute="height" multiplier="23:15" id="oLq-Bh-7jX"/>
-                                </constraints>
-                                <state key="normal" title="编辑资料"/>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gSH-Ml-zqZ">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="165"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="gSH-Ml-zqZ" secondAttribute="height" multiplier="64:33" id="bJd-Nc-KRv"/>
-                                </constraints>
-                            </imageView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -87,6 +86,59 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bx8-l7-1od" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="71" y="-81"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="Q0b-md-Hd0">
+            <objects>
+                <tableViewController id="9g2-cx-ECP" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="tZ4-ir-b7s">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="vf9-jQ-nzX">
+                                <rect key="frame" x="0.0" y="92" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vf9-jQ-nzX" id="UlM-eX-3YH">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <animations/>
+                                </tableViewCellContentView>
+                                <animations/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="9g2-cx-ECP" id="ZwV-Ty-PN2"/>
+                            <outlet property="delegate" destination="9g2-cx-ECP" id="dI9-ar-vvO"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="zf9-Em-O23"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fKT-lU-h1T" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="815" y="-81"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="J5m-Yq-1aO">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="iaF-0w-AgX" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="eMH-Sd-C1l">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="9g2-cx-ECP" kind="relationship" relationship="rootViewController" id="7Lf-6S-5IS"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qpx-YQ-W4Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="426" y="-81"/>
         </scene>
     </scenes>
 </document>
