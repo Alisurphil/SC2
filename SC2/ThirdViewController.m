@@ -9,6 +9,9 @@
 #import "ThirdViewController.h"
 
 @interface ThirdViewController ()
+- (IBAction)userImag:(UIButton *)sender forEvent:(UIEvent *)event;
+@property (weak, nonatomic) IBOutlet UIButton *userImag2;
+@property (weak, nonatomic) IBOutlet UITableView *thirdTableView;
 
 
 @end
@@ -43,4 +46,6 @@
 */
 
 
+- (IBAction)userImag:(UIButton *)sender forEvent:(UIEvent *)event {
+}
 @end

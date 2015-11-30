@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FirstViewController : UIViewController
+@interface FirstViewController : UIViewController{
+    BOOL loadingMore;
+    NSInteger loadCount;
+    NSInteger perPage;
+    NSInteger totalPage;
+}
+@property (strong, nonatomic) NSMutableArray *objectsForShow;
+@property (strong, nonatomic) UIActivityIndicatorView *aiv;
+@property (strong, nonatomic) UIActivityIndicatorView *tableFooterAI;
 
 @end
