@@ -239,6 +239,24 @@
                     [Utilities setUserDefaults:@"userName" content:un];
                     [Utilities setUserDefaults:@"password" content:pwd];
                     _passwordTF.text = @"";
+                    PFUser *currentUser = [PFUser currentUser];
+                    PFFile *avatar = currentUser[@"avatar"];
+                    [avatar getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+                        NSFileManager *fileManager = [NSFileManager defaultManager];
+                        NSArray *directories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+                        NSString *documentDirectory = [directories objectAtIndex:0];
+                        __block NSString *filePath = nil;
+                        filePath = [documentDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", currentUser.username]];
+                        if (![fileManager fileExistsAtPath:filePath]) {
+                            static dispatch_queue_t backgroundQueue;
+                            if (backgroundQueue == nil) {
+                                backgroundQueue = dispatch_queue_create("com.beilyton.queue", NULL);
+                            }
+                            dispatch_async(backgroundQueue, ^(void) {
+                                [data writeToFile:filePath atomically:YES];
+                            });
+                        }
+                    }];
                     [self popUpHomeTab];
                 } else {
                     NSLog(@"error = %@",error);

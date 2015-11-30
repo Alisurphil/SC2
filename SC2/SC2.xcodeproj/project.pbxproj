@@ -252,7 +252,6 @@
 			children = (
 				F469D0011C040C6D0070CFD5 /* ViewController.h */,
 				F469D0021C040C6D0070CFD5 /* ViewController.m */,
-				F469D00A1C040C6D0070CFD5 /* Assets.xcassets */,
 				FE6ADBA81C0585C4008F966F /* SCViewController.h */,
 				FE6ADBA91C0585C4008F966F /* SCViewController.m */,
 				FE6ADBAB1C05A5BA008F966F /* LoginViewController.h */,
@@ -291,6 +290,7 @@
 				FE6ADB9B1C058495008F966F /* Second.storyboard */,
 				FE6ADB9D1C0584A2008F966F /* Third.storyboard */,
 				F469D00C1C040C6D0070CFD5 /* LaunchScreen.storyboard */,
+				F469D00A1C040C6D0070CFD5 /* Assets.xcassets */,
 			);
 			name = View;
 			path = ..;

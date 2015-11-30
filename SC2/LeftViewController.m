@@ -7,6 +7,7 @@
 //
 
 #import "LeftViewController.h"
+#import <SDWebImage/UIButton+WebCache.h>
 #import <EaseMobSDKFull/EaseMob.h>
 
 @interface LeftViewController ()
@@ -24,8 +25,13 @@
     self.navigationController.navigationBarHidden = YES;
     
     PFUser *currentUser = [PFUser currentUser];
+    PFFile *avatar = currentUser[@"avatar"];
+    NSString *avatarUrl = avatar.url;
+    NSLog(@"avatarUrl = %@", avatarUrl);
+    [_userImage2 sd_setBackgroundImageWithURL:[NSURL URLWithString:avatarUrl] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"avatar"]];
     _userNameLabel.text = [NSString stringWithFormat:@"昵称：%@", currentUser[@"nickName"]];
     [_userImage2 addTarget:self action:@selector(avatarAction:forEvent:) forControlEvents:UIControlEventTouchUpInside];
+    
 }
 
 - (void)didReceiveMemoryWarning {
