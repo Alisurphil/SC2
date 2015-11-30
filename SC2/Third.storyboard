@@ -29,7 +29,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="155"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="V5z-Nq-CCp">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backimage" translatesAutoresizingMaskIntoConstraints="NO" id="V5z-Nq-CCp">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="155"/>
                                                     <animations/>
                                                 </imageView>
@@ -73,7 +73,7 @@
                                                 <rect key="frame" x="0.0" y="183" width="320" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VVE-So-VWh" id="Bs9-aa-WsM">
-                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <animations/>
                                                 </tableViewCellContentView>
@@ -110,7 +110,7 @@
         <!--编辑资料-->
         <scene sceneID="Q0b-md-Hd0">
             <objects>
-                <tableViewController id="9g2-cx-ECP" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="person" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9g2-cx-ECP" customClass="PersonTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="tZ4-ir-b7s">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -330,4 +330,7 @@
             <point key="canvasLocation" x="426" y="-81"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="backimage" width="800" height="500"/>
+    </resources>
 </document>
