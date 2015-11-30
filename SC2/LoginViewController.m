@@ -236,7 +236,7 @@
                 NSLog(@"进来了");
                 if (!error && loginInfo) {
                     NSLog(@"环信登陆成功");
-                    [Utilities setUserDefaults:@"username" content:un];
+                    [Utilities setUserDefaults:@"userName" content:un];
                     [Utilities setUserDefaults:@"password" content:pwd];
                     _passwordTF.text = @"";
                     [self popUpHomeTab];
