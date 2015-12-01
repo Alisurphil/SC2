@@ -442,6 +442,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="headView" destination="vKz-3P-JX0" id="XEt-uu-H8R"/>
+                        <outlet property="tblView" destination="X3f-sZ-Y4h" id="UW4-x1-wtg"/>
                         <outlet property="useImage" destination="rHm-qg-acf" id="ym4-Kc-isI"/>
                     </connections>
                 </tableViewController>
