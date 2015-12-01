@@ -8,7 +8,7 @@
 
 #import "ThirdTableViewController.h"
 
-@interface ThirdTableViewController ()
+@interface ThirdTableViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *headView;
 - (IBAction)useImag:(UIButton *)sender forEvent:(UIEvent *)event;
 @property (weak, nonatomic) IBOutlet UIButton *useImage;
@@ -27,6 +27,23 @@
     }else {
         self.navigationItem.title = @"我";
     }
+    
+    if (![[Utilities getUserDefaults:@"userName"] isKindOfClass:[NSNull class]]) {
+        if (![[Utilities getUserDefaults:@"userName"] isKindOfClass:[NSNull class]]) {
+            NSString *currentStr = [Utilities getUserDefaults:@"userName"];
+            NSFileManager *fileManager = [NSFileManager defaultManager];
+            NSArray *directories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+            NSString *documentDirectory = [directories objectAtIndex:0];
+            __block NSString *filePath = nil;
+            filePath = [documentDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", currentStr]];
+            if ([fileManager fileExistsAtPath:filePath]) {
+                UIImage *image = [UIImage imageWithContentsOfFile:filePath];
+                [_useImage setBackgroundImage:image forState:UIControlStateNormal];
+            } else {
+                [_useImage setBackgroundImage:[UIImage imageNamed:@"default"] forState:UIControlStateNormal];
+            }
+        }
+}
 }
 
 
@@ -38,25 +55,19 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
-}
 
+    return 5;
+}
 /*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell4" forIndexPath:indexPath];
     return cell;
 }
 */
-
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
