@@ -7,8 +7,9 @@
 //
 
 #import "ThirdTableViewController.h"
+@interface ThirdTableViewController ()
 
-@interface ThirdTableViewController ()<UITableViewDataSource,UITableViewDelegate>
+@property (strong, nonatomic) IBOutlet UITableView *tblView;
 @property (weak, nonatomic) IBOutlet UIView *headView;
 - (IBAction)useImag:(UIButton *)sender forEvent:(UIEvent *)event;
 @property (weak, nonatomic) IBOutlet UIButton *useImage;
