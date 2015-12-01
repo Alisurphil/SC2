@@ -289,6 +289,7 @@
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    if (textField == _usernameTF){
     NSLog(@"string = %@", string);
     NSString *currentStr = textField.text;
     if (string.length == 0) {
@@ -306,6 +307,7 @@
         [_avatarImg setBackgroundImage:image forState:UIControlStateNormal];
     } else {
         [_avatarImg setBackgroundImage:[UIImage imageNamed:@"default"] forState:UIControlStateNormal];
+    }
     }
     return YES;
 }

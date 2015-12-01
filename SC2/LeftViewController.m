@@ -29,6 +29,24 @@
     NSString *avatarUrl = avatar.url;
     NSLog(@"avatarUrl = %@", avatarUrl);
     [_userImage2 sd_setBackgroundImageWithURL:[NSURL URLWithString:avatarUrl] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"avatar"]];
+    
+    if (![[Utilities getUserDefaults:@"userName"] isKindOfClass:[NSNull class]]) {
+        NSString *currentStr = [Utilities getUserDefaults:@"userName"];
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        NSArray *directories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentDirectory = [directories objectAtIndex:0];
+        __block NSString *filePath = nil;
+        filePath = [documentDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", currentStr]];
+        if ([fileManager fileExistsAtPath:filePath]) {
+            UIImage *image = [UIImage imageWithContentsOfFile:filePath];
+            [_userImage2 setBackgroundImage:image forState:UIControlStateNormal];
+        } else {
+            [_userImage2 setBackgroundImage:[UIImage imageNamed:@"default"] forState:UIControlStateNormal];
+        }
+    }
+    
+    
+    
     _userNameLabel.text = [NSString stringWithFormat:@"昵称：%@", currentUser[@"nickName"]];
     [_userImage2 addTarget:self action:@selector(avatarAction:forEvent:) forControlEvents:UIControlEventTouchUpInside];
     
