@@ -33,7 +33,6 @@
 		FE6ADB9E1C0584A2008F966F /* Third.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE6ADB9D1C0584A2008F966F /* Third.storyboard */; };
 		FE6ADBA11C0584FC008F966F /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE6ADBA01C0584FC008F966F /* FirstViewController.m */; };
 		FE6ADBA41C05850D008F966F /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE6ADBA31C05850D008F966F /* SecondViewController.m */; };
-		FE6ADBA71C058522008F966F /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE6ADBA61C058522008F966F /* ThirdViewController.m */; };
 		FE6ADBAA1C0585C4008F966F /* SCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE6ADBA91C0585C4008F966F /* SCViewController.m */; };
 		FE6ADBAD1C05A5BA008F966F /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE6ADBAC1C05A5BA008F966F /* LoginViewController.m */; };
 		FE73BDD31C05C25C009BB4E7 /* RegisteredViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE73BDD21C05C25C009BB4E7 /* RegisteredViewController.m */; };
@@ -42,6 +41,7 @@
 		FE8F51BB1C07114B00007569 /* InformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE8F51BA1C07114B00007569 /* InformationViewController.m */; };
 		FE8F51BE1C0716AA00007569 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE8F51BD1C0716AA00007569 /* DetailViewController.m */; };
 		FEDCBBCF1C06942A00D9A76B /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEDCBBCE1C06942A00D9A76B /* LeftViewController.m */; };
+		FEF8F5471C0D719000FF6CA0 /* ThirdTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEF8F5461C0D719000FF6CA0 /* ThirdTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,8 +107,6 @@
 		FE6ADBA01C0584FC008F966F /* FirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
 		FE6ADBA21C05850D008F966F /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
 		FE6ADBA31C05850D008F966F /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
-		FE6ADBA51C058522008F966F /* ThirdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdViewController.h; sourceTree = "<group>"; };
-		FE6ADBA61C058522008F966F /* ThirdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdViewController.m; sourceTree = "<group>"; };
 		FE6ADBA81C0585C4008F966F /* SCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCViewController.h; sourceTree = "<group>"; };
 		FE6ADBA91C0585C4008F966F /* SCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCViewController.m; sourceTree = "<group>"; };
 		FE6ADBAB1C05A5BA008F966F /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -125,6 +123,8 @@
 		FE8F51BD1C0716AA00007569 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		FEDCBBCD1C06942A00D9A76B /* LeftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftViewController.h; sourceTree = "<group>"; };
 		FEDCBBCE1C06942A00D9A76B /* LeftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftViewController.m; sourceTree = "<group>"; };
+		FEF8F5451C0D719000FF6CA0 /* ThirdTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdTableViewController.h; sourceTree = "<group>"; };
+		FEF8F5461C0D719000FF6CA0 /* ThirdTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -277,8 +277,8 @@
 				FE049DF01C07EAD200CBA7B8 /* commentViewController.m */,
 				FE6ADBA21C05850D008F966F /* SecondViewController.h */,
 				FE6ADBA31C05850D008F966F /* SecondViewController.m */,
-				FE6ADBA51C058522008F966F /* ThirdViewController.h */,
-				FE6ADBA61C058522008F966F /* ThirdViewController.m */,
+				FEF8F5451C0D719000FF6CA0 /* ThirdTableViewController.h */,
+				FEF8F5461C0D719000FF6CA0 /* ThirdTableViewController.m */,
 				FE2CD31B1C0BF0B0009B40E0 /* PersonTableViewController.h */,
 				FE2CD31C1C0BF0B0009B40E0 /* PersonTableViewController.m */,
 				F4E1E3A01C0C430F003FC410 /* FirstTableViewCell.h */,
@@ -528,6 +528,7 @@
 				FE6ADBAA1C0585C4008F966F /* SCViewController.m in Sources */,
 				F469D0031C040C6D0070CFD5 /* ViewController.m in Sources */,
 				FE73BDD31C05C25C009BB4E7 /* RegisteredViewController.m in Sources */,
+				FEF8F5471C0D719000FF6CA0 /* ThirdTableViewController.m in Sources */,
 				FE6ADBA11C0584FC008F966F /* FirstViewController.m in Sources */,
 				F47021ED1C06DC0D00F68FEC /* storageMgr.m in Sources */,
 				FE049DF11C07EAD200CBA7B8 /* commentViewController.m in Sources */,
@@ -540,7 +541,6 @@
 				FEDCBBCF1C06942A00D9A76B /* LeftViewController.m in Sources */,
 				F469CFFD1C040C6D0070CFD5 /* main.m in Sources */,
 				FE8F51B81C07111000007569 /* BackgroundViewController.m in Sources */,
-				FE6ADBA71C058522008F966F /* ThirdViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
