@@ -7,7 +7,7 @@
 //
 
 #import "ThirdTableViewController.h"
-@interface ThirdTableViewController ()
+@interface ThirdTableViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (strong, nonatomic) IBOutlet UITableView *tblView;
 @property (weak, nonatomic) IBOutlet UIView *headView;
@@ -20,6 +20,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _tblView.delegate = self;
+    _tblView.dataSource = self;
     
     if (self.navigationController.tabBarItem.tag == 0) {
         self.navigationItem.title = @"首页";
@@ -63,12 +65,16 @@
 
     return 5;
 }
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell4" forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell4"];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell4"];
+    }
+    cell.textLabel.text = @"stupid";
     return cell;
 }
-*/
+
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
