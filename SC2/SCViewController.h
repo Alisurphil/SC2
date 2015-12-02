@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "FirstViewController.h"
-#import "SecondViewController.h"
+#import "SecondCollectionViewController.h"
 #import "ThirdTableViewController.h"
 #import "LoginViewController.h"
 @interface SCViewController : UITabBarController<UITabBarControllerDelegate>
@@ -19,9 +19,9 @@
 @property (strong,nonatomic) FirstViewController *FirstVC;
 
 @property (strong,nonatomic) UINavigationController *SecondNC;
-@property (strong,nonatomic) SecondViewController *SecondVC;
+@property (strong,nonatomic) SecondCollectionViewController *SecondVC;
 
 @property (strong,nonatomic) UINavigationController *ThirdNC;
-@property (strong,nonatomic) SecondViewController *ThirdVC;
+@property (strong,nonatomic) ThirdTableViewController *ThirdVC;
 
 @end

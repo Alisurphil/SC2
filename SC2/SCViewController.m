@@ -30,7 +30,7 @@
     UIStoryboard *storyboard2 = [UIStoryboard storyboardWithName:@"Second" bundle:[NSBundle mainBundle]];
     _SecondVC = [storyboard2 instantiateViewControllerWithIdentifier:@"Second"];
     _SecondNC = [[UINavigationController alloc]initWithRootViewController:_SecondVC];
-    _SecondNC.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"聊天" image:[UIImage imageNamed:@"Chat"] tag:1];
+    _SecondNC.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"图片" image:[UIImage imageNamed:@"Chat"] tag:1];
     
     UIStoryboard *storyboard3 = [UIStoryboard storyboardWithName:@"Third" bundle:[NSBundle mainBundle]];
     _ThirdVC = [storyboard3 instantiateViewControllerWithIdentifier:@"Third"];
