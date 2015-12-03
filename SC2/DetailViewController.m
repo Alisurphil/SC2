@@ -10,6 +10,7 @@
 
 @interface DetailViewController ()
 - (IBAction)collect:(UIBarButtonItem *)sender;
+- (IBAction)backTOMain:(UIBarButtonItem *)sender;
 
 
 
@@ -38,6 +39,10 @@
 */
 
 - (IBAction)collect:(UIBarButtonItem *)sender {
+}
+
+- (IBAction)backTOMain:(UIBarButtonItem *)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
