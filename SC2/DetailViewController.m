@@ -30,6 +30,8 @@
                 _detailImg.contentMode = UIViewContentModeScaleAspectFill;
                 _detailImg.clipsToBounds = YES;
                 [_detailImg sd_setImageWithURL:[NSURL URLWithString:imgUrl] placeholderImage:[UIImage imageNamed:@"avatar"]];
+                [_textView setFont:[UIFont systemFontOfSize:
+                                    S_Font]];
                 _textView.text=object[@"cellContent"];
 
             }
