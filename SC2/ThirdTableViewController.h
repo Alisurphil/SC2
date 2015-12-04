@@ -9,5 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface ThirdTableViewController : UITableViewController
+@property (weak, nonatomic) IBOutlet UIButton *useImage;
+@property (weak, nonatomic) IBOutlet UILabel *nickName;
+@property (weak, nonatomic) IBOutlet UILabel *sexy;
+@property (weak, nonatomic) IBOutlet UILabel *age;
+@property (weak, nonatomic) IBOutlet UILabel *address;
+@property (weak, nonatomic) IBOutlet UILabel *usually;
 
 @end

@@ -8,11 +8,10 @@
 
 #import "ThirdTableViewController.h"
 @interface ThirdTableViewController ()
-
 @property (strong, nonatomic) IBOutlet UITableView *tblView;
 @property (weak, nonatomic) IBOutlet UIView *headView;
 - (IBAction)useImag:(UIButton *)sender forEvent:(UIEvent *)event;
-@property (weak, nonatomic) IBOutlet UIButton *useImage;
+
 
 @end
 
@@ -28,6 +27,18 @@
         self.navigationItem.title = @"我";
     }
     
+    
+    PFUser *user = [PFUser currentUser];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+        _nickName.text = user[@"nickName"];
+        _sexy.text = user[@"gender"];
+        _address.text = user[@"address"];
+        _usually.text = user[@"race"];
+    _age.text = [dateFormatter stringFromDate:user[@"birthDate"]];
+    
+}
+-(void)viewWillAppear:(BOOL)animated{
     if (![[Utilities getUserDefaults:@"userName"] isKindOfClass:[NSNull class]]) {
         if (![[Utilities getUserDefaults:@"userName"] isKindOfClass:[NSNull class]]) {
             NSString *currentStr = [Utilities getUserDefaults:@"userName"];
@@ -43,7 +54,8 @@
                 [_useImage setBackgroundImage:[UIImage imageNamed:@"default"] forState:UIControlStateNormal];
             }
         }
-}
+    }
+
 }
 
 

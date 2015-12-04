@@ -102,7 +102,24 @@
     userPhoto[@"avatar"] = imageFile;
     [userPhoto saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         [_userImage2 setBackgroundImage:image forState:UIControlStateNormal];
-        NSLog(@"Done");
+        [Utilities popUpAlertViewWithMsg:@"上传成功" andTitle:nil];
+        
+        NSString *currentStr = [Utilities getUserDefaults:@"userName"];
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        NSArray *directories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentDirectory = [directories objectAtIndex:0];
+        __block NSString *filePath = nil;
+        filePath = [documentDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", currentStr]];
+        [fileManager removeItemAtPath:filePath error:nil];
+        if (![fileManager fileExistsAtPath:filePath]) {
+            static dispatch_queue_t backgroundQueue;
+            if (backgroundQueue == nil) {
+                backgroundQueue = dispatch_queue_create("com.beilyton.queue", NULL);
+            }
+            dispatch_async(backgroundQueue, ^(void) {
+                [imageData writeToFile:filePath atomically:YES];
+            });
+        }
     }];
 }
 
