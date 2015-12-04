@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PersonTableViewController : UITableViewController
+@interface PersonTableViewController : UITableViewController <UIPickerViewDataSource, UIPickerViewDelegate>
 
 @end
