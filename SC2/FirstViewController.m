@@ -206,21 +206,21 @@
     self.pageControl.currentPage = page;
 }
 
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
-    [self removeTimer];
-}
+//- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+//    [self removeTimer];
+//}
 
 //- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
 //    [self addTimer];
 //}
 
 - (void)addTimer{
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(nextImage) userInfo:nil repeats:YES];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(nextImage) userInfo:nil repeats:YES];
 }
 
-- (void)removeTimer{
-    [self.timer invalidate];
-}
+//- (void)removeTimer{
+//    [self.timer invalidate];
+//}
 
 
 - (void)didReceiveMemoryWarning {
@@ -294,6 +294,15 @@
 
         object.listName=model;
             }
+}
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"enablePanGes" object:nil];
+}
+//每当离开该页面以后调用以下方法（进入其他视图页面以后）
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"disablePanGes" object:nil];
 }
 
 
