@@ -72,6 +72,7 @@
     _slidingViewController.underLeftViewController = leftVC;
     _slidingViewController.anchorRightPeekAmount = UI_SCREEN_W / 4;
     
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(leftSwitchAction) name:@"leftSwitch" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(enablePanGesOnSliding) name:@"enablePanGes" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(disablePanGesOnSliding) name:@"disablePanGes" object:nil];

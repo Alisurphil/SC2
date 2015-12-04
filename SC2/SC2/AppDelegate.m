@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "SCViewController.h"
+
 #import <EaseMobSDKFull/EaseMob.h>
 
 @interface AppDelegate ()
