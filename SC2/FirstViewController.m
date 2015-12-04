@@ -206,21 +206,21 @@
     self.pageControl.currentPage = page;
 }
 
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
-    [self removeTimer];
-}
+//- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+//    [self removeTimer];
+//}
 
 //- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
 //    [self addTimer];
 //}
 
 - (void)addTimer{
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(nextImage) userInfo:nil repeats:YES];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(nextImage) userInfo:nil repeats:YES];
 }
 
-- (void)removeTimer{
-    [self.timer invalidate];
-}
+//- (void)removeTimer{
+//    [self.timer invalidate];
+//}
 
 
 - (void)didReceiveMemoryWarning {
