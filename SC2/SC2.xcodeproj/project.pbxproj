@@ -129,8 +129,6 @@
 		F469D00E1C040C6D0070CFD5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F469D00C1C040C6D0070CFD5 /* LaunchScreen.storyboard */; };
 		F469D0191C040C6D0070CFD5 /* SC2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = F469D0181C040C6D0070CFD5 /* SC2Tests.m */; };
 		F469D0241C040C6D0070CFD5 /* SC2UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F469D0231C040C6D0070CFD5 /* SC2UITests.m */; };
-		F47021EA1C06D21300F68FEC /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = F47021E91C06D21300F68FEC /* Utilities.m */; };
-		F47021ED1C06DC0D00F68FEC /* storageMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = F47021EC1C06DC0D00F68FEC /* storageMgr.m */; };
 		F4A0BE481C0442AC00378166 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4A0BE461C0442AC00378166 /* Bolts.framework */; };
 		F4A0BE491C0442AC00378166 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4A0BE471C0442AC00378166 /* Parse.framework */; };
 		F4A0BE4B1C0442F100378166 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4A0BE4A1C0442F100378166 /* AudioToolbox.framework */; };
@@ -143,6 +141,8 @@
 		F4AA15091C1185BF00F7AD0E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4AA15081C1185BF00F7AD0E /* UIKit.framework */; };
 		F4AA150B1C1185C800F7AD0E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4AA150A1C1185C800F7AD0E /* Foundation.framework */; };
 		F4AA150F1C11866400F7AD0E /* GMDCircleLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AA150E1C11866400F7AD0E /* GMDCircleLoader.m */; };
+		F4AA15141C118E3300F7AD0E /* storageMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AA15111C118E3300F7AD0E /* storageMgr.m */; };
+		F4AA15151C118E3300F7AD0E /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AA15131C118E3300F7AD0E /* Utilities.m */; };
 		F4E1E3A21C0C4310003FC410 /* FirstTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E1E3A11C0C430F003FC410 /* FirstTableViewCell.m */; };
 		FE049DF11C07EAD200CBA7B8 /* commentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE049DF01C07EAD200CBA7B8 /* commentViewController.m */; };
 		FE08E7C61C0E873B004E8444 /* SecondCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE08E7C51C0E873B004E8444 /* SecondCollectionViewController.m */; };
@@ -434,10 +434,6 @@
 		F469D01F1C040C6D0070CFD5 /* SC2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SC2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F469D0231C040C6D0070CFD5 /* SC2UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SC2UITests.m; sourceTree = "<group>"; };
 		F469D0251C040C6E0070CFD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F47021E81C06D21300F68FEC /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utilities.h; path = SC2/Utilities.h; sourceTree = "<group>"; };
-		F47021E91C06D21300F68FEC /* Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Utilities.m; path = SC2/Utilities.m; sourceTree = "<group>"; };
-		F47021EB1C06DC0D00F68FEC /* storageMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = storageMgr.h; path = SC2/storageMgr.h; sourceTree = "<group>"; };
-		F47021EC1C06DC0D00F68FEC /* storageMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = storageMgr.m; path = SC2/storageMgr.m; sourceTree = "<group>"; };
 		F47021EF1C06DF7A00F68FEC /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		F48F95891C04108B009CF797 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		F4A0BE461C0442AC00378166 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = SC2/Bolts.framework; sourceTree = "<group>"; };
@@ -453,6 +449,10 @@
 		F4AA150A1C1185C800F7AD0E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F4AA150D1C11866400F7AD0E /* GMDCircleLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMDCircleLoader.h; sourceTree = "<group>"; };
 		F4AA150E1C11866400F7AD0E /* GMDCircleLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMDCircleLoader.m; sourceTree = "<group>"; };
+		F4AA15101C118E3300F7AD0E /* storageMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = storageMgr.h; path = SC2/storageMgr.h; sourceTree = "<group>"; };
+		F4AA15111C118E3300F7AD0E /* storageMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = storageMgr.m; path = SC2/storageMgr.m; sourceTree = "<group>"; };
+		F4AA15121C118E3300F7AD0E /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utilities.h; path = SC2/Utilities.h; sourceTree = "<group>"; };
+		F4AA15131C118E3300F7AD0E /* Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Utilities.m; path = SC2/Utilities.m; sourceTree = "<group>"; };
 		F4E1E3A01C0C430F003FC410 /* FirstTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstTableViewCell.h; sourceTree = "<group>"; };
 		F4E1E3A11C0C430F003FC410 /* FirstTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstTableViewCell.m; sourceTree = "<group>"; };
 		FE049DEF1C07EAD200CBA7B8 /* commentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = commentViewController.h; sourceTree = "<group>"; };
@@ -1053,11 +1053,8 @@
 				C906A3331C1176CA00EA6E26 /* 3rd */,
 				C906A3011C1174A800EA6E26 /* Category */,
 				F47021EE1C06DF2400F68FEC /* Constants */,
-
 				F469D0351C040CDD0070CFD5 /* 3rd */,
-
 				F469D0341C040CB30070CFD5 /* Utility */,
-
 				F469D0331C040C9C0070CFD5 /* Model */,
 				F469D0321C040C930070CFD5 /* View */,
 				F469D0311C040C760070CFD5 /* Controller */,
@@ -1162,27 +1159,23 @@
 		F469D0341C040CB30070CFD5 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				F47021E81C06D21300F68FEC /* Utilities.h */,
-				F47021E91C06D21300F68FEC /* Utilities.m */,
-				F47021EB1C06DC0D00F68FEC /* storageMgr.h */,
-				F47021EC1C06DC0D00F68FEC /* storageMgr.m */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
 		};
-
 		F469D0351C040CDD0070CFD5 /* 3rd */ = {
 			isa = PBXGroup;
 			children = (
+				F4AA15101C118E3300F7AD0E /* storageMgr.h */,
+				F4AA15111C118E3300F7AD0E /* storageMgr.m */,
+				F4AA15121C118E3300F7AD0E /* Utilities.h */,
+				F4AA15131C118E3300F7AD0E /* Utilities.m */,
 				F4AA150C1C11864D00F7AD0E /* GMDCircleLoader */,
-				F469D0341C040CB30070CFD5 /* Utility */,
 			);
 			name = 3rd;
 			path = ..;
 			sourceTree = "<group>";
 		};
-
-
 		F47021EE1C06DF2400F68FEC /* Constants */ = {
 			isa = PBXGroup;
 			children = (
@@ -1405,6 +1398,7 @@
 				FE8F51BE1C0716AA00007569 /* DetailViewController.m in Sources */,
 				C906A3131C1174E500EA6E26 /* UIImageView+HeadImage.m in Sources */,
 				C906A36E1C1177D000EA6E26 /* EmojiEmoticons.m in Sources */,
+				F4AA15141C118E3300F7AD0E /* storageMgr.m in Sources */,
 				FE6ADBAA1C0585C4008F966F /* SCViewController.m in Sources */,
 				F469D0031C040C6D0070CFD5 /* ViewController.m in Sources */,
 				C906A3FD1C11794900EA6E26 /* SRSlimeView.m in Sources */,
@@ -1440,7 +1434,6 @@
 				C906A4BC1C117FBD00EA6E26 /* ApplyViewController.m in Sources */,
 				FE08E7C61C0E873B004E8444 /* SecondCollectionViewController.m in Sources */,
 				C906A4AD1C117F8E00EA6E26 /* ChineseToPinyin.m in Sources */,
-				F47021ED1C06DC0D00F68FEC /* storageMgr.m in Sources */,
 				C906A40D1C117A2100EA6E26 /* BaseTableViewCell.m in Sources */,
 				C906A4BA1C117FBD00EA6E26 /* AddFriendViewController.m in Sources */,
 				C906A4171C117A5B00EA6E26 /* EMChooseViewController.m in Sources */,
@@ -1452,7 +1445,6 @@
 				FE049DF11C07EAD200CBA7B8 /* commentViewController.m in Sources */,
 				C906A34D1C11772300EA6E26 /* wav.mm in Sources */,
 				C906A3DB1C11790B00EA6E26 /* MWTapDetectingView.m in Sources */,
-				F47021EA1C06D21300F68FEC /* Utilities.m in Sources */,
 				C906A3E41C11790B00EA6E26 /* PSTCollectionViewItemKey.m in Sources */,
 				FE8F51B51C07105600007569 /* CollectionViewController.m in Sources */,
 				C906A3EF1C11790B00EA6E26 /* UIImageView+EMHighlightedWebCache.m in Sources */,
@@ -1466,13 +1458,10 @@
 				C906A3391C11770F00EA6E26 /* THProgressView.m in Sources */,
 				C906A4B91C117FBD00EA6E26 /* AddFriendCell.m in Sources */,
 				FE6ADBAD1C05A5BA008F966F /* LoginViewController.m in Sources */,
-
 				F4AA150F1C11866400F7AD0E /* GMDCircleLoader.m in Sources */,
-
 				C906A4A11C117F0000EA6E26 /* DXRecordView.m in Sources */,
 				C906A3E61C11790B00EA6E26 /* PSTCollectionViewUpdateItem.m in Sources */,
 				C906A4BB1C117FBD00EA6E26 /* ApplyFriendCell.m in Sources */,
-
 				F469D0001C040C6D0070CFD5 /* AppDelegate.m in Sources */,
 				C906A3E71C11790B00EA6E26 /* PSTGridLayoutInfo.m in Sources */,
 				C906A3671C11778C00EA6E26 /* EMCDDeviceManagerBase.m in Sources */,
@@ -1489,6 +1478,7 @@
 				C906A4661C117D2300EA6E26 /* ChatSendHelper.m in Sources */,
 				C906A48F1C117E0E00EA6E26 /* EMChatLocationBubbleView.m in Sources */,
 				C906A3721C11783300EA6E26 /* MBProgressHUD.m in Sources */,
+				F4AA15151C118E3300F7AD0E /* Utilities.m in Sources */,
 				C906A3D21C11790B00EA6E26 /* EMSDWebImagePrefetcher.m in Sources */,
 				C906A48D1C117E0E00EA6E26 /* EMChatBaseBubbleView.m in Sources */,
 				C906A48C1C117E0E00EA6E26 /* EMChatAudioBubbleView.m in Sources */,
