@@ -156,7 +156,7 @@
     cell.photoView.contentMode = UIViewContentModeScaleAspectFill;
     cell.photoView.clipsToBounds = YES;
     [cell.photoView sd_setImageWithURL:[NSURL URLWithString:imgUrl] placeholderImage:[UIImage imageNamed:@"avatar"]];
-    cell.titleLabel.text=[NSString stringWithFormat:@"%@",allObject[@"cellTitle"]];
+    cell.titleLabel.text=allObject[@"cellTitle"];
     //NSLog(@"cell.titleLabel.text=%@",cell.titleLabel.text);
     cell.likeLabel.text=[allObject[@"cellLike"] stringValue];
     cell.unlikeLabel.text=[allObject[@"cellUnlike"] stringValue];
