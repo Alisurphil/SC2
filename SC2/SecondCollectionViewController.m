@@ -103,7 +103,6 @@ static NSString * const reuseIdentifier = @"Cell";
     CGFloat itemWidth = [UIScreen mainScreen].bounds.size.width / 2 - 3;
     //    NSLog(@"itemHeight = %f", itemWidth / image.size.width * image.size.height);
     CGFloat itemHeight = itemWidth / image.size.width * image.size.height;
-    NSLog(@"itemHeight = %f", itemHeight);
     [self.heightArr addObject:[NSString stringWithFormat:@"%f",itemHeight]];
     return CGSizeMake(itemWidth, itemHeight);
 }

@@ -7,14 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface FirstViewController : UIViewController{
+#import "FirstTableViewCell.h"
+@interface FirstViewController : UIViewController<FirstTableViewCellDelegate>{
     BOOL loadingMore;
     NSInteger loadCount;
     NSInteger perPage;
     NSInteger totalPage;
 }
-@property (strong, nonatomic) NSMutableArray *objectsForShow;
+@property (strong, nonatomic) NSArray *objectsForShow;
 @property (strong, nonatomic) UIActivityIndicatorView *aiv;
 @property (strong, nonatomic) UIActivityIndicatorView *tableFooterAI;
 

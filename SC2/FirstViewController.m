@@ -7,6 +7,8 @@
 //
 
 #import "FirstViewController.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+#import "DetailViewController.h"
 
 @interface FirstViewController ()<UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -14,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) UIPageControl *pageControl;
 @property (nonatomic, strong) NSTimer *timer;
+@property(strong,nonatomic)NSArray *wallObjectsArray;
 @end
 
 @implementation FirstViewController
@@ -23,7 +26,7 @@
     [self dataPreparation];
     [self uiConfiguration];
     CGRect rect = _headerView.frame;
-    rect.size.height = self.view.frame.size.width / 2;
+    rect.size.height = 145;
     _headerView.frame = rect;
     
     _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, rect.size.height - 40, rect.size.width, 40)];
@@ -41,47 +44,141 @@
         self.navigationItem.title = @"我";
     }
     
-    CGFloat imageW = self.view.frame.size.width;
-    CGFloat imageH = rect.size.height;
-    CGFloat imageY = 0;
-    NSInteger totalCount = 5;
-    for (int i = 0; i < totalCount; i++) {
-        UIImageView *imageView = [[UIImageView alloc] init];
-        CGFloat imageX = i * imageW;
-        imageView.frame = CGRectMake(imageX, imageY, imageW, imageH);
-        imageView.clipsToBounds = YES;
-        //设置图片
-        NSString *name = [NSString stringWithFormat:@"shouye%d", i + 1];
-        imageView.image = [UIImage imageNamed:name];
-        self.scrollView.showsHorizontalScrollIndicator = NO;
-        [self.scrollView addSubview:imageView];
-    }
-    CGFloat contentW = totalCount *imageW;
-    self.scrollView.contentSize = CGSizeMake(contentW, rect.size.height);
-    self.scrollView.pagingEnabled = YES;
-    self.scrollView.delegate = self;
-    [self addTimer];
+//    CGFloat imageW = self.view.frame.size.width;
+//    CGFloat imageH = rect.size.height;
+//    CGFloat imageY = 0;
+//    NSInteger totalCount = 5;
+//    for (int i = 0; i < totalCount; i++) {
+//        UIImageView *imageView = [[UIImageView alloc] init];
+//        CGFloat imageX = i * imageW;
+//        imageView.frame = CGRectMake(imageX, imageY, imageW, imageH);
+//        imageView.clipsToBounds = YES;
+//        //设置图片
+//        NSString *name = [NSString stringWithFormat:@"shouye%d", i + 1];
+//        imageView.image = [UIImage imageNamed:name];
+//        self.scrollView.showsHorizontalScrollIndicator = NO;
+//        [self.scrollView addSubview:imageView];
+//    }
+//    CGFloat contentW = totalCount *imageW;
+//    self.scrollView.contentSize = CGSizeMake(contentW, rect.size.height);
+//    self.scrollView.pagingEnabled = YES;
+//    self.scrollView.delegate = self;
+    PFQuery *query = [PFQuery queryWithClassName:@"ScrollView"];
+    //2
+    [query orderByDescending:@"number"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        //3
+        if (!error) {
+            //Everything was correct, put the new objects and load the wall
+            self.wallObjectsArray = nil;
+            self.wallObjectsArray = [[NSArray alloc] initWithArray:objects];
+            NSLog(@"wallObjectsArray=%@",self.wallObjectsArray);
+            CGFloat imageW = self.view.frame.size.width;
+            CGFloat contentW = self.wallObjectsArray.count *imageW;
+            self.scrollView.contentSize = CGSizeMake(contentW, rect.size.height);
+            self.scrollView.pagingEnabled = YES;
+            self.scrollView.delegate = self;
+            
+            for (int i = 0; i < _wallObjectsArray.count; i ++){
+                PFObject *wallObject = [_wallObjectsArray objectAtIndex:i];
+                PFFile *image = (PFFile *)[wallObject objectForKey:@"image"];
+                NSString *imageUrl = image.url;
+                UIImageView *userImage = [[UIImageView alloc] initWithFrame:CGRectMake(i * imageW, 0, imageW, rect.size.height)];
+                userImage.contentMode = UIViewContentModeScaleAspectFill;
+                userImage.clipsToBounds = YES;
+                [userImage sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"start"]];
+                [self.scrollView addSubview:userImage];
+                
+            }
+            
+            [self addTimer];
+            
+        }
+        else {
+            //
+            //            //4
+            NSLog(@"error11 = %@",error);
+            NSString *errorString = [[error userInfo] objectForKey:@"error"];
+            UIAlertView *errorAlertView = [[UIAlertView alloc] initWithTitle:@"Error" message:errorString delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+            [errorAlertView show];
+        }
+    }];
+
 }
 - (void)dataPreparation {
     _objectsForShow = nil;
-    _objectsForShow = [NSMutableArray new];
+    _objectsForShow = [NSArray new];
     _aiv = [Utilities getCoverOnView:[[UIApplication sharedApplication] keyWindow]];
-    [self initializeData];
-}
-//下拉刷新：刷新器+初始数据（第一页数据）
-- (void)initializeData {
-    loadCount = 1;
-    perPage = 3;
-    loadingMore = NO;
     [self urlAction];
 }
+//下拉刷新：刷新器+初始数据（第一页数据）
+//- (void)initializeData {
+//    loadCount = 1;
+//    perPage = 3;
+//    loadingMore = NO;
+//    [self urlAction];
+//}
 -(void)urlAction{
+    PFQuery *cellquery=[PFQuery queryWithClassName:@"Homepage"];
+    [cellquery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError * _Nullable error) {
+        if (!error) {
+            NSLog(@"cellquery=%@",cellquery);
+            _objectsForShow=objects;
+            NSLog(@"_objectsForShow=%@",_objectsForShow);
+            
+            [_tableView reloadData];
+        }else {
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+        
+    }];
     [_aiv stopAnimating];
-    [self loadDataEnd];
     UIRefreshControl *refreshControl=[self.tableView viewWithTag:8001];
     
     //将上述下拉刷新控件停止刷新
     [refreshControl endRefreshing];
+}
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    // Return the number of sections.
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    // Return the number of rows in the section.
+    return _objectsForShow.count;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    FirstTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+    if ([cell respondsToSelector:@selector(setPreservesSuperviewLayoutMargins:)]) {
+        [cell setPreservesSuperviewLayoutMargins:NO];
+    }
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
+    cell.delegate = self;
+    cell.indexPath = indexPath;
+    PFObject *allObject = [_objectsForShow objectAtIndex:indexPath.row];
+    PFFile *imgFile=(PFFile *)[allObject objectForKey:@"cellImage"];
+    NSString *imgUrl = imgFile.url;
+    //cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
+    //cell.imageView.clipsToBounds = YES;
+    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:imgUrl] placeholderImage:[UIImage imageNamed:@"avatar"]];
+    cell.titleLabel.text=[NSString stringWithFormat:@"%@",allObject[@"cellTitle"]];
+    //NSLog(@"cell.titleLabel.text=%@",cell.titleLabel.text);
+    cell.likeLabel.text=[allObject[@"cellLike"] stringValue];
+    cell.unlikeLabel.text=[allObject[@"cellUnlike"] stringValue];
+    cell.contentLabel.text=allObject[@"cellContent"];
+    return cell;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 136;
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 - (void)uiConfiguration {
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
@@ -98,13 +195,9 @@
     refreshControl.tintColor = [UIColor brownColor];
     refreshControl.backgroundColor = [UIColor groupTableViewBackgroundColor];
     refreshControl.tag = 8001;
-    [refreshControl addTarget:self action:@selector(initializeData) forControlEvents:UIControlEventValueChanged];
+    [refreshControl addTarget:self action:@selector(urlAction) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:refreshControl];
     self.tableView.tableFooterView = [[UIView alloc] init];
-}
--(void)refreshData:(UIRefreshControl *)sender{
-    //假装话了2秒请求数据并更新tableView
-    [self performSelector:@selector(endRefreshing) withObject:nil afterDelay:2];
 }
 - (void)nextImage{
     int page = (int)self.pageControl.currentPage;
@@ -147,69 +240,72 @@
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    if (scrollView.contentSize.height > scrollView.frame.size.height) {
-        if (!loadingMore && scrollView.contentOffset.y > (scrollView.contentSize.height - scrollView.frame.size.height)) {
-            [self loadDataBegin];
-        }
-    } else {
-        if (!loadingMore && scrollView.contentOffset.y > 0) {
-            [self loadDataBegin];
-        }
-    }
+//    if (scrollView.contentSize.height > scrollView.frame.size.height) {
+//        if (!loadingMore && scrollView.contentOffset.y > (scrollView.contentSize.height - scrollView.frame.size.height)) {
+//            [self loadDataBegin];
+//        }
+//    } else {
+//        if (!loadingMore && scrollView.contentOffset.y > 0) {
+//            [self loadDataBegin];
+//        }
+//    }
 }
 
-- (void)loadDataBegin {
-    if (loadingMore == NO) {
-        loadingMore = YES;
-        [self createTableFooter];
-        _tableFooterAI = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake((UI_SCREEN_W - 86.0f) / 2 - 30.0f, 10.0f, 20.0f, 20.0f)];
-        [_tableFooterAI setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleGray];
-        [self.tableView.tableFooterView addSubview:_tableFooterAI];
-        [_tableFooterAI startAnimating];
-        [self loadDataing];
-    }
-}
+//- (void)loadDataBegin {
+//    if (loadingMore == NO) {
+//        loadingMore = YES;
+//        [self createTableFooter];
+//        _tableFooterAI = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake((UI_SCREEN_W - 86.0f) / 2 - 30.0f, 10.0f, 20.0f, 20.0f)];
+//        [_tableFooterAI setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleGray];
+//        [self.tableView.tableFooterView addSubview:_tableFooterAI];
+//        [_tableFooterAI startAnimating];
+//        [self loadDataing];
+//    }
+//}
+//
+//- (void)loadDataing {
+//    if (totalPage > loadCount) {
+//        loadCount ++;
+//        [self urlAction];
+//    } else {
+//        [self performSelector:@selector(beforeLoadEnd) withObject:nil afterDelay:0.25];
+//    }
+//}
+//
+//- (void)beforeLoadEnd {
+//    UILabel *label = (UILabel *)[self.tableView.tableFooterView viewWithTag:9001];
+//    [label setText:@"当前已无更多数据"];
+//    [_tableFooterAI stopAnimating];
+//    _tableFooterAI = nil;
+//    [self performSelector:@selector(loadDataEnd) withObject:nil afterDelay:0.25];
+//}
+//
+//- (void)loadDataEnd {
+//    self.tableView.tableFooterView = [[UIView alloc] init];
+//    loadingMore = NO;
+//}
+//
+//- (void)createTableFooter {
+//    UIView *tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.tableView.bounds.size.width, 40.0f)];
+//    UILabel *loadMoreText = [[UILabel alloc] initWithFrame:CGRectMake((UI_SCREEN_W - 86.0f) / 2, 0.0f, 116.0f, 40.0f)];
+//    loadMoreText.tag = 9001;
+//    [loadMoreText setFont:[UIFont systemFontOfSize:B_Font]];
+//    [loadMoreText setText:@"上拉显示更多数据"];
+//    [tableFooterView addSubview:loadMoreText];
+//    loadMoreText.textColor = [UIColor grayColor];
+//    self.tableView.tableFooterView = tableFooterView;
+//}
 
-- (void)loadDataing {
-    if (totalPage > loadCount) {
-        loadCount ++;
-        [self urlAction];
-    } else {
-        [self performSelector:@selector(beforeLoadEnd) withObject:nil afterDelay:0.25];
-    }
-}
-
-- (void)beforeLoadEnd {
-    UILabel *label = (UILabel *)[self.tableView.tableFooterView viewWithTag:9001];
-    [label setText:@"当前已无更多数据"];
-    [_tableFooterAI stopAnimating];
-    _tableFooterAI = nil;
-    [self performSelector:@selector(loadDataEnd) withObject:nil afterDelay:0.25];
-}
-
-- (void)loadDataEnd {
-    self.tableView.tableFooterView = [[UIView alloc] init];
-    loadingMore = NO;
-}
-
-- (void)createTableFooter {
-    UIView *tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.tableView.bounds.size.width, 40.0f)];
-    UILabel *loadMoreText = [[UILabel alloc] initWithFrame:CGRectMake((UI_SCREEN_W - 86.0f) / 2, 0.0f, 116.0f, 40.0f)];
-    loadMoreText.tag = 9001;
-    [loadMoreText setFont:[UIFont systemFontOfSize:B_Font]];
-    [loadMoreText setText:@"上拉显示更多数据"];
-    [tableFooterView addSubview:loadMoreText];
-    loadMoreText.textColor = [UIColor grayColor];
-    self.tableView.tableFooterView = tableFooterView;
-}
-/*
 #pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([[segue identifier] isEqualToString:@"listTodetail"]) {
+    DetailViewController *object=[segue destinationViewController];
+    PFObject *model=[_objectsForShow objectAtIndex:[self.tableView indexPathForSelectedRow].row];
+        NSLog(@"model=%@",model);
+
+        object.listName=model;
+            }
 }
-*/
+
 
 @end

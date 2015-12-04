@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+@protocol FirstTableViewCellDelegate;
 
 @interface FirstTableViewCell : UITableViewCell
+@property (weak, nonatomic) id<FirstTableViewCellDelegate> delegate;
+@property (strong, nonatomic) NSIndexPath *indexPath;
 @property (weak, nonatomic) IBOutlet UIImageView *photoView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *likeLabel;
@@ -17,4 +20,6 @@
 - (IBAction)unlikeButton:(UIButton *)sender;
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;
 
+@end
+@protocol FirstTableViewCellDelegate <NSObject>
 @end

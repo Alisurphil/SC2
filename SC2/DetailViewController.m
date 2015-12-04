@@ -13,12 +13,15 @@
 
 
 
+
 @end
 
 @implementation DetailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+   
+    NSLog(@"_listName=%@",_listName);
     // Do any additional setup after loading the view.
 }
 
@@ -38,6 +41,12 @@
 */
 
 - (IBAction)collect:(UIBarButtonItem *)sender {
+    
 }
+
+//- (IBAction)backTOMain:(UIBarButtonItem *)sender {
+//    [Utilities getStoryboardInstanceByIdentity:@"First"];
+//    [self dismissViewControllerAnimated:YES completion:nil];
+//}
 
 @end
