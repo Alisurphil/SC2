@@ -28,14 +28,7 @@
     }
     
     
-    PFUser *user = [PFUser currentUser];
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-        _nickName.text = user[@"nickName"];
-        _sexy.text = user[@"gender"];
-        _address.text = user[@"address"];
-        _usually.text = user[@"race"];
-    _age.text = [dateFormatter stringFromDate:user[@"birthDate"]];
+    
     
 }
 -(void)viewWillAppear:(BOOL)animated{
@@ -55,6 +48,20 @@
             }
         }
     }
+    PFUser *user = [PFUser currentUser];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    _nickName.text = user[@"nickName"];
+    if ([user[@"gender"]  isEqual: @"nan"]) {
+        _sexy.text = @"男";
+    }else if ([user[@"gender"]  isEqual: @"nv"]){
+        _sexy.text = @"女";
+    }else{
+        _sexy.text = @"";
+    }
+    _address.text = user[@"address"];
+    _usually.text = user[@"race"];
+    _age.text = [dateFormatter stringFromDate:user[@"birthDate"]];
 
 }
 

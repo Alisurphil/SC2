@@ -14,6 +14,7 @@
 - (IBAction)backToMe:(UIBarButtonItem *)sender;
 - (IBAction)finishChange:(UIBarButtonItem *)sender;
 @property (weak, nonatomic) IBOutlet UITextField *changeNikName;
+@property (weak, nonatomic) IBOutlet UILabel *sexLabel;
 @property (weak, nonatomic) IBOutlet UITextField *changeSex;
 @property (weak, nonatomic) IBOutlet UITextField *changeLocation;
 @property (weak, nonatomic) IBOutlet UITextField *changeFavourite;
@@ -22,18 +23,18 @@
 @property (strong, nonatomic) UIView *coverView;
 @property (strong, nonatomic) UIToolbar *toolBar;
 @property (strong, nonatomic) NSDate *selected;
+@property (strong, nonatomic) UIPickerView *sexPickerView;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (strong, nonatomic) NSArray *sexArr;
+
 @end
 
 @implementation PersonTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
     
 }
 
@@ -61,7 +62,52 @@
     UIBarButtonItem *flexSpace =  [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     [self.toolBar setItems:@[flixSpace, cancelBtn, flexSpace, doneBtn, flixSpace] animated:YES];
     [_coverView addSubview:self.toolBar];
+    self.sexPickerView = [[UIPickerView alloc]initWithFrame:CGRectMake(0, self.view.frame.size.height - 180, self.view.frame.size.width, 180)];
+    self.sexPickerView.dataSource = self;
+    self.sexPickerView.delegate = self;
+    _sexPickerView.backgroundColor = [UIColor whiteColor];
+    _sexArr = [NSArray arrayWithObjects:@"男",@"女",nil];
+    [_coverView addSubview:self.sexPickerView];
+    UITapGestureRecognizer *tapTrick = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(bgTap:)];
+    [_coverView addGestureRecognizer:tapTrick];
     
+    [_sexPickerView selectRow:2 inComponent:0 animated:NO];
+    [_sexPickerView reloadComponent:0];
+    
+    
+}
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    return 1;
+}
+// returns the # of rows in each component..
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    if (component == 0) {
+        return _sexArr.count;
+    } else {
+        return 1;
+    }
+}
+
+
+// tell the picker the title for a given component
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+        return [_sexArr objectAtIndex:row];
+    
+}
+- (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component {
+    CGFloat screenWidth = self.view.frame.size.width;
+    if (component == 0) {
+        return screenWidth / 4;
+    } else {
+        return screenWidth / 6;
+    }
+}
+
+- (void)bgTap:(UITapGestureRecognizer *)tap {
+    if (tap.state == UIGestureRecognizerStateRecognized) {
+        _coverView.hidden = YES;
+        self.tableView.userInteractionEnabled = YES;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -74,21 +120,42 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (indexPath.row == 2) {
+    if (indexPath.row == 2 ) {
+        [self.view endEditing:YES];
         _coverView.hidden = NO;
+        _datePicker.hidden = NO;
+        _sexPickerView.hidden = YES;
+        self.tableView.userInteractionEnabled = NO;
+    }
+    if (indexPath.row == 1) {
+        [self.view endEditing:YES];
+        _coverView.hidden = NO;
+        _sexPickerView.hidden = NO;
+        _datePicker.hidden = YES;
+        self.tableView.userInteractionEnabled = NO;
     }
 }
 
 - (void)cancelBtn:(id)sender {
     _coverView.hidden = YES;
+    self.tableView.userInteractionEnabled = YES;
 }
 
 - (void)doneBtn:(id)sender {
+    
+    if (self.sexPickerView.hidden == YES) {
+        _selected = [_datePicker date];
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+        _dateLabel.text = [dateFormatter stringFromDate:_selected];
+    }
+    if (self.datePicker.hidden == YES) {
+        NSInteger row = [_sexPickerView selectedRowInComponent:0];
+        _sexLabel.text = [_sexArr objectAtIndex:row];
+    }
     _coverView.hidden = YES;
-    _selected = [_datePicker date];
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-    _dateLabel.text = [dateFormatter stringFromDate:_selected];
+    self.tableView.userInteractionEnabled = YES;
+    
     
     
 
@@ -103,8 +170,10 @@
     if (_changeNikName.text.length > 0) {
         user[@"nickName"] = _changeNikName.text;
     }
-    if (_changeSex.text.length > 0) {
-        user[@"gender"] = _changeSex.text;
+    if ([_sexLabel.text isEqual: @"男"]) {
+        user[@"gender"] = @"nan";
+    }else if([_sexLabel.text isEqual: @"女"]){
+        user[@"gender"] = @"nv";
     }
     if (_changeLocation.text.length > 0) {
         user[@"address"] = _changeLocation.text;

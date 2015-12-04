@@ -26,6 +26,11 @@
 		F4A0BE4F1C04477200378166 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F4A0BE4E1C04477200378166 /* libsqlite3.tbd */; };
 		F4A0BE531C044A1800378166 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4A0BE521C044A1800378166 /* Social.framework */; };
 		F4A0BE551C044A2C00378166 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4A0BE541C044A2C00378166 /* Accounts.framework */; };
+		F4AA15051C11859A00F7AD0E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4AA15041C11859A00F7AD0E /* CoreGraphics.framework */; };
+		F4AA15071C1185B100F7AD0E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4AA15061C1185B100F7AD0E /* QuartzCore.framework */; };
+		F4AA15091C1185BF00F7AD0E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4AA15081C1185BF00F7AD0E /* UIKit.framework */; };
+		F4AA150B1C1185C800F7AD0E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4AA150A1C1185C800F7AD0E /* Foundation.framework */; };
+		F4AA150F1C11866400F7AD0E /* GMDCircleLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AA150E1C11866400F7AD0E /* GMDCircleLoader.m */; };
 		F4E1E3A21C0C4310003FC410 /* FirstTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E1E3A11C0C430F003FC410 /* FirstTableViewCell.m */; };
 		FE049DF11C07EAD200CBA7B8 /* commentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE049DF01C07EAD200CBA7B8 /* commentViewController.m */; };
 		FE08E7C61C0E873B004E8444 /* SecondCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE08E7C51C0E873B004E8444 /* SecondCollectionViewController.m */; };
@@ -96,6 +101,12 @@
 		F4A0BE4E1C04477200378166 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		F4A0BE521C044A1800378166 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		F4A0BE541C044A2C00378166 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		F4AA15041C11859A00F7AD0E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		F4AA15061C1185B100F7AD0E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		F4AA15081C1185BF00F7AD0E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		F4AA150A1C1185C800F7AD0E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F4AA150D1C11866400F7AD0E /* GMDCircleLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMDCircleLoader.h; sourceTree = "<group>"; };
+		F4AA150E1C11866400F7AD0E /* GMDCircleLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMDCircleLoader.m; sourceTree = "<group>"; };
 		F4E1E3A01C0C430F003FC410 /* FirstTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstTableViewCell.h; sourceTree = "<group>"; };
 		F4E1E3A11C0C430F003FC410 /* FirstTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstTableViewCell.m; sourceTree = "<group>"; };
 		FE049DEF1C07EAD200CBA7B8 /* commentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = commentViewController.h; sourceTree = "<group>"; };
@@ -135,6 +146,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4AA150B1C1185C800F7AD0E /* Foundation.framework in Frameworks */,
+				F4AA15091C1185BF00F7AD0E /* UIKit.framework in Frameworks */,
+				F4AA15071C1185B100F7AD0E /* QuartzCore.framework in Frameworks */,
+				F4AA15051C11859A00F7AD0E /* CoreGraphics.framework in Frameworks */,
 				F4A0BE551C044A2C00378166 /* Accounts.framework in Frameworks */,
 				F4A0BE531C044A1800378166 /* Social.framework in Frameworks */,
 				F4A0BE4F1C04477200378166 /* libsqlite3.tbd in Frameworks */,
@@ -175,6 +190,10 @@
 		A8A973D3E50482BC2AF5D9E2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F4AA150A1C1185C800F7AD0E /* Foundation.framework */,
+				F4AA15081C1185BF00F7AD0E /* UIKit.framework */,
+				F4AA15061C1185B100F7AD0E /* QuartzCore.framework */,
+				F4AA15041C11859A00F7AD0E /* CoreGraphics.framework */,
 				F4A0BE541C044A2C00378166 /* Accounts.framework */,
 				F4A0BE521C044A1800378166 /* Social.framework */,
 				F4A0BE4E1C04477200378166 /* libsqlite3.tbd */,
@@ -214,7 +233,6 @@
 			children = (
 				F47021EE1C06DF2400F68FEC /* Constants */,
 				F469D0351C040CDD0070CFD5 /* 3rd */,
-				F469D0341C040CB30070CFD5 /* Utility */,
 				F469D0331C040C9C0070CFD5 /* Model */,
 				F469D0321C040C930070CFD5 /* View */,
 				F469D0311C040C760070CFD5 /* Controller */,
@@ -324,12 +342,13 @@
 				F47021EC1C06DC0D00F68FEC /* storageMgr.m */,
 			);
 			name = Utility;
-			path = ..;
 			sourceTree = "<group>";
 		};
 		F469D0351C040CDD0070CFD5 /* 3rd */ = {
 			isa = PBXGroup;
 			children = (
+				F4AA150C1C11864D00F7AD0E /* GMDCircleLoader */,
+				F469D0341C040CB30070CFD5 /* Utility */,
 			);
 			name = 3rd;
 			path = ..;
@@ -341,6 +360,15 @@
 				F47021EF1C06DF7A00F68FEC /* Constants.h */,
 			);
 			name = Constants;
+			sourceTree = "<group>";
+		};
+		F4AA150C1C11864D00F7AD0E /* GMDCircleLoader */ = {
+			isa = PBXGroup;
+			children = (
+				F4AA150D1C11866400F7AD0E /* GMDCircleLoader.h */,
+				F4AA150E1C11866400F7AD0E /* GMDCircleLoader.m */,
+			);
+			name = GMDCircleLoader;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -541,6 +569,7 @@
 				F47021EA1C06D21300F68FEC /* Utilities.m in Sources */,
 				FE8F51B51C07105600007569 /* CollectionViewController.m in Sources */,
 				FE6ADBAD1C05A5BA008F966F /* LoginViewController.m in Sources */,
+				F4AA150F1C11866400F7AD0E /* GMDCircleLoader.m in Sources */,
 				F469D0001C040C6D0070CFD5 /* AppDelegate.m in Sources */,
 				FE8F51BB1C07114B00007569 /* InformationViewController.m in Sources */,
 				FE2CD31D1C0BF0B0009B40E0 /* PersonTableViewController.m in Sources */,
