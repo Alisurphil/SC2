@@ -17,19 +17,21 @@
 @property (strong, nonatomic) UIPageControl *pageControl;
 @property (nonatomic, strong) NSTimer *timer;
 @property(strong,nonatomic)NSArray *wallObjectsArray;
+@property(nonatomic)CGRect rect;
 @end
 
 @implementation FirstViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self dataPreparation];
+    [self urlAction];
+    [self titelimage];
     [self uiConfiguration];
-    CGRect rect = _headerView.frame;
-    rect.size.height = 145;
-    _headerView.frame = rect;
+    _rect = _headerView.frame;
+    _rect.size.height = 145;
+    _headerView.frame = _rect;
     
-    _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, rect.size.height - 40, rect.size.width, 40)];
+    _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, _rect.size.height - 40, _rect.size.width, 40)];
     _pageControl.pageIndicatorTintColor = [UIColor whiteColor];
     _pageControl.currentPageIndicatorTintColor = [UIColor orangeColor];
     _pageControl.numberOfPages = 5;
@@ -44,25 +46,13 @@
         self.navigationItem.title = @"我";
     }
     
-//    CGFloat imageW = self.view.frame.size.width;
-//    CGFloat imageH = rect.size.height;
-//    CGFloat imageY = 0;
-//    NSInteger totalCount = 5;
-//    for (int i = 0; i < totalCount; i++) {
-//        UIImageView *imageView = [[UIImageView alloc] init];
-//        CGFloat imageX = i * imageW;
-//        imageView.frame = CGRectMake(imageX, imageY, imageW, imageH);
-//        imageView.clipsToBounds = YES;
-//        //设置图片
-//        NSString *name = [NSString stringWithFormat:@"shouye%d", i + 1];
-//        imageView.image = [UIImage imageNamed:name];
-//        self.scrollView.showsHorizontalScrollIndicator = NO;
-//        [self.scrollView addSubview:imageView];
-//    }
-//    CGFloat contentW = totalCount *imageW;
-//    self.scrollView.contentSize = CGSizeMake(contentW, rect.size.height);
-//    self.scrollView.pagingEnabled = YES;
-//    self.scrollView.delegate = self;
+}
+- (void)dataPreparation {
+        _aiv = [Utilities getCoverOnView:[[UIApplication sharedApplication] keyWindow]];
+    [self urlAction];
+    [self titelimage];
+}
+-(void)titelimage{
     PFQuery *query = [PFQuery queryWithClassName:@"ScrollView"];
     //2
     [query orderByDescending:@"number"];
@@ -75,7 +65,7 @@
             NSLog(@"wallObjectsArray=%@",self.wallObjectsArray);
             CGFloat imageW = self.view.frame.size.width;
             CGFloat contentW = self.wallObjectsArray.count *imageW;
-            self.scrollView.contentSize = CGSizeMake(contentW, rect.size.height);
+            self.scrollView.contentSize = CGSizeMake(contentW, _rect.size.height);
             self.scrollView.pagingEnabled = YES;
             self.scrollView.delegate = self;
             
@@ -83,7 +73,7 @@
                 PFObject *wallObject = [_wallObjectsArray objectAtIndex:i];
                 PFFile *image = (PFFile *)[wallObject objectForKey:@"image"];
                 NSString *imageUrl = image.url;
-                UIImageView *userImage = [[UIImageView alloc] initWithFrame:CGRectMake(i * imageW, 0, imageW, rect.size.height)];
+                UIImageView *userImage = [[UIImageView alloc] initWithFrame:CGRectMake(i * imageW, 0, imageW, _rect.size.height)];
                 userImage.contentMode = UIViewContentModeScaleAspectFill;
                 userImage.clipsToBounds = YES;
                 [userImage sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"start"]];
@@ -105,12 +95,6 @@
     }];
 
 }
-- (void)dataPreparation {
-    _objectsForShow = nil;
-    _objectsForShow = [NSArray new];
-    _aiv = [Utilities getCoverOnView:[[UIApplication sharedApplication] keyWindow]];
-    [self urlAction];
-}
 //下拉刷新：刷新器+初始数据（第一页数据）
 //- (void)initializeData {
 //    loadCount = 1;
@@ -118,10 +102,15 @@
 //    loadingMore = NO;
 //    [self urlAction];
 //}
+
+
 -(void)urlAction{
     PFQuery *cellquery=[PFQuery queryWithClassName:@"Homepage"];
     [cellquery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError * _Nullable error) {
         if (!error) {
+            _objectsForShow = nil;
+            _objectsForShow = [NSArray new];
+
             NSLog(@"cellquery=%@",cellquery);
             _objectsForShow=objects;
             NSLog(@"_objectsForShow=%@",_objectsForShow);
@@ -164,10 +153,10 @@
     PFObject *allObject = [_objectsForShow objectAtIndex:indexPath.row];
     PFFile *imgFile=(PFFile *)[allObject objectForKey:@"cellImage"];
     NSString *imgUrl = imgFile.url;
-    //cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
-    //cell.imageView.clipsToBounds = YES;
-    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:imgUrl] placeholderImage:[UIImage imageNamed:@"avatar"]];
-    cell.titleLabel.text=[NSString stringWithFormat:@"%@",allObject[@"cellTitle"]];
+    cell.photoView.contentMode = UIViewContentModeScaleAspectFill;
+    cell.photoView.clipsToBounds = YES;
+    [cell.photoView sd_setImageWithURL:[NSURL URLWithString:imgUrl] placeholderImage:[UIImage imageNamed:@"avatar"]];
+    cell.titleLabel.text=allObject[@"cellTitle"];
     //NSLog(@"cell.titleLabel.text=%@",cell.titleLabel.text);
     cell.likeLabel.text=[allObject[@"cellLike"] stringValue];
     cell.unlikeLabel.text=[allObject[@"cellUnlike"] stringValue];
@@ -195,7 +184,7 @@
     refreshControl.tintColor = [UIColor brownColor];
     refreshControl.backgroundColor = [UIColor groupTableViewBackgroundColor];
     refreshControl.tag = 8001;
-    [refreshControl addTarget:self action:@selector(urlAction) forControlEvents:UIControlEventValueChanged];
+    [refreshControl addTarget:self action:@selector(dataPreparation) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:refreshControl];
     self.tableView.tableFooterView = [[UIView alloc] init];
 }
@@ -217,21 +206,21 @@
     self.pageControl.currentPage = page;
 }
 
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
-    [self removeTimer];
-}
+//- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+//    [self removeTimer];
+//}
 
 //- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
 //    [self addTimer];
 //}
 
 - (void)addTimer{
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(nextImage) userInfo:nil repeats:YES];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(nextImage) userInfo:nil repeats:YES];
 }
 
-- (void)removeTimer{
-    [self.timer invalidate];
-}
+//- (void)removeTimer{
+//    [self.timer invalidate];
+//}
 
 
 - (void)didReceiveMemoryWarning {
@@ -305,6 +294,15 @@
 
         object.listName=model;
             }
+}
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"enablePanGes" object:nil];
+}
+//每当离开该页面以后调用以下方法（进入其他视图页面以后）
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"disablePanGes" object:nil];
 }
 
 

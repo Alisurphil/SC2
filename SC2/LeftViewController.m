@@ -7,6 +7,7 @@
 //
 
 #import "LeftViewController.h"
+#import "LoginViewController.h"
 #import <SDWebImage/UIButton+WebCache.h>
 #import <EaseMobSDKFull/EaseMob.h>
 

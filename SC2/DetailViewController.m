@@ -7,28 +7,45 @@
 //
 
 #import "DetailViewController.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface DetailViewController ()
 - (IBAction)collect:(UIBarButtonItem *)sender;
-
-
-
-
+@property(strong,nonatomic)NSString *item;
 @end
 
 @implementation DetailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-   
     NSLog(@"_listName=%@",_listName);
-    
-}
+    _item=_listName[@"cellTitle"];
+    PFQuery *detailview=[PFQuery queryWithClassName:@"HomeDetails"];
+    [detailview whereKey:@"cellTitle" equalTo:_item];
+    [detailview findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            for ( PFObject *object in objects ) {
+                PFFile *imgFile=(PFFile *)[object objectForKey:@"cellImage"];
+                NSString *imgUrl = imgFile.url;
+                _detailImg.contentMode = UIViewContentModeScaleAspectFill;
+                _detailImg.clipsToBounds = YES;
+                [_detailImg sd_setImageWithURL:[NSURL URLWithString:imgUrl] placeholderImage:[UIImage imageNamed:@"avatar"]];
+                _textView.text=object[@"cellContent"];
 
+            }
+                    }
+    }];
+    NSLog(@"detailview=%@",detailview);
+    }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     
 }
+
+
+
+/*
+#pragma mark - Navigation
 
 
 

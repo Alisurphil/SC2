@@ -10,4 +10,6 @@
 
 @interface DetailViewController : UIViewController
 @property(strong,nonatomic)PFObject *listName;
+@property (weak, nonatomic) IBOutlet UIImageView *detailImg;
+@property (weak, nonatomic) IBOutlet UITextView *textView;
 @end
