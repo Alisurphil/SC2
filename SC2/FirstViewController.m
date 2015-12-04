@@ -8,6 +8,7 @@
 
 #import "FirstViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "DetailViewController.h"
 
 @interface FirstViewController ()<UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -25,7 +26,7 @@
     [self dataPreparation];
     [self uiConfiguration];
     CGRect rect = _headerView.frame;
-    rect.size.height = self.view.frame.size.width / 2;
+    rect.size.height = 145;
     _headerView.frame = rect;
     
     _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, rect.size.height - 40, rect.size.width, 40)];
@@ -165,7 +166,7 @@
     NSString *imgUrl = imgFile.url;
     //cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
     //cell.imageView.clipsToBounds = YES;
-    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:imgUrl] placeholderImage:[UIImage imageNamed:@""]];
+    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:imgUrl] placeholderImage:[UIImage imageNamed:@"avatar"]];
     cell.titleLabel.text=[NSString stringWithFormat:@"%@",allObject[@"cellTitle"]];
     //NSLog(@"cell.titleLabel.text=%@",cell.titleLabel.text);
     cell.likeLabel.text=[allObject[@"cellLike"] stringValue];
@@ -294,14 +295,17 @@
 //    loadMoreText.textColor = [UIColor grayColor];
 //    self.tableView.tableFooterView = tableFooterView;
 //}
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
+#pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([[segue identifier] isEqualToString:@"listTodetail"]) {
+    DetailViewController *object=[segue destinationViewController];
+    PFObject *model=[_objectsForShow objectAtIndex:[self.tableView indexPathForSelectedRow].row];
+        NSLog(@"model=%@",model);
+
+        object.listName=model;
+            }
 }
-*/
+
 
 @end
