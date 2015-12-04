@@ -25,6 +25,11 @@
     // Do any additional setup after loading the view.
     self.navigationController.navigationBarHidden = YES;
     
+    
+    
+}
+-(void)viewDidAppear:(BOOL)animated{
+    
     PFUser *currentUser = [PFUser currentUser];
     PFFile *avatar = currentUser[@"avatar"];
     NSString *avatarUrl = avatar.url;
@@ -50,7 +55,7 @@
     
     _userNameLabel.text = [NSString stringWithFormat:@"昵称：%@", currentUser[@"nickName"]];
     [_userImage2 addTarget:self action:@selector(avatarAction:forEvent:) forControlEvents:UIControlEventTouchUpInside];
-    
+
 }
 
 - (void)didReceiveMemoryWarning {
