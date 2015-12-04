@@ -70,7 +70,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bLI-04-r8k">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bLI-04-r8k">
                                                     <rect key="frame" x="245" y="14" width="67" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -80,8 +80,11 @@
                                             <animations/>
                                             <constraints>
                                                 <constraint firstItem="TbB-wT-dLe" firstAttribute="top" secondItem="jWM-UR-pyo" secondAttribute="top" constant="14" id="00R-YL-YC0"/>
+                                                <constraint firstItem="bLI-04-r8k" firstAttribute="bottom" secondItem="jWM-UR-pyo" secondAttribute="bottomMargin" id="GUh-hB-abR"/>
                                                 <constraint firstItem="TbB-wT-dLe" firstAttribute="leading" secondItem="jWM-UR-pyo" secondAttribute="leading" constant="14" id="NR3-59-Bq3"/>
+                                                <constraint firstItem="bLI-04-r8k" firstAttribute="trailing" secondItem="jWM-UR-pyo" secondAttribute="trailingMargin" id="NVl-FP-hFT"/>
                                                 <constraint firstAttribute="bottom" secondItem="TbB-wT-dLe" secondAttribute="bottom" constant="8.5" id="OCA-rD-m2A"/>
+                                                <constraint firstItem="bLI-04-r8k" firstAttribute="top" secondItem="jWM-UR-pyo" secondAttribute="topMargin" constant="6" id="iu3-Ne-Rvc"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
@@ -100,7 +103,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wxQ-nF-50j">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wxQ-nF-50j">
                                                     <rect key="frame" x="178" y="11" width="134" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -111,7 +114,10 @@
                                             <constraints>
                                                 <constraint firstItem="fg3-sI-At3" firstAttribute="leading" secondItem="ZCZ-8p-mxd" secondAttribute="leading" constant="14" id="02p-2i-WLG"/>
                                                 <constraint firstItem="fg3-sI-At3" firstAttribute="top" secondItem="ZCZ-8p-mxd" secondAttribute="top" constant="14" id="Cue-HP-63q"/>
+                                                <constraint firstItem="wxQ-nF-50j" firstAttribute="top" secondItem="ZCZ-8p-mxd" secondAttribute="topMargin" constant="3" id="EFP-K6-Ymj"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="wxQ-nF-50j" secondAttribute="bottom" constant="3" id="J0r-wm-1Ko"/>
                                                 <constraint firstAttribute="bottom" secondItem="fg3-sI-At3" secondAttribute="bottom" constant="8.5" id="SK3-bg-NtT"/>
+                                                <constraint firstItem="wxQ-nF-50j" firstAttribute="trailing" secondItem="ZCZ-8p-mxd" secondAttribute="trailingMargin" id="Ubo-2Q-PF1"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
