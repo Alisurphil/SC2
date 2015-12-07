@@ -50,6 +50,17 @@
     UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:SCVC];
     //将上述页面设置为app入口
     self.window.rootViewController = navi;
+    
+    // 登录成功后，自动去取好友列表
+    // SDK获取结束后，会回调
+    // - (void)didFetchedBuddyList:(NSArray *)buddyList error:(EMError *)error方法。
+    [[EaseMob sharedInstance].chatManager setIsAutoFetchBuddyList:YES];
+    
+    // 注册环信监听
+    [self registerEaseMobNotification];
+    [[EaseMob sharedInstance] application:application
+            didFinishLaunchingWithOptions:launchOptions];
+
 
     return YES;
 }
@@ -160,5 +171,76 @@
         }
     }
 }
+
+#pragma mark - registerEaseMobNotification
+- (void)registerEaseMobNotification{
+    [self unRegisterEaseMobNotification];
+    // 将self 添加到SDK回调中，以便本类可以收到SDK回调
+    [[EaseMob sharedInstance].chatManager addDelegate:self delegateQueue:nil];
+}
+
+- (void)unRegisterEaseMobNotification{
+    [[EaseMob sharedInstance].chatManager removeDelegate:self];
+}
+
+#pragma mark - private
+//登陆状态改变
+-(void)loginStateChange:(NSNotification *)notification
+{
+    UINavigationController *nav = nil;
+    
+    BOOL isAutoLogin = [[[EaseMob sharedInstance] chatManager] isAutoLoginEnabled];
+    BOOL loginSuccess = [notification.object boolValue];
+    
+    if (isAutoLogin || loginSuccess) {//登陆成功加载主窗口控制器
+        //加载申请通知的数据
+        [[ApplyViewController shareController] loadDataSourceFromLocalDB];
+        if (_mainController == nil) {
+            _mainController = [[SCViewController alloc] init];
+            [_mainController networkChanged:_connectionState];
+            nav = [[UINavigationController alloc] initWithRootViewController:_mainController];
+        }else{
+            nav  = _mainController.navigationController;
+        }
+        
+        
+    }else{//登陆失败加载登陆页面控制器
+        _mainController = nil;
+        LoginViewController *loginController = [[LoginViewController alloc] init];
+        nav = [[UINavigationController alloc] initWithRootViewController:loginController];
+        loginController.title = NSLocalizedString(@"AppName", @"EaseMobDemo");
+    }
+    
+    //设置7.0以下的导航栏
+    if ([UIDevice currentDevice].systemVersion.floatValue < 7.0){
+        nav.navigationBar.barStyle = UIBarStyleDefault;
+        [nav.navigationBar setBackgroundImage:[UIImage imageNamed:@"titleBar"]
+                                forBarMetrics:UIBarMetricsDefault];
+        
+        [nav.navigationBar.layer setMasksToBounds:YES];
+    }
+    
+    self.window.rootViewController = nav;
+    
+    [nav setNavigationBarHidden:YES];
+    [nav setNavigationBarHidden:NO];
+}
+
+- (void)didReceiveBuddyRequest:(NSString *)username
+                       message:(NSString *)message
+{
+    if (!username) {
+        return;
+    }
+    if (!message) {
+        message = [NSString stringWithFormat:(@"%@ 添加你为好友"), username];
+    }
+    NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:@{@"title":username, @"username":username, @"applyMessage":message, @"applyStyle":[NSNumber numberWithInteger:ApplyStyleFriend]}];
+    [[ApplyViewController shareController] addNewApply:dic];
+    if (self.mainController) {
+        [self.mainController setupUntreatedApplyCount];
+    }
+}
+
 
 @end
