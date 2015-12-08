@@ -5,4 +5,4 @@ pod 'SDWebImage', '~>3.7'
 platform :ios, '7.0'
 pod 'ECSlidingViewController', '~> 2.0.3'
 pod 'EaseMobSDKFull', :git => 'https://github.com/easemob/sdk-ios-cocoapods-integration.git'
-
+pod 'TAOverlay'

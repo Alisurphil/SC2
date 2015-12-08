@@ -17,6 +17,7 @@
 @property (strong, nonatomic) UIPageControl *pageControl;
 @property (nonatomic, strong) NSTimer *timer;
 @property(strong,nonatomic)NSArray *wallObjectsArray;
+@property(strong,nonatomic)NSString *status;
 @property(nonatomic)CGRect rect;
 @end
 
@@ -24,8 +25,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self urlAction];
-    [self titelimage];
+    [self dataPreparation];
     [self uiConfiguration];
     _rect = _headerView.frame;
     _rect.size.height = 145;
@@ -46,9 +46,14 @@
         self.navigationItem.title = @"我";
     }
     
+    
 }
 - (void)dataPreparation {
-        _aiv = [Utilities getCoverOnView:[[UIApplication sharedApplication] keyWindow]];
+    TAOverlayOptions options = TAOverlayOptionNone;
+    _status = nil;
+    _status = @"加载中";
+    
+    [TAOverlay showOverlayWithLabel:_status Options:(options | TAOverlayOptionOverlaySizeRoundedRect | TAOverlayOptionOverlayTypeActivityBlur)];
     [self urlAction];
     [self titelimage];
 }
@@ -58,6 +63,7 @@
     [query orderByDescending:@"number"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         //3
+        [TAOverlay hideOverlay];
         if (!error) {
             //Everything was correct, put the new objects and load the wall
             self.wallObjectsArray = nil;
@@ -105,6 +111,7 @@
 
 
 -(void)urlAction{
+   
     PFQuery *cellquery=[PFQuery queryWithClassName:@"Homepage"];
     [cellquery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError * _Nullable error) {
         if (!error) {
@@ -119,9 +126,10 @@
         }else {
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
+        [TAOverlay hideOverlay];
         
     }];
-    [_aiv stopAnimating];
+    
     UIRefreshControl *refreshControl=[self.tableView viewWithTag:8001];
     
     //将上述下拉刷新控件停止刷新
