@@ -8,7 +8,7 @@
 
 #import "commentViewController.h"
 
-@interface commentViewController ()
+@interface commentViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *inPutcommt;
 - (IBAction)sendCommt:(UIButton *)sender forEvent:(UIEvent *)event;
 
@@ -18,6 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view.
 }
 

@@ -74,6 +74,7 @@
     [self networkStateView];
 
     [self searchController];
+    self.title = @"会话";
 }
 
 - (void)didReceiveMemoryWarning
@@ -204,21 +205,28 @@
             
             EMConversation *conversation = [weakSelf.searchController.resultsSource objectAtIndex:indexPath.row];
             cell.name = conversation.chatter;
-            if (conversation.conversationType == eConversationTypeChat) {
-                cell.placeholderImage = [UIImage imageNamed:@"chatListCellHead.png"];
-            }
-            else{
-                NSString *imageName = @"groupPublicHeader";
-                NSArray *groupArray = [[EaseMob sharedInstance].chatManager groupList];
-                for (EMGroup *group in groupArray) {
-                    if ([group.groupId isEqualToString:conversation.chatter]) {
-                        cell.name = group.groupSubject;
-                        imageName = group.isPublic ? @"groupPublicHeader" : @"groupPrivateHeader";
-                        break;
-                    }
-                }
-                cell.placeholderImage = [UIImage imageNamed:imageName];
-            }
+//            if (conversation.conversationType == eConversationTypeChat) {
+            cell.imageView.image = [UIImage imageNamed:@"chatListCellHead.png"];
+            [Utilities getImageViaUsername:conversation.chatter success:^(NSURL *avatarUrl) {
+                [cell.imageView sd_setImageWithURL:avatarUrl placeholderImage:[UIImage imageNamed:@"chatListCellHead.png"]];
+            } failure:^(NSError *error) {
+                cell.imageView.image = [UIImage imageNamed:@"chatListCellHead.png"];
+            }];
+
+
+//            }
+//            else{
+//                NSString *imageName = @"groupPublicHeader";
+//                NSArray *groupArray = [[EaseMob sharedInstance].chatManager groupList];
+//                for (EMGroup *group in groupArray) {
+//                    if ([group.groupId isEqualToString:conversation.chatter]) {
+//                        cell.name = group.groupSubject;
+//                        imageName = group.isPublic ? @"groupPublicHeader" : @"groupPrivateHeader";
+//                        break;
+//                    }
+//                }
+//                cell.placeholderImage = [UIImage imageNamed:imageName];
+//            }
             cell.detailMsg = [weakSelf subTitleMessageByConversation:conversation];
             cell.time = [weakSelf lastMessageTimeByConversation:conversation];
             cell.unreadCount = [weakSelf unreadMessageCountByConversation:conversation];
@@ -363,7 +371,13 @@
     EMConversation *conversation = [self.dataSource objectAtIndex:indexPath.row];
     cell.name = conversation.chatter;
     if (conversation.conversationType == eConversationTypeChat) {
-        cell.placeholderImage = [UIImage imageNamed:@"chatListCellHead.png"];
+//        cell.placeholderImage = [UIImage imageNamed:@"chatListCellHead.png"];
+        cell.imageView.image = [UIImage imageNamed:@"chatListCellHead.png"];
+        [Utilities getImageViaUsername:conversation.chatter success:^(NSURL *avatarUrl) {
+            [cell.imageView sd_setImageWithURL:avatarUrl placeholderImage:[UIImage imageNamed:@"chatListCellHead.png"]];
+        } failure:^(NSError *error) {
+            cell.imageView.image = [UIImage imageNamed:@"chatListCellHead.png"];
+        }];
     }
     else{
         NSString *imageName = @"groupPublicHeader";

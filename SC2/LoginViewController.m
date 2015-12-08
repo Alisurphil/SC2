@@ -53,6 +53,8 @@
         
         [self loginWithUsername:[Utilities getUserDefaults:@"userName"] andPassword:[Utilities getUserDefaults:@"password"]];
     }
+    self.passwordTF.userInteractionEnabled = YES;
+    self.usernameTF.userInteractionEnabled = YES;
 
 
 }
@@ -234,7 +236,8 @@
 - (IBAction)signIn:(UIButton *)sender forEvent:(UIEvent *)event {
     NSString *username = _usernameTF.text;
     NSString *password = _passwordTF.text;
-    
+    self.passwordTF.userInteractionEnabled = NO;
+    self.usernameTF.userInteractionEnabled = NO;
     [self loginWithUsername:username andPassword:password];
 }
 
@@ -288,6 +291,8 @@
             
         } else {
             [TAOverlay hideOverlay];
+            self.passwordTF.userInteractionEnabled = YES;
+            self.usernameTF.userInteractionEnabled = YES;
             if (error.code == 101) {
                 [Utilities popUpAlertViewWithMsg:@"用户名或密码错误" andTitle:nil];
             } else if (error.code == 100) {
