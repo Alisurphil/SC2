@@ -48,7 +48,7 @@ static ApplyViewController *controller = nil;
     [super viewDidLoad];
     
     // Uncomment the following line to preserve selection between presentations.
-    self.title = NSLocalizedString(@"title.apply", @"Application and notification");
+    self.title = (@"申请与通知");
     self.tableView.tableFooterView = [[UIView alloc] init];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
@@ -123,19 +123,19 @@ static ApplyViewController *controller = nil;
         if (entity) {
             cell.indexPath = indexPath;
             ApplyStyle applyStyle = [entity.style intValue];
-            if (applyStyle == ApplyStyleGroupInvitation) {
-                cell.titleLabel.text = NSLocalizedString(@"title.groupApply", @"Group Notification");
-                cell.headerImageView.image = [UIImage imageNamed:@"groupPrivateHeader"];
-            }
-            else if (applyStyle == ApplyStyleJoinGroup)
-            {
-                cell.titleLabel.text = NSLocalizedString(@"title.groupApply", @"Group Notification");
-                cell.headerImageView.image = [UIImage imageNamed:@"groupPrivateHeader"];
-            }
-            else if(applyStyle == ApplyStyleFriend){
+//            if (applyStyle == ApplyStyleGroupInvitation) {
+//                cell.titleLabel.text = NSLocalizedString(@"title.groupApply", @"Group Notification");
+//                cell.headerImageView.image = [UIImage imageNamed:@"groupPrivateHeader"];
+//            }
+//            else if (applyStyle == ApplyStyleJoinGroup)
+//            {
+//                cell.titleLabel.text = NSLocalizedString(@"title.groupApply", @"Group Notification");
+//                cell.headerImageView.image = [UIImage imageNamed:@"groupPrivateHeader"];
+//            }
+//            else if(applyStyle == ApplyStyleFriend){
                 cell.titleLabel.text = entity.applicantUsername;
                 cell.headerImageView.image = [UIImage imageNamed:@"chatListCellHead"];
-            }
+//            }
             cell.contentLabel.text = entity.reason;
         }
     }
