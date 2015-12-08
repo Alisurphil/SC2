@@ -20,9 +20,6 @@
 @implementation LoginViewController
 @synthesize status ;
 
-
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
 
