@@ -228,20 +228,21 @@
 //    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
 //    [self.navigationItem setLeftBarButtonItem:backItem];
     
-    if (self.isChatGroup) {
-        UIButton *detailButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 44)];
-//        [detailButton setImage:[UIImage imageNamed:@"group_detail"] forState:UIControlStateNormal];
-        [detailButton setTitle:@"详情" forState:UIControlStateNormal];
-        [detailButton addTarget:self action:@selector(showRoomContact:) forControlEvents:UIControlEventTouchUpInside];
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:detailButton];
-    }
-    else{
+//    if (self.isChatGroup) {
+//        UIButton *detailButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 44)];
+////        [detailButton setImage:[UIImage imageNamed:@"group_detail"] forState:UIControlStateNormal];
+//        [detailButton setTitle:@"详情" forState:UIControlStateNormal];
+//        [detailButton addTarget:self action:@selector(showRoomContact:) forControlEvents:UIControlEventTouchUpInside];
+//        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:detailButton];
+//    }
+//    else{
         UIButton *clearButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
 //        [clearButton setImage:[UIImage imageNamed:@"delete"] forState:UIControlStateNormal];
         [clearButton setTitle:@"删除" forState:UIControlStateNormal];
+        [clearButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
         [clearButton addTarget:self action:@selector(removeAllMessages:) forControlEvents:UIControlEventTouchUpInside];
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:clearButton];
-    }
+//    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -1574,7 +1575,7 @@
 - (void)removeAllMessages:(id)sender
 {
     if (_dataSource.count == 0) {
-        [self showHint:NSLocalizedString(@"message.noMessage", @"no messages")];
+        [self showHint: @"消息已经清空"];
         return;
     }
     
@@ -1603,7 +1604,7 @@
                                 [weakSelf.tableView reloadData];
                             }
                         } cancelButtonTitle:(@"取消")
-                      otherButtonTitles:NSLocalizedString(@"ok", @"OK"), nil];
+                      otherButtonTitles:@"确定", nil];
     }
 }
 

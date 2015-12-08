@@ -25,4 +25,6 @@
 //将浮点数转化为保留小数点后若干位数的字符串
 + (NSString *)notRounding:(float)price afterPoint:(int)position;
 
++ (void)getImageViaUsername:(NSString *)username success:(void (^)(NSURL *avatarUrl))success failure:(void (^)(NSError *error))failure;
+
 @end
