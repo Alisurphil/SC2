@@ -29,4 +29,6 @@
 #import "ECSlidingViewController.h"
 #import "storageMgr.h"
 #import "Constants.h"
+#import "BaseViewController.h"
+
 #endif /* PrefixHeader_pch */

@@ -243,6 +243,7 @@
             chatController = [[ChatViewController alloc] initWithChatter:conversation.chatter
                                                         conversationType:conversation.conversationType];
             chatController.title = [conversation showName];
+            chatController.hidesBottomBarWhenPushed = YES;
             [weakSelf.navigationController pushViewController:chatController animated:YES];
         }];
     }
@@ -439,6 +440,7 @@
                                                 conversationType:conversation.conversationType];
     chatController.title = title;
     chatController.delelgate = self;
+    chatController.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:chatController animated:YES];
 }
 

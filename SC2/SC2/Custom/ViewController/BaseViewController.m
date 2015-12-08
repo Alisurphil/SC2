@@ -34,6 +34,9 @@
     {
         [self setEdgesForExtendedLayout:UIRectEdgeNone];
     }
+//    self.navigationController.navigationBar.tintColor = [UIColor blueColor];
+    [self.navigationController.navigationBar setTranslucent:NO];
+    [self.tabBarController.tabBar setTranslucent:NO];
 }
 
 - (void)didReceiveMemoryWarning
