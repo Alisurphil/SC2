@@ -66,7 +66,7 @@
     
     _contactsVC = [[ContactsViewController alloc] initWithNibName:nil bundle:nil];
     _SecondNCC = [[UINavigationController alloc]initWithRootViewController:_contactsVC];
-    _SecondNCC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"联系人" image:[UIImage imageNamed:@"Chat"] tag:3];
+    _SecondNCC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"联系人" image:[UIImage imageNamed:@"Friend"] tag:3];
     
     //将添加好友按钮添加到navigationItem右侧，点击触发addFriendAction事件
     _addFriendItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:_contactsVC action:@selector(addFriendAction)];
