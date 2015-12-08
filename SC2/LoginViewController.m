@@ -12,12 +12,16 @@
 #import <EaseMobSDKFull/EaseMob.h>
 
 @interface LoginViewController () <UITextFieldDelegate>
-
+@property (nonatomic, strong) NSString *status;
 - (IBAction)signIn:(UIButton *)sender forEvent:(UIEvent *)event;
 
 @end
 
 @implementation LoginViewController
+@synthesize status ;
+
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -240,14 +244,16 @@
         return;
     }
     
-    UIActivityIndicatorView *aiv = [Utilities getCoverOnView:self.view];
+    TAOverlayOptions options = TAOverlayOptionNone;
+    status = nil;
+    status = @"加载中";
+    
+    [TAOverlay showOverlayWithLabel:status Options:(options | TAOverlayOptionOverlaySizeRoundedRect | TAOverlayOptionOverlayTypeActivityBlur)];
     
     [PFUser logInWithUsernameInBackground:un password:pwd block:^(PFUser *user, NSError *error) {
-        [aiv stopAnimating];
         if (user) {
-            [aiv startAnimating];
             [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:un password:pwd completion:^(NSDictionary *loginInfo, EMError *error) {
-                [aiv stopAnimating];
+                [TAOverlay hideOverlay];
                 NSLog(@"进来了");
                 if (!error && loginInfo) {
                     NSLog(@"环信登陆成功");
@@ -272,19 +278,23 @@
                             });
                         }
                     }];
-                    [self popUpHomeTab];
+                    [self performSelector:@selector(popUpHomeTab) withObject:nil afterDelay:0.05];
+//                    [self popUpHomeTab];
                 } else {
                     NSLog(@"error = %@",error);
                 }
                 
             } onQueue:nil];
             
-        } else if (error.code == 101) {
-            [Utilities popUpAlertViewWithMsg:@"用户名或密码错误" andTitle:nil];
-        } else if (error.code == 100) {
-            [Utilities popUpAlertViewWithMsg:@"网络不给力，请稍后再试" andTitle:nil];
         } else {
-            [Utilities popUpAlertViewWithMsg:nil andTitle:nil];
+            [TAOverlay hideOverlay];
+            if (error.code == 101) {
+                [Utilities popUpAlertViewWithMsg:@"用户名或密码错误" andTitle:nil];
+            } else if (error.code == 100) {
+                [Utilities popUpAlertViewWithMsg:@"网络不给力，请稍后再试" andTitle:nil];
+            } else {
+                [Utilities popUpAlertViewWithMsg:nil andTitle:nil];
+            }
         }
     }];
 }
@@ -312,5 +322,10 @@
     }
     return YES;
 }
+
+
+        
+        
+
 
 @end

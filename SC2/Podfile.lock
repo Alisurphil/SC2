@@ -25,12 +25,14 @@ PODS:
   - SDWebImage (3.7.3):
     - SDWebImage/Core (= 3.7.3)
   - SDWebImage/Core (3.7.3)
+  - TAOverlay (2.0.1)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
   - EaseMobSDKFull (from `https://github.com/easemob/sdk-ios-cocoapods-integration.git`)
   - ECSlidingViewController (~> 2.0.3)
   - SDWebImage (~> 3.7)
+  - TAOverlay
 
 EXTERNAL SOURCES:
   EaseMobSDKFull:
@@ -46,5 +48,6 @@ SPEC CHECKSUMS:
   EaseMobSDKFull: 4a18d6ad47b4ccca564833963511bddd151e1654
   ECSlidingViewController: 6485c14f23b4487e9946535421ca8f111f86cc53
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
+  TAOverlay: 940e37fdb45fbc9acfc73bf1089668367e3b1be6
 
 COCOAPODS: 0.39.0

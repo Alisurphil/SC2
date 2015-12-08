@@ -15,7 +15,7 @@
     NSInteger totalPage;
 }
 @property (strong, nonatomic) NSArray *objectsForShow;
-@property (strong, nonatomic) UIActivityIndicatorView *aiv;
+
 @property (strong, nonatomic) UIActivityIndicatorView *tableFooterAI;
 
 @end

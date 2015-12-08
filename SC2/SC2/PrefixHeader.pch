@@ -15,6 +15,7 @@
 #import <Parse/Parse.h>
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
+#import "TAOverlay.h"
 
 #import "ChatDemoUIDefine.h"
 #import "EMAlertView.h"
