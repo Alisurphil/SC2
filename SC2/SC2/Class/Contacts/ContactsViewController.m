@@ -370,7 +370,9 @@
     
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
-            [self.navigationController pushViewController:[ApplyViewController shareController] animated:YES];
+            ApplyViewController *applyVC = [ApplyViewController shareController];
+            applyVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:applyVC animated:YES];
         }
 //        else if (indexPath.row == 1)
 //        {

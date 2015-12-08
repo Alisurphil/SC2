@@ -41,6 +41,8 @@
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     //初始化主窗口并将主窗口设置为屏幕大小
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    
+
     //将该窗口设置为keywindow
     [self.window makeKeyAndVisible];
     //获得main。story实例
@@ -60,6 +62,7 @@
     [self registerEaseMobNotification];
     [[EaseMob sharedInstance] application:application
             didFinishLaunchingWithOptions:launchOptions];
+   
 
 
     return YES;

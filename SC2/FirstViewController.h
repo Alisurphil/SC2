@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "FirstTableViewCell.h"
-@interface FirstViewController : UIViewController<FirstTableViewCellDelegate>{
+
+@interface FirstViewController : BaseViewController <FirstTableViewCellDelegate> {
     BOOL loadingMore;
     NSInteger loadCount;
     NSInteger perPage;
