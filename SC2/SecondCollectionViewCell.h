@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "SecondCollectionViewController.h"
 @interface SecondCollectionViewCell : UICollectionViewCell
 
 @end
