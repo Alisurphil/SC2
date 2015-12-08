@@ -18,6 +18,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self.navigationController.navigationBar setTranslucent:NO];
+    
     if (self.navigationController.tabBarItem.tag == 0) {
         self.navigationItem.title = @"首页";
     } else if(self.navigationController.tabBarItem.tag == 1){

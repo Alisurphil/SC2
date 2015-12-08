@@ -39,7 +39,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(callControllerClose:) name:@"callControllerClose" object:nil];
     
     self.selectedIndex = 0;
-
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
     //在main.story中找到名为first的页面，将该页面设置为_firstVC全局对象
@@ -66,7 +65,7 @@
     
     _contactsVC = [[ContactsViewController alloc] initWithNibName:nil bundle:nil];
     _SecondNCC = [[UINavigationController alloc]initWithRootViewController:_contactsVC];
-    _SecondNCC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"联系人" image:[UIImage imageNamed:@"Chat"] tag:3];
+    _SecondNCC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"联系人" image:[UIImage imageNamed:@"Friend"] tag:3];
     
     //将添加好友按钮添加到navigationItem右侧，点击触发addFriendAction事件
     _addFriendItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:_contactsVC action:@selector(addFriendAction)];
@@ -74,6 +73,7 @@
     
     //设置选项卡栏控制器的选项卡栏项目（@［］数组中的每个item都会对应一个选项卡栏项目）
     self.viewControllers = @[_FirstNC,_SecondNCA,_SecondNCB,_SecondNCC,_ThirdNC];
+    
     [self setupUnreadMessageCount];
     [self setupUntreatedApplyCount];
 }
@@ -170,28 +170,30 @@
     for (EMConversation *conversation in conversations) {
         unreadCount += conversation.unreadMessagesCount;
     }
-    if (_chatListVC) {
+    if (_SecondNCB) {
         if (unreadCount > 0) {
-            _chatListVC.tabBarItem.badgeValue = [NSString stringWithFormat:@"%i",(int)unreadCount];
+            _SecondNCB.tabBarItem.badgeValue = [NSString stringWithFormat:@"%i",(int)unreadCount];
         }else{
-            _chatListVC.tabBarItem.badgeValue = nil;
+            _SecondNCB.tabBarItem.badgeValue = nil;
         }
     }
+    NSLog(@"_SecondNCB.badge = %@", _SecondNCB.tabBarItem.badgeValue);
     
-    UIApplication *application = [UIApplication sharedApplication];
-    [application setApplicationIconBadgeNumber:unreadCount];
+//    UIApplication *application = [UIApplication sharedApplication];
+//    [application setApplicationIconBadgeNumber:unreadCount];
 }
 
 - (void)setupUntreatedApplyCount
 {
     NSInteger unreadCount = [[[ApplyViewController shareController] dataSource] count];
-    if (_contactsVC) {
+    if (_SecondNCC) {
         if (unreadCount > 0) {
-            _contactsVC.tabBarItem.badgeValue = [NSString stringWithFormat:@"%i",(int)unreadCount];
+            _SecondNCC.tabBarItem.badgeValue = [NSString stringWithFormat:@"%i",(int)unreadCount];
         }else{
-            _contactsVC.tabBarItem.badgeValue = nil;
+            _SecondNCC.tabBarItem.badgeValue = nil;
         }
     }
+    NSLog(@"_SecondNCC.badge = %@", _SecondNCC.tabBarItem.badgeValue);
 }
 
 #pragma mark - call

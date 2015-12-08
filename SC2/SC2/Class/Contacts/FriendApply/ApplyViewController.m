@@ -52,13 +52,13 @@ static ApplyViewController *controller = nil;
     self.tableView.tableFooterView = [[UIView alloc] init];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
-    UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
-    [backButton setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
-    [backButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
-    [self.navigationItem setLeftBarButtonItem:backItem];
+//    UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
+//    [backButton setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
+//    [backButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
+//    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+//    [self.navigationItem setLeftBarButtonItem:backItem];
     
-    [self loadDataSourceFromLocalDB];
+//    [self loadDataSourceFromLocalDB];
 }
 
 - (void)didReceiveMemoryWarning
@@ -122,7 +122,7 @@ static ApplyViewController *controller = nil;
         ApplyEntity *entity = [self.dataSource objectAtIndex:indexPath.row];
         if (entity) {
             cell.indexPath = indexPath;
-            ApplyStyle applyStyle = [entity.style intValue];
+//            ApplyStyle applyStyle = [entity.style intValue];
 //            if (applyStyle == ApplyStyleGroupInvitation) {
 //                cell.titleLabel.text = NSLocalizedString(@"title.groupApply", @"Group Notification");
 //                cell.headerImageView.image = [UIImage imageNamed:@"groupPrivateHeader"];
@@ -177,13 +177,13 @@ static ApplyViewController *controller = nil;
         /*if (applyStyle == ApplyStyleGroupInvitation) {
             [[EaseMob sharedInstance].chatManager acceptInvitationFromGroup:entity.groupId error:&error];
         }
-        else */if (applyStyle == ApplyStyleJoinGroup)
-        {
-            [[EaseMob sharedInstance].chatManager acceptApplyJoinGroup:entity.groupId groupname:entity.groupSubject applicant:entity.applicantUsername error:&error];
-        }
-        else if(applyStyle == ApplyStyleFriend){
+//        else */if (applyStyle == ApplyStyleJoinGroup)
+//        {
+//            [[EaseMob sharedInstance].chatManager acceptApplyJoinGroup:entity.groupId groupname:entity.groupSubject applicant:entity.applicantUsername error:&error];
+//        }
+//        else if(applyStyle == ApplyStyleFriend){
             [[EaseMob sharedInstance].chatManager acceptBuddyRequest:entity.applicantUsername error:&error];
-        }
+//        }
         
         [self hideHud];
         if (!error) {
@@ -206,16 +206,16 @@ static ApplyViewController *controller = nil;
         ApplyStyle applyStyle = [entity.style intValue];
         EMError *error;
         
-        if (applyStyle == ApplyStyleGroupInvitation) {
-            [[EaseMob sharedInstance].chatManager rejectInvitationForGroup:entity.groupId toInviter:entity.applicantUsername reason:@""];
-        }
-        else if (applyStyle == ApplyStyleJoinGroup)
-        {
-            [[EaseMob sharedInstance].chatManager rejectApplyJoinGroup:entity.groupId groupname:entity.groupSubject toApplicant:entity.applicantUsername reason:nil];
-        }
-        else if(applyStyle == ApplyStyleFriend){
+//        if (applyStyle == ApplyStyleGroupInvitation) {
+//            [[EaseMob sharedInstance].chatManager rejectInvitationForGroup:entity.groupId toInviter:entity.applicantUsername reason:@""];
+//        }
+//        else if (applyStyle == ApplyStyleJoinGroup)
+//        {
+//            [[EaseMob sharedInstance].chatManager rejectApplyJoinGroup:entity.groupId groupname:entity.groupSubject toApplicant:entity.applicantUsername reason:nil];
+//        }
+//        else if(applyStyle == ApplyStyleFriend){
             [[EaseMob sharedInstance].chatManager rejectBuddyRequest:entity.applicantUsername reason:@"" error:&error];
-        }
+//        }
         
         [self hideHud];
         if (!error) {
@@ -244,13 +244,13 @@ static ApplyViewController *controller = nil;
                 ApplyEntity *oldEntity = [_dataSource objectAtIndex:i];
                 ApplyStyle oldStyle = [oldEntity.style intValue];
                 if (oldStyle == style && [applyUsername isEqualToString:oldEntity.applicantUsername]) {
-                    if(style != ApplyStyleFriend)
-                    {
-                        NSString *newGroupid = [dictionary objectForKey:@"groupname"];
-                        if (newGroupid || [newGroupid length] > 0 || [newGroupid isEqualToString:oldEntity.groupId]) {
-                            break;
-                        }
-                    }
+//                    if(style != ApplyStyleFriend)
+//                    {
+//                        NSString *newGroupid = [dictionary objectForKey:@"groupname"];
+//                        if (newGroupid || [newGroupid length] > 0 || [newGroupid isEqualToString:oldEntity.groupId]) {
+//                            break;
+//                        }
+//                    }
                     
                     oldEntity.reason = [dictionary objectForKey:@"applyMessage"];
                     [_dataSource removeObject:oldEntity];
@@ -271,11 +271,11 @@ static ApplyViewController *controller = nil;
             NSString *loginName = [loginInfo objectForKey:kSDKUsername];
             newEntity.receiverUsername = loginName;
             
-            NSString *groupId = [dictionary objectForKey:@"groupId"];
-            newEntity.groupId = (groupId && groupId.length > 0) ? groupId : @"";
-            
-            NSString *groupSubject = [dictionary objectForKey:@"groupname"];
-            newEntity.groupSubject = (groupSubject && groupSubject.length > 0) ? groupSubject : @"";
+//            NSString *groupId = [dictionary objectForKey:@"groupId"];
+//            newEntity.groupId = (groupId && groupId.length > 0) ? groupId : @"";
+//            
+//            NSString *groupSubject = [dictionary objectForKey:@"groupname"];
+//            newEntity.groupSubject = (groupSubject && groupSubject.length > 0) ? groupSubject : @"";
             
             NSString *loginUsername = [[[EaseMob sharedInstance].chatManager loginInfo] objectForKey:kSDKUsername];
             [[InvitationManager sharedInstance] addInvitation:newEntity loginUser:loginUsername];
