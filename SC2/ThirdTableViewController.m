@@ -61,6 +61,7 @@
     _address.text = user[@"address"];
     _usually.text = user[@"race"];
     _age.text = [dateFormatter stringFromDate:user[@"birthDate"]];
+    _tblView.tableFooterView = [[UIView alloc]init];
 
 }
 -(void)viewDidAppear:(BOOL)animated{

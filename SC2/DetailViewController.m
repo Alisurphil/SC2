@@ -12,11 +12,16 @@
 @interface DetailViewController ()
 - (IBAction)collect:(UIBarButtonItem *)sender;
 @property(strong,nonatomic)NSString *item;
+@property(strong,nonatomic)NSString *status;
 @end
 
 @implementation DetailViewController
 
 - (void)viewDidLoad {
+    TAOverlayOptions options = TAOverlayOptionNone;
+    _status = nil;
+    _status = @"加载中";
+    [TAOverlay showOverlayWithLabel:_status Options:(options | TAOverlayOptionOverlaySizeRoundedRect | TAOverlayOptionOverlayTypeActivityBlur)];
     [super viewDidLoad];
     NSLog(@"_listName=%@",_listName);
     _item=_listName[@"cellTitle"];
@@ -36,9 +41,12 @@
 
             }
                     }
+        [TAOverlay hideOverlay];
     }];
+    
     NSLog(@"detailview=%@",detailview);
     }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     
@@ -52,11 +60,11 @@
 
 
 - (IBAction)collect:(UIBarButtonItem *)sender {
-    
     [Utilities popUpAlertViewWithMsg:@"收藏成功" andTitle:nil];
     
     
 }
+
 
 
 @end
