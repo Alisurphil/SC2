@@ -41,8 +41,12 @@
     if (self.navigationController.tabBarItem.tag == 0) {
         self.navigationItem.title = @"首页";
     } else if(self.navigationController.tabBarItem.tag == 1){
-        self.navigationItem.title = @"聊天";
-    }else {
+        self.navigationItem.title = @"图片";
+    } else if(self.navigationController.tabBarItem.tag == 2){
+        self.navigationItem.title = @"会话";
+    } else if(self.navigationController.tabBarItem.tag == 3){
+        self.navigationItem.title = @"联系人";
+    } else {
         self.navigationItem.title = @"我";
     }
     
