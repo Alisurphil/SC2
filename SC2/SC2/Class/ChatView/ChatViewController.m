@@ -1584,14 +1584,14 @@
             _chatTagDate = nil;
             [_dataSource removeAllObjects];
             [_tableView reloadData];
-            [self showHint:NSLocalizedString(@"message.noMessage", @"no messages")];
+            [self showHint:(@"消息已经清空")];
         }
     }
     else{
         __weak typeof(self) weakSelf = self;
         
-        [EMAlertView showAlertWithTitle:NSLocalizedString(@"prompt", @"Prompt")
-                                message:NSLocalizedString(@"sureToDelete", @"please make sure to delete")
+        [EMAlertView showAlertWithTitle:(@"提示")
+                                message:(@"请确定删除")
                         completionBlock:^(NSUInteger buttonIndex, EMAlertView *alertView) {
                             if (buttonIndex == 1) {
                                 [weakSelf.conversation removeAllMessages];
@@ -1600,7 +1600,7 @@
                                 [weakSelf.dataSource removeAllObjects];
                                 [weakSelf.tableView reloadData];
                             }
-                        } cancelButtonTitle:NSLocalizedString(@"cancel", @"Cancel")
+                        } cancelButtonTitle:(@"取消")
                       otherButtonTitles:NSLocalizedString(@"ok", @"OK"), nil];
     }
 }

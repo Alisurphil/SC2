@@ -52,7 +52,7 @@
     UIStoryboard *storyboard2 = [UIStoryboard storyboardWithName:@"Second" bundle:[NSBundle mainBundle]];
     _SecondVC = [storyboard2 instantiateViewControllerWithIdentifier:@"Second"];
     _SecondNCA = [[UINavigationController alloc]initWithRootViewController:_SecondVC];
-    _SecondNCA.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"图片" image:[UIImage imageNamed:@"Chat"] tag:1];
+    _SecondNCA.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"图片" image:[UIImage imageNamed:@"Pic"] tag:1];
     
     UIStoryboard *storyboard3 = [UIStoryboard storyboardWithName:@"Third" bundle:[NSBundle mainBundle]];
     _ThirdVC = [storyboard3 instantiateViewControllerWithIdentifier:@"Third"];
@@ -479,8 +479,8 @@
         //发送本地推送
         UILocalNotification *notification = [[UILocalNotification alloc] init];
         notification.fireDate = [NSDate date]; //触发通知的时间
-        notification.alertBody = [NSString stringWithFormat:NSLocalizedString(@"friend.somebodyAddWithName", @"%@ add you as a friend"), username];
-        notification.alertAction = NSLocalizedString(@"open", @"Open");
+        notification.alertBody = [NSString stringWithFormat:(@"%@ 添加你为好友"), username];
+        notification.alertAction = (@"打开");
         notification.timeZone = [NSTimeZone defaultTimeZone];
     }
 #endif
@@ -577,7 +577,7 @@
 
 - (void)didRejectedByBuddy:(NSString *)username
 {
-    NSString *message = [NSString stringWithFormat:NSLocalizedString(@"friend.beRefusedToAdd", @"you are shameless refused by '%@'"), username];
+    NSString *message = [NSString stringWithFormat:(@"你被'%@'无耻的拒绝了"), username];
     TTAlertNoTitle(message);
 }
 
@@ -589,7 +589,7 @@
 - (void)didLoginFromOtherDevice
 {
     [[EaseMob sharedInstance].chatManager asyncLogoffWithUnbindDeviceToken:NO completion:^(NSDictionary *info, EMError *error) {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"prompt", @"Prompt") message:NSLocalizedString(@"loginAtOtherDevice", @"your login account has been in other places") delegate:self cancelButtonTitle:NSLocalizedString(@"ok", @"OK") otherButtonTitles:nil, nil];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:(@"提示") message:(@"你的账号已在其他地方登录") delegate:self cancelButtonTitle:NSLocalizedString(@"ok", @"OK") otherButtonTitles:nil, nil];
         alertView.tag = 100;
         [alertView show];
         
@@ -599,7 +599,7 @@
 - (void)didRemovedFromServer
 {
     [[EaseMob sharedInstance].chatManager asyncLogoffWithUnbindDeviceToken:NO completion:^(NSDictionary *info, EMError *error) {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"prompt", @"Prompt") message:NSLocalizedString(@"loginUserRemoveFromServer", @"your account has been removed from the server side") delegate:self cancelButtonTitle:NSLocalizedString(@"ok", @"OK") otherButtonTitles:nil, nil];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:(@"提示") message:(@"你的账号已被从服务器端移除") delegate:self cancelButtonTitle:NSLocalizedString(@"ok", @"OK") otherButtonTitles:nil, nil];
         alertView.tag = 101;
         [alertView show];
     } onQueue:nil];
