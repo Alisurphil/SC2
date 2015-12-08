@@ -11,6 +11,7 @@
 
 @interface DetailViewController ()
 - (IBAction)collect:(UIBarButtonItem *)sender;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *collect;
 @property(strong,nonatomic)NSString *item;
 
 @property(strong,nonatomic)NSString *name;
@@ -46,16 +47,17 @@
             
         }
     }];
-    
+           [TAOverlay hideOverlay];
+
     NSLog(@"_listName=%@",_listName);
-    PFFile *imgFile=(PFFile *)[_listName objectForKey:@"cellImage"];
+    PFFile *imgFile=(PFFile *)[_listName objectForKey:@"cellAllImage"];
     NSString *imgUrl = imgFile.url;
     _detailImg.contentMode = UIViewContentModeScaleAspectFill;
     _detailImg.clipsToBounds = YES;
     [_detailImg sd_setImageWithURL:[NSURL URLWithString:imgUrl] placeholderImage:[UIImage imageNamed:@"avatar"]];
     [_textView setFont:[UIFont systemFontOfSize:
                         S_Font]];
-    _textView.text=_listName[@"cellContent"];
+    _textView.text=_listName[@"cellAllContent"];
     
         }
 - (void)didReceiveMemoryWarning {
@@ -71,6 +73,7 @@
 
 
 - (IBAction)collect:(UIBarButtonItem *)sender {
+    
     if (_i==0) {
         PFObject *collect1=[PFObject objectWithClassName:@"Collect"];
         PFUser *user = [PFUser currentUser];
@@ -99,15 +102,8 @@
                 [_obj deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                     if (succeeded) {
                         [Utilities popUpAlertViewWithMsg:@"已删除收藏" andTitle:nil];
-                        
-                        [Utilities popUpAlertViewWithMsg:@"收藏成功" andTitle:nil];
-                        
-                        
-                    }
-                    
-                    
-                    _collect.tintColor=[UIColor blueColor];
-                    _i = 0;
+                        _collect.tintColor=[UIColor blueColor];
+                        _i = 0;
                 } else {
                     NSLog(@"%@",error);
                 }
@@ -116,8 +112,6 @@
         }];
         
     }
-    
-    
 }
 
 

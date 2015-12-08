@@ -21,8 +21,11 @@
 }
 
 - (IBAction)likeButton:(UIButton *)sender {
+    [_delegate addlike:_indexPath];
+    
 }
 
 - (IBAction)unlikeButton:(UIButton *)sender {
+    [_delegate addunlike:_indexPath];
 }
 @end

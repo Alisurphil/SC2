@@ -217,7 +217,23 @@
     int page = (x + scrollviewW / 2) /  scrollviewW;
     self.pageControl.currentPage = page;
 }
+- (void)addlike:(NSIndexPath *)indexPath;{
+    PFObject *likeObject = [_objectsForShow objectAtIndex:indexPath.row];
+    NSInteger i = [likeObject[@"cellLike"]integerValue] ;
+    i ++ ;
+    likeObject[@"cellLike"] =[NSNumber numberWithInteger:i];
+    [likeObject saveInBackground];
+    [self dataPreparation];
+}
+- (void)addunlike:(NSIndexPath *)indexpath;{
+    PFObject *unlikeObject = [_objectsForShow objectAtIndex:indexpath.row];
+    NSInteger i = [unlikeObject[@"cellLike"] integerValue];
+    i++;
+    unlikeObject[@"cellUnlike"] =[NSNumber numberWithInteger:i];
+    [unlikeObject saveInBackground];
+    [self dataPreparation];
 
+}
 //- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
 //    [self removeTimer];
 //}
