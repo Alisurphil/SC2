@@ -12,22 +12,27 @@
 #import <EaseMobSDKFull/EaseMob.h>
 
 @interface LeftViewController ()
+@property (strong, nonatomic) IBOutlet UIView *imview;
+
 - (IBAction)exitID:(UIButton *)sender forEvent:(UIEvent *)event;
 - (IBAction)userImage:(UIButton *)sender forEvent:(UIEvent *)event;
 @property (weak, nonatomic) IBOutlet UIButton *userImage2;
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
+
 @end
 
 @implementation LeftViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    //CGSize viewSize = self.view.bounds.size;
     // Do any additional setup after loading the view.
     self.navigationController.navigationBarHidden = YES;
-    
-    
-    
+    //self.imview.backgroundColor = [UIColor colorWithPatternImage: [UIImage imageNamed:@"Left"]];
+
 }
+
+
 -(void)viewDidAppear:(BOOL)animated{
     
     PFUser *currentUser = [PFUser currentUser];

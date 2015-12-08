@@ -12,7 +12,6 @@
 @property (weak, nonatomic) IBOutlet UIView *headView;
 - (IBAction)useImag:(UIButton *)sender forEvent:(UIEvent *)event;
 
-
 @end
 
 @implementation ThirdTableViewController
