@@ -12,7 +12,13 @@
 @interface DetailViewController ()
 - (IBAction)collect:(UIBarButtonItem *)sender;
 @property(strong,nonatomic)NSString *item;
+
+@property(strong,nonatomic)NSString *name;
+@property(nonatomic)NSInteger i;
+@property(strong,nonatomic)PFObject *obj;
+
 @property(strong,nonatomic)NSString *status;
+
 @end
 
 @implementation DetailViewController
@@ -23,30 +29,35 @@
     _status = @"加载中";
     [TAOverlay showOverlayWithLabel:_status Options:(options | TAOverlayOptionOverlaySizeRoundedRect | TAOverlayOptionOverlayTypeActivityBlur)];
     [super viewDidLoad];
-    NSLog(@"_listName=%@",_listName);
-    _item=_listName[@"cellTitle"];
-    PFQuery *detailview=[PFQuery queryWithClassName:@"HomeDetails"];
-    [detailview whereKey:@"cellTitle" equalTo:_item];
-    [detailview findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            for ( PFObject *object in objects ) {
-                PFFile *imgFile=(PFFile *)[object objectForKey:@"cellImage"];
-                NSString *imgUrl = imgFile.url;
-                _detailImg.contentMode = UIViewContentModeScaleAspectFill;
-                _detailImg.clipsToBounds = YES;
-                [_detailImg sd_setImageWithURL:[NSURL URLWithString:imgUrl] placeholderImage:[UIImage imageNamed:@"avatar"]];
-                [_textView setFont:[UIFont systemFontOfSize:
-                                    S_Font]];
-                _textView.text=object[@"cellContent"];
-
-            }
-                    }
-        [TAOverlay hideOverlay];
+    PFUser *collectUser=[PFUser currentUser];
+    NSLog(@"collectUser=%@",collectUser);
+    //_name=collectUser[@"username"];
+    PFQuery *collect=[PFQuery queryWithClassName:@"Collect"];
+    [collect whereKey:@"collectToUser" equalTo:collectUser];
+    [collect whereKey:@"collectToHome" equalTo:_listName];
+    
+    [collect countObjectsInBackgroundWithBlock:^(int number, NSError *error) {
+        if (number==0) {
+            _i=0;
+            _collect.tintColor=[UIColor blueColor];
+        }else{
+            _i = 1;
+            _collect.tintColor=[UIColor lightGrayColor];
+            
+        }
     }];
     
-    NSLog(@"detailview=%@",detailview);
-    }
-
+    NSLog(@"_listName=%@",_listName);
+    PFFile *imgFile=(PFFile *)[_listName objectForKey:@"cellImage"];
+    NSString *imgUrl = imgFile.url;
+    _detailImg.contentMode = UIViewContentModeScaleAspectFill;
+    _detailImg.clipsToBounds = YES;
+    [_detailImg sd_setImageWithURL:[NSURL URLWithString:imgUrl] placeholderImage:[UIImage imageNamed:@"avatar"]];
+    [_textView setFont:[UIFont systemFontOfSize:
+                        S_Font]];
+    _textView.text=_listName[@"cellContent"];
+    
+        }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     
@@ -60,7 +71,51 @@
 
 
 - (IBAction)collect:(UIBarButtonItem *)sender {
-    [Utilities popUpAlertViewWithMsg:@"收藏成功" andTitle:nil];
+    if (_i==0) {
+        PFObject *collect1=[PFObject objectWithClassName:@"Collect"];
+        PFUser *user = [PFUser currentUser];
+        collect1[@"collectToUser"]= user;
+        collect1[@"collectToHome"]=_listName;
+        [collect1 saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if(succeeded){
+                [Utilities popUpAlertViewWithMsg:@"收藏成功" andTitle:nil];
+                _collect.tintColor=[UIColor lightGrayColor];
+                _i = 1;
+            }else{
+                [Utilities popUpAlertViewWithMsg:@"收藏失败" andTitle:nil];
+                NSLog(@"%@",error);
+            }
+        }];
+        
+    }else{
+        PFUser *collectUser=[PFUser currentUser];
+        PFQuery *collect2=[PFQuery queryWithClassName:@"Collect"];
+        [collect2 whereKey:@"collectToUser" equalTo:collectUser];
+        [collect2 whereKey:@"collectToHome" equalTo:_listName];
+        NSLog(@"collect2=%@",collect2);
+        [collect2 findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            if (!error) {
+                _obj = objects.firstObject;
+                [_obj deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                    if (succeeded) {
+                        [Utilities popUpAlertViewWithMsg:@"已删除收藏" andTitle:nil];
+                        
+                        [Utilities popUpAlertViewWithMsg:@"收藏成功" andTitle:nil];
+                        
+                        
+                    }
+                    
+                    
+                    _collect.tintColor=[UIColor blueColor];
+                    _i = 0;
+                } else {
+                    NSLog(@"%@",error);
+                }
+                 }];
+            }
+        }];
+        
+    }
     
     
 }
