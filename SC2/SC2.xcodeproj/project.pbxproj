@@ -804,10 +804,10 @@
 		F4AA15061C1185B100F7AD0E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F4AA15081C1185BF00F7AD0E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F4AA150A1C1185C800F7AD0E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		F4AA15101C118E3300F7AD0E /* storageMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = storageMgr.h; path = SC2/storageMgr.h; sourceTree = "<group>"; };
-		F4AA15111C118E3300F7AD0E /* storageMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = storageMgr.m; path = SC2/storageMgr.m; sourceTree = "<group>"; };
-		F4AA15121C118E3300F7AD0E /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utilities.h; path = SC2/Utilities.h; sourceTree = "<group>"; };
-		F4AA15131C118E3300F7AD0E /* Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Utilities.m; path = SC2/Utilities.m; sourceTree = "<group>"; };
+		F4AA15101C118E3300F7AD0E /* storageMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = storageMgr.h; sourceTree = "<group>"; };
+		F4AA15111C118E3300F7AD0E /* storageMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = storageMgr.m; sourceTree = "<group>"; };
+		F4AA15121C118E3300F7AD0E /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
+		F4AA15131C118E3300F7AD0E /* Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
 		F4E1E3A01C0C430F003FC410 /* FirstTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstTableViewCell.h; sourceTree = "<group>"; };
 		F4E1E3A11C0C430F003FC410 /* FirstTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstTableViewCell.m; sourceTree = "<group>"; };
 		FE049DEF1C07EAD200CBA7B8 /* commentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = commentViewController.h; sourceTree = "<group>"; };
@@ -1714,7 +1714,6 @@
 				C906A3331C1176CA00EA6E26 /* 3rd */,
 				C906A3011C1174A800EA6E26 /* Category */,
 				F47021EE1C06DF2400F68FEC /* Constants */,
-				F469D0351C040CDD0070CFD5 /* 3rd */,
 				F469D0341C040CB30070CFD5 /* Utility */,
 				F469D0331C040C9C0070CFD5 /* Model */,
 				F469D0321C040C930070CFD5 /* View */,
@@ -1821,20 +1820,12 @@
 		F469D0341C040CB30070CFD5 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-			);
-			name = Utility;
-			sourceTree = "<group>";
-		};
-		F469D0351C040CDD0070CFD5 /* 3rd */ = {
-			isa = PBXGroup;
-			children = (
 				F4AA15101C118E3300F7AD0E /* storageMgr.h */,
 				F4AA15111C118E3300F7AD0E /* storageMgr.m */,
 				F4AA15121C118E3300F7AD0E /* Utilities.h */,
 				F4AA15131C118E3300F7AD0E /* Utilities.m */,
 			);
-			name = 3rd;
-			path = ..;
+			name = Utility;
 			sourceTree = "<group>";
 		};
 		F47021EE1C06DF2400F68FEC /* Constants */ = {

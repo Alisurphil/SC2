@@ -23,9 +23,13 @@
     
     if (self.navigationController.tabBarItem.tag == 0) {
         self.navigationItem.title = @"首页";
-    } else if(self.navigationController.tabBarItem.tag == 1){
+    } else if (self.navigationController.tabBarItem.tag == 1) {
+        self.navigationItem.title = @"图片";
+    } else if (self.navigationController.tabBarItem.tag == 2) {
         self.navigationItem.title = @"聊天";
-    }else {
+    } else if (self.navigationController.tabBarItem.tag == 3) {
+        self.navigationItem.title = @"好友列表";
+    } else if (self.navigationController.tabBarItem.tag == 4) {
         self.navigationItem.title = @"我";
     }
     

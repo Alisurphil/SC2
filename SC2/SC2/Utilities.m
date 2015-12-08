@@ -60,4 +60,20 @@
     return [NSString stringWithFormat:@"%@",roundedOunces];
 }
 
++ (void)getImageViaUsername:(NSString *)username success:(void (^)(NSURL *avatarUrl))success failure:(void (^)(NSError *error))failure {
+    PFQuery *query = [PFUser query];
+    [query whereKey:@"username" equalTo:username];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            PFUser *user = objects.firstObject;
+            PFFile *avatarFile = user[@"avatar"];
+//            NSString *avatarUrl = avatarFile.url;
+            NSURL *avatarUrl = [NSURL URLWithString:avatarFile.url];
+            success(avatarUrl);
+        } else {
+            failure(error);
+        }
+    }];
+}
+
 @end

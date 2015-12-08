@@ -72,6 +72,8 @@
     [super viewDidLoad];
     
     [self searchController];
+    
+    self.title = (@"好友列表");
     self.searchBar.frame = CGRectMake(0, 0, self.view.frame.size.width, 44);
     [self.view addSubview:self.searchBar];
     
@@ -182,6 +184,11 @@
             
             EMBuddy *buddy = [weakSelf.searchController.resultsSource objectAtIndex:indexPath.row];
             cell.imageView.image = [UIImage imageNamed:@"chatListCellHead.png"];
+            [Utilities getImageViaUsername:buddy.username success:^(NSURL *avatarUrl) {
+                [cell.imageView sd_setImageWithURL:avatarUrl placeholderImage:[UIImage imageNamed:@"chatListCellHead.png"]];
+            } failure:^(NSError *error) {
+                cell.imageView.image = [UIImage imageNamed:@"chatListCellHead.png"];
+            }];
             cell.textLabel.text = buddy.username;
             cell.username = buddy.username;
             
@@ -264,6 +271,12 @@
         
         EMBuddy *buddy = [[self.dataSource objectAtIndex:(indexPath.section - 1)] objectAtIndex:indexPath.row];
         cell.imageView.image = [UIImage imageNamed:@"chatListCellHead.png"];
+        [Utilities getImageViaUsername:buddy.username success:^(NSURL *avatarUrl) {
+            [cell.imageView sd_setImageWithURL:avatarUrl placeholderImage:[UIImage imageNamed:@"chatListCellHead.png"]];
+        } failure:^(NSError *error) {
+            cell.imageView.image = [UIImage imageNamed:@"chatListCellHead.png"];
+        }];
+        
         cell.username = buddy.username;
     }
     
