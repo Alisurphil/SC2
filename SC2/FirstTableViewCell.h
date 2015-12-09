@@ -8,9 +8,8 @@
 
 #import <UIKit/UIKit.h>
 @protocol FirstTableViewCellDelegate;
-
 @interface FirstTableViewCell : UITableViewCell
-@property (weak, nonatomic) id<FirstTableViewCellDelegate> delegate;
+@property (weak, nonatomic) id delegate;
 @property (strong, nonatomic) NSIndexPath *indexPath;
 @property (weak, nonatomic) IBOutlet UIImageView *photoView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
@@ -22,4 +21,6 @@
 
 @end
 @protocol FirstTableViewCellDelegate <NSObject>
+- (void)addlike:(NSIndexPath *)indexPath;
+- (void)addunlike:(NSIndexPath *)indexpath;
 @end

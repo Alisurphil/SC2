@@ -27,6 +27,7 @@
     [super viewDidLoad];
     [self dataPreparation];
     [self uiConfiguration];
+    
     _rect = _headerView.frame;
     _rect.size.height = 145;
     _headerView.frame = _rect;
@@ -218,7 +219,22 @@
     int page = (x + scrollviewW / 2) /  scrollviewW;
     self.pageControl.currentPage = page;
 }
-
+- (void)addlike:(NSIndexPath *)indexPath;{
+    PFObject *likeObject = [_objectsForShow objectAtIndex:indexPath.row];
+    NSInteger i = [likeObject[@"cellLike"]integerValue] ;
+    i ++ ;
+    likeObject[@"cellLike"] =[NSNumber numberWithInteger:i];
+    [likeObject saveInBackground];
+    [_tableView reloadData];
+}
+- (void)addunlike:(NSIndexPath *)indexpath;{
+    PFObject *unlikeObject = [_objectsForShow objectAtIndex:indexpath.row];
+    NSInteger i = [unlikeObject[@"cellLike"] integerValue];
+    i++;
+    unlikeObject[@"cellUnlike"] =[NSNumber numberWithInteger:i];
+    [unlikeObject saveInBackground];
+    [_tableView reloadData];
+}
 //- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
 //    [self removeTimer];
 //}
