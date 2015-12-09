@@ -187,6 +187,7 @@
 }
 
 #pragma mark - private
+/*
 //登陆状态改变
 -(void)loginStateChange:(NSNotification *)notification
 {
@@ -228,7 +229,7 @@
     [nav setNavigationBarHidden:YES];
     [nav setNavigationBarHidden:NO];
 }
-
+*/
 - (void)didReceiveBuddyRequest:(NSString *)username
                        message:(NSString *)message
 {
@@ -240,9 +241,11 @@
     }
     NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:@{@"title":username, @"username":username, @"applyMessage":message, @"applyStyle":[NSNumber numberWithInteger:ApplyStyleFriend]}];
     [[ApplyViewController shareController] addNewApply:dic];
-    if (self.mainController) {
-        [self.mainController setupUntreatedApplyCount];
-    }
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"setupUntreatedApplyCount" object:nil];
+//    if (self.mainController) {
+//        [self.mainController setupUntreatedApplyCount];
+        
+//    }
 }
 
 

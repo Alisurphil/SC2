@@ -619,7 +619,6 @@
 - (void)reloadApplyView
 {
     NSInteger count = [[[ApplyViewController shareController] dataSource] count];
-    
     if (count == 0) {
         self.unapplyCountLabel.hidden = YES;
     }

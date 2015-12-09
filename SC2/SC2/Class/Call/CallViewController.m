@@ -85,12 +85,12 @@
     }
     
     if (_isIncoming) {
-        _statusLabel.text = NSLocalizedString(@"call.waiting", @"Waiting to answer...");
+        _statusLabel.text = @"等待接听...";
         [_actionView addSubview:_answerButton];
         [_actionView addSubview:_rejectButton];
     }
     else{
-        _statusLabel.text = NSLocalizedString(@"call.connecting", @"Connecting...");
+        _statusLabel.text = @"正在建立连接...";
         [_actionView addSubview:_hangupButton];
     }
 }
@@ -238,7 +238,7 @@
     _speakerOutLabel.textColor = [UIColor whiteColor];
     _speakerOutLabel.font = [UIFont systemFontOfSize:13.0];
     _speakerOutLabel.textAlignment = NSTextAlignmentCenter;
-    _speakerOutLabel.text = NSLocalizedString(@"call.speaker", @"Speaker");
+    _speakerOutLabel.text = @"免提";
     
     _rejectButton = [[UIButton alloc] initWithFrame:CGRectMake((tmpWidth - 100) / 2, CGRectGetMaxY(_speakerOutLabel.frame) + 30, 100, 40)];
     [_rejectButton setTitle:@"拒接" forState:UIControlStateNormal];
@@ -572,8 +572,8 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     [self hideHud];
     [self _stopRing];
     if(error){
-        _statusLabel.text = NSLocalizedString(@"call.connectFailed", @"Connect failed");
-        [self _insertMessageWithStr:NSLocalizedString(@"call.failed", @"Call failed")];
+        _statusLabel.text =  @"建立连接失败";
+        [self _insertMessageWithStr:@"通话失败"];
         
         UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"error", @"Error") message:error.description delegate:self cancelButtonTitle:NSLocalizedString(@"ok", @"OK") otherButtonTitles:nil, nil];
         errorAlert.tag = kAlertViewTag_Close;
@@ -583,18 +583,18 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     }
     
     if (callSession.status == eCallSessionStatusDisconnected) {
-        _statusLabel.text = NSLocalizedString(@"call.suspended", @"Call has been suspended");
-        NSString *str = NSLocalizedString(@"call.over", @"Call end");
+        _statusLabel.text = @"通话已挂断";
+        NSString *str =  @"通话结束";
         if(_timeLength == 0)
         {
             if (reason == eCallReasonHangup) {
-                str = NSLocalizedString(@"call.cancel", @"Cancel the call");
+                str = @"取消通话";
             }
             else if (reason == eCallReasonReject){
-                str = NSLocalizedString(@"call.rejected", @"Reject the call");
+                str = @"拒接通话";
             }
             else if (reason == eCallReasonBusy){
-                str = NSLocalizedString(@"call.in", @"In the call...");
+                str =  @"正在通话中...";
             }
         }
         [self _insertMessageWithStr:str];
@@ -603,13 +603,13 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     else if (callSession.status == eCallSessionStatusAccepted)
     {
         if (callSession.connectType == eCallConnectTypeRelay) {
-            _statusLabel.text = NSLocalizedString(@"call.speak.relay", @"Can speak...Relay");
+            _statusLabel.text =  @"可以说话了...Relay";
         }
         else if (callSession.connectType == eCallConnectTypeDirect){
-            _statusLabel.text = NSLocalizedString(@"call.speak.direct", @"Can speak...Direct");
+            _statusLabel.text = @"可以说话了...Direct";
         }
         else{
-            _statusLabel.text = NSLocalizedString(@"call.speak", @"Can speak...");
+            _statusLabel.text = @"可以说话了...";
         }
         _timeLength = 0;
         _timeTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timeTimerAction:) userInfo:nil repeats:YES];
@@ -673,7 +673,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 {
     [_timeTimer invalidate];
     [self _stopRing];
-    [self showHint:NSLocalizedString(@"call.rejected", @"Reject the call")];
+    [self showHint:@"拒接通话"];
     
     EMError *error = [[EaseMob sharedInstance].callManager asyncEndCall:_callSession.sessionId reason:eCallReasonReject];
     if (error) {
@@ -683,7 +683,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 
 - (void)answerAction
 {
-    [self showHint:NSLocalizedString(@"call.init", @"Is init the call...")];
+    [self showHint:@"正在初始化通话..."];
     [self _stopRing];
     AVAudioSession *audioSession = [AVAudioSession sharedInstance];
     _audioCategory = audioSession.category;
@@ -701,7 +701,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     [_timeTimer invalidate];
     [_propertyTimer invalidate];
     [self _stopRing];
-    [self showHint:NSLocalizedString(@"call.dealloc", @"Is hanging up the call...")];
+    [self showHint: @"正在结束通话..."];
     AVAudioSession *audioSession = [AVAudioSession sharedInstance];
     [audioSession setCategory:_audioCategory error:nil];
     [audioSession setActive:YES error:nil];
@@ -716,7 +716,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 {
     if([[[UIDevice currentDevice] systemVersion] compare:@"7.0"] != NSOrderedAscending){
         if(!([AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo] == AVAuthorizationStatusAuthorized)){\
-            UIAlertView * alt = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"setting.cameraNoAuthority", @"No camera permissions") message:NSLocalizedString(@"setting.cameraAuthority", @"Please open in \"Setting\"-\"Privacy\"-\"Camera\".") delegate:self cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"ok", @"OK"), nil];
+            UIAlertView * alt = [[UIAlertView alloc] initWithTitle: @"未获得授权使用相机" message: @"请在iOS\"设置中\"-\"隐私\"-\"相机\"中打开" delegate:self cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"ok", @"OK"), nil];
             [alt show];
             return NO;
         }

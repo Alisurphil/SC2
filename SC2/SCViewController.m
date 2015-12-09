@@ -8,7 +8,7 @@
 
 #import "SCViewController.h"
 
-@interface SCViewController () <UIAlertViewDelegate, IChatManagerDelegate, EMCallManagerDelegate>
+@interface SCViewController () <UIAlertViewDelegate, IChatManagerDelegate, EMChatManagerDelegate, EMCallManagerDelegate>
 
 @end
 
@@ -74,6 +74,11 @@
     //设置选项卡栏控制器的选项卡栏项目（@［］数组中的每个item都会对应一个选项卡栏项目）
     self.viewControllers = @[_FirstNC,_SecondNCA,_SecondNCB,_SecondNCC,_ThirdNC];
     
+    
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     [self setupUnreadMessageCount];
     [self setupUntreatedApplyCount];
 }
@@ -165,19 +170,22 @@
 // 统计未读消息数
 -(void)setupUnreadMessageCount
 {
-    NSArray *conversations = [[[EaseMob sharedInstance] chatManager] conversations];
+//    NSArray *conversations = [[EaseMob sharedInstance].chatManager conversations];
+    NSArray *conversations = [[EaseMob sharedInstance].chatManager loadAllConversationsFromDatabaseWithAppend2Chat:NO];
+//    NSLog(@"conversations = %@", conversations);
     NSInteger unreadCount = 0;
     for (EMConversation *conversation in conversations) {
+//        NSLog(@"unreadMessagesCount = %lu", (unsigned long)conversation.unreadMessagesCount);
         unreadCount += conversation.unreadMessagesCount;
     }
     if (_SecondNCB) {
+        
         if (unreadCount > 0) {
             _SecondNCB.tabBarItem.badgeValue = [NSString stringWithFormat:@"%i",(int)unreadCount];
         }else{
             _SecondNCB.tabBarItem.badgeValue = nil;
         }
     }
-    NSLog(@"_SecondNCB.badge = %@", _SecondNCB.tabBarItem.badgeValue);
     
 //    UIApplication *application = [UIApplication sharedApplication];
 //    [application setApplicationIconBadgeNumber:unreadCount];
@@ -186,8 +194,16 @@
 - (void)setupUntreatedApplyCount
 {
     NSInteger unreadCount = [[[ApplyViewController shareController] dataSource] count];
+//    NSDictionary *loginInfo = [[[EaseMob sharedInstance] chatManager] loginInfo];
+//    NSString *loginName = [loginInfo objectForKey:kSDKUsername];
+//    if(loginName && [loginName length] > 0)
+//    {
+//        NSArray * applyArray = [[InvitationManager sharedInstance] applyEmtitiesWithloginUser:loginName];
+//        unreadCount = applyArray.count;
+//    }
     if (_SecondNCC) {
         if (unreadCount > 0) {
+          
             _SecondNCC.tabBarItem.badgeValue = [NSString stringWithFormat:@"%i",(int)unreadCount];
         }else{
             _SecondNCC.tabBarItem.badgeValue = nil;
