@@ -324,6 +324,9 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="40"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="userImage:forEvent:" destination="pHE-Dg-giY" eventType="touchUpInside" id="ZVg-eV-HIX"/>
@@ -493,7 +496,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">《星际争霸Ⅱ：虚空之遗》是大型军事科幻即时战略游戏《星际争霸Ⅱ：虫群之心》的续集，星际争霸Ⅱ三部曲的第三部分，第二部分是《星际争霸Ⅱ：虫群之心》。
 这个续集将会加入一些游戏单位的变化，并且以神族为中心继续上一部的剧情。战役大概会有二十个，主角将会是阿塔尼斯。《星际争霸Ⅱ：虚空之遗》将延续获奖游戏《星际争霸Ⅱ》第二个资料片《虫群之心》的故事，用全新的战役为这个科幻故事带来史诗般的结尾。星灵传奇人物阿塔尼斯和泽拉图试图将他们的族人团结一致，共同对抗来自虚空中威胁着整个宇宙的远古邪恶力量。人类英雄吉姆·雷诺和刀锋女王凯瑞甘的命运也仍然悬而未决。神族的战役将会环绕神族内部部落的纷争展开。玩家将会与不同的部落合作，以此获得联盟并进行下一部分的剧情，但是同时其他的部落也会变为敌人。玩家最终的目标是集合所有的部落，组成一个强大的力量以保证星灵的存活。</string>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
@@ -570,7 +573,7 @@
 		《虚空之遗》包含了最近的3.0以及3.0.3补丁中加入的所有新功能，包括免费的《湮灭低语》序章战役、完全重制的UI、重新设计后的聊天系统、更新的游戏大厅、地区性的游戏服务器、新的SC2编辑器功能等等！
 　　如果您遇到任何问题，请来官方论坛联系我们。
 　　GG, HF!</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
@@ -786,15 +789,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3O1-DG-sXb">
-                                <rect key="frame" x="0.0" y="150" width="320" height="354"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3O1-DG-sXb">
+                                <rect key="frame" x="0.0" y="170" width="320" height="398"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bHq-0b-8UR">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bHq-0b-8UR">
+                                <rect key="frame" x="0.0" y="20" width="320" height="150"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="zUJ-01-iHN"/>
@@ -851,20 +854,48 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gNy-GE-HCY">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="62" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gNy-GE-HCY">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="537"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell3" id="ndd-6X-tGi">
-                                        <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell3" rowHeight="62" id="ndd-6X-tGi" customClass="commentTableViewCell">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="62"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ndd-6X-tGi" id="CLp-ms-881">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="61"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6pn-iV-X1L">
+                                                    <rect key="frame" x="8" y="8" width="33" height="16"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hgR-DU-PhW">
+                                                    <rect key="frame" x="8" y="27" width="304" height="21"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                             <animations/>
+                                            <constraints>
+                                                <constraint firstItem="hgR-DU-PhW" firstAttribute="top" secondItem="6pn-iV-X1L" secondAttribute="bottom" constant="3" id="IfE-oJ-LGH"/>
+                                                <constraint firstAttribute="trailing" secondItem="hgR-DU-PhW" secondAttribute="trailing" constant="8" id="M51-Mg-ByE"/>
+                                                <constraint firstItem="6pn-iV-X1L" firstAttribute="top" secondItem="CLp-ms-881" secondAttribute="top" constant="8" id="S08-AS-lFT"/>
+                                                <constraint firstItem="6pn-iV-X1L" firstAttribute="leading" secondItem="CLp-ms-881" secondAttribute="leading" constant="8" id="aau-6g-rZl"/>
+                                                <constraint firstItem="hgR-DU-PhW" firstAttribute="leading" secondItem="6pn-iV-X1L" secondAttribute="leading" id="kaT-LZ-N3f"/>
+                                                <constraint firstItem="hgR-DU-PhW" firstAttribute="leading" secondItem="CLp-ms-881" secondAttribute="leading" constant="8" id="tdh-BB-yFf"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
+                                        <connections>
+                                            <outlet property="theDetail" destination="hgR-DU-PhW" id="azt-Pl-EkU"/>
+                                            <outlet property="theName" destination="6pn-iV-X1L" id="krE-QT-iZ4"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
@@ -998,9 +1029,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Left" width="40" height="40"/>
+        <image name="Left" width="512" height="320"/>
         <image name="collection" width="32" height="32"/>
-        <image name="default" width="40" height="40"/>
+        <image name="default" width="800" height="500"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="8ac-UQ-BFD"/>

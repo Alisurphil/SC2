@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7A479A2820FD0E8FC91C19E7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DEC6BCDEBB6E216541250509 /* libPods.a */; };
+		9102AB001C181A3D007C61A6 /* commentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9102AAFF1C181A3D007C61A6 /* commentTableViewCell.m */; };
 		C906A3101C1174E500EA6E26 /* NSDate+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = C906A3031C1174E500EA6E26 /* NSDate+Category.m */; };
 		C906A3111C1174E500EA6E26 /* NSDateFormatter+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = C906A3051C1174E500EA6E26 /* NSDateFormatter+Category.m */; };
 		C906A3121C1174E500EA6E26 /* NSString+Valid.m in Sources */ = {isa = PBXBuildFile; fileRef = C906A3071C1174E500EA6E26 /* NSString+Valid.m */; };
@@ -359,6 +360,8 @@
 
 /* Begin PBXFileReference section */
 		1CCAA634EC2042C37DAB8509 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		9102AAFE1C181A3D007C61A6 /* commentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = commentTableViewCell.h; sourceTree = "<group>"; };
+		9102AAFF1C181A3D007C61A6 /* commentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = commentTableViewCell.m; sourceTree = "<group>"; };
 		C906A3021C1174E500EA6E26 /* NSDate+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+Category.h"; path = "Category/NSDate+Category.h"; sourceTree = "<group>"; };
 		C906A3031C1174E500EA6E26 /* NSDate+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+Category.m"; path = "Category/NSDate+Category.m"; sourceTree = "<group>"; };
 		C906A3041C1174E500EA6E26 /* NSDateFormatter+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDateFormatter+Category.h"; path = "Category/NSDateFormatter+Category.h"; sourceTree = "<group>"; };
@@ -1790,6 +1793,8 @@
 				FE2CD31C1C0BF0B0009B40E0 /* PersonTableViewController.m */,
 				F4E1E3A01C0C430F003FC410 /* FirstTableViewCell.h */,
 				F4E1E3A11C0C430F003FC410 /* FirstTableViewCell.m */,
+				9102AAFE1C181A3D007C61A6 /* commentTableViewCell.h */,
+				9102AAFF1C181A3D007C61A6 /* commentTableViewCell.m */,
 			);
 			name = Controller;
 			path = ..;
@@ -2241,6 +2246,7 @@
 				C906A44E1C117CCD00EA6E26 /* ChatListCell.m in Sources */,
 				FE6ADBA11C0584FC008F966F /* FirstViewController.m in Sources */,
 				C906A3CD1C11790B00EA6E26 /* EMSDWebImageCompat.m in Sources */,
+				9102AB001C181A3D007C61A6 /* commentTableViewCell.m in Sources */,
 				C906A49D1C117ED100EA6E26 /* FacialView.m in Sources */,
 				C906A3CE1C11790B00EA6E26 /* EMSDWebImageDecoder.m in Sources */,
 				C906A3F11C11790B00EA6E26 /* UIView+EMWebCacheOperation.m in Sources */,

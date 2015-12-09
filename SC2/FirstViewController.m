@@ -58,7 +58,6 @@
     TAOverlayOptions options = TAOverlayOptionNone;
     _status = nil;
     _status = @"加载中";
-    
     [TAOverlay showOverlayWithLabel:_status Options:(options | TAOverlayOptionOverlaySizeRoundedRect | TAOverlayOptionOverlayTypeActivityBlur)];
     [self urlAction];
     [self titelimage];
@@ -229,7 +228,7 @@
 }
 - (void)addunlike:(NSIndexPath *)indexpath;{
     PFObject *unlikeObject = [_objectsForShow objectAtIndex:indexpath.row];
-    NSInteger i = [unlikeObject[@"cellLike"] integerValue];
+    NSInteger i = [unlikeObject[@"cellUnlike"] integerValue];
     i++;
     unlikeObject[@"cellUnlike"] =[NSNumber numberWithInteger:i];
     [unlikeObject saveInBackground];

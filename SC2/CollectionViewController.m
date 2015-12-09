@@ -12,7 +12,7 @@
 - (IBAction)collectionBack:(UIBarButtonItem *)sender;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property(strong,nonatomic)NSArray *array;
-
+@property(strong,nonatomic)NSString *status;
 
 @end
 
@@ -20,6 +20,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    TAOverlayOptions options = TAOverlayOptionNone;
+    _status = nil;
+    _status = @"加载中";
+    [TAOverlay showOverlayWithLabel:_status Options:(options | TAOverlayOptionOverlaySizeRoundedRect | TAOverlayOptionOverlayTypeActivityBlur)];
     PFQuery *query=[PFQuery queryWithClassName:@"Collect"];
     [query includeKey:@"collectToHome"];
     PFUser *collectUser=[PFUser currentUser];
@@ -33,7 +37,7 @@
             [_tableView reloadData];
         }
     }];
-
+    [TAOverlay hideOverlay];
     // Do any additional setup after loading the view.
 }
 
