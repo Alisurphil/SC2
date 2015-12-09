@@ -201,7 +201,7 @@ static ApplyViewController *controller = nil;
 - (void)applyCellRefuseFriendAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row < [self.dataSource count]) {
-        [self showHudInView:self.view hint:NSLocalizedString(@"sendingApply", @"sending apply...")];
+        [self showHudInView:self.view hint: @"正在发送申请..."];
         ApplyEntity *entity = [self.dataSource objectAtIndex:indexPath.row];
         ApplyStyle applyStyle = [entity.style intValue];
         EMError *error;
@@ -226,7 +226,7 @@ static ApplyViewController *controller = nil;
             [self.tableView reloadData];
         }
         else{
-            [self showHint:NSLocalizedString(@"rejectFail", @"reject failure")];
+            [self showHint:@"拒绝失败"];
         }
     }
 }

@@ -212,7 +212,7 @@
     }
     
     if (!bCanRecord) {
-        UIAlertView * alt = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"setting.microphoneNoAuthority", @"No microphone permissions") message:NSLocalizedString(@"setting.microphoneAuthority", @"Please open in \"Setting\"-\"Privacy\"-\"Microphone\".") delegate:self cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"ok", @"OK"), nil];
+        UIAlertView * alt = [[UIAlertView alloc] initWithTitle: @"未获得授权使用麦克风" message:@"请在iOS\"设置中\"-\"隐私\"-\"麦克风\"中打开" delegate:self cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"ok", @"OK"), nil];
         [alt show];
     }
     

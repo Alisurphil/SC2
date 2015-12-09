@@ -226,7 +226,7 @@
     i ++ ;
     likeObject[@"cellLike"] =[NSNumber numberWithInteger:i];
     [likeObject saveInBackground];
-    [self dataPreparation];
+    [_tableView reloadData];
 }
 - (void)addunlike:(NSIndexPath *)indexpath;{
     PFObject *unlikeObject = [_objectsForShow objectAtIndex:indexpath.row];
@@ -234,8 +234,7 @@
     i++;
     unlikeObject[@"cellUnlike"] =[NSNumber numberWithInteger:i];
     [unlikeObject saveInBackground];
-    [self dataPreparation];
-
+    [_tableView reloadData];
 }
 //- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
 //    [self removeTimer];
