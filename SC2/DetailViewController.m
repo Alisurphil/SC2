@@ -8,7 +8,7 @@
 
 #import "DetailViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
-
+#import "commentViewController.h"
 @interface DetailViewController ()
 - (IBAction)collect:(UIBarButtonItem *)sender;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *collect;
@@ -111,6 +111,14 @@
             }
         }];
         
+    }
+}
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:@"delToCom"]) {
+        commentViewController *object=[segue destinationViewController];
+        PFObject *mo=_listName;
+        NSLog(@"mo=%@",mo);
+        object.nextName=mo;
     }
 }
 

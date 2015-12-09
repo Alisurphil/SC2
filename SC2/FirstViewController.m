@@ -9,6 +9,7 @@
 #import "FirstViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "DetailViewController.h"
+#import "LoginViewController.h"
 
 @interface FirstViewController ()<UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -50,11 +51,15 @@
     } else {
         self.navigationItem.title = @"我";
     }
-    UIBarButtonItem *button = [[UIBarButtonItem alloc]initWithTitle:@"菜单" style:UIBarButtonItemStylePlain target:nil action:nil];
+    UIBarButtonItem *button = [[UIBarButtonItem alloc]initWithTitle:@"菜单" style:UIBarButtonItemStylePlain target:self action:@selector(menuButton:)];
     self.navigationItem.leftBarButtonItem = button;
     
-    
 }
+
+- (void)menuButton:(UIBarButtonItem *)sender{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"leftSwitch" object:nil];
+}
+
 - (void)dataPreparation {
     TAOverlayOptions options = TAOverlayOptionNone;
     _status = nil;
@@ -226,7 +231,7 @@
     i ++ ;
     likeObject[@"cellLike"] =[NSNumber numberWithInteger:i];
     [likeObject saveInBackground];
-    [self dataPreparation];
+    [_tableView reloadData];
 }
 - (void)addunlike:(NSIndexPath *)indexpath;{
     PFObject *unlikeObject = [_objectsForShow objectAtIndex:indexpath.row];
@@ -234,8 +239,7 @@
     i++;
     unlikeObject[@"cellUnlike"] =[NSNumber numberWithInteger:i];
     [unlikeObject saveInBackground];
-    [self dataPreparation];
-
+    [_tableView reloadData];
 }
 //- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
 //    [self removeTimer];
