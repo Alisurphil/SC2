@@ -60,7 +60,7 @@
     UIButton *searchButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 44)];
     [searchButton setTitle:(@"搜索") forState:UIControlStateNormal];
 //    [searchButton setTitleColor:[UIColor colorWithRed:32 / 255.0 green:134 / 255.0 blue:158 / 255.0 alpha:1.0] forState:UIControlStateNormal];
-    [searchButton setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
+    [searchButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     [searchButton addTarget:self action:@selector(searchAction) forControlEvents:UIControlEventTouchUpInside];
     [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithCustomView:searchButton]];
     
