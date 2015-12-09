@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface commentViewController : UIViewController
-
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong,nonatomic) PFObject *nextName;
+@property (strong,nonatomic) NSArray *allComment;
 @end

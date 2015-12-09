@@ -364,7 +364,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F6C-xa-CVc">
-                                <rect key="frame" x="117" y="79" width="42" height="21"/>
+                                <rect key="frame" x="117" y="79" width="183" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -388,7 +388,7 @@
                         <constraints>
                             <constraint firstItem="GEY-u6-8lm" firstAttribute="top" secondItem="Ld9-5q-4ir" secondAttribute="bottom" constant="17" id="2Lj-G2-lFT"/>
                             <constraint firstAttribute="trailing" secondItem="gjr-k2-9n1" secondAttribute="trailing" constant="110" id="30H-UR-f15"/>
-                            <constraint firstAttribute="trailing" secondItem="F6C-xa-CVc" secondAttribute="trailing" constant="161" id="5Fb-uW-Le7"/>
+                            <constraint firstAttribute="trailing" secondItem="F6C-xa-CVc" secondAttribute="trailing" constant="20" id="5Fb-uW-Le7"/>
                             <constraint firstItem="GEY-u6-8lm" firstAttribute="height" secondItem="Ld9-5q-4ir" secondAttribute="height" id="8Ed-zC-reg"/>
                             <constraint firstItem="Ld9-5q-4ir" firstAttribute="leading" secondItem="g3a-HV-fMn" secondAttribute="leading" constant="20" id="8PC-b9-7dZ"/>
                             <constraint firstAttribute="trailing" secondItem="Ld9-5q-4ir" secondAttribute="trailing" constant="80" id="AbY-Og-olG"/>
@@ -823,7 +823,7 @@
                             </barButtonItem>
                             <barButtonItem systemItem="compose" id="n4Y-zU-2nG">
                                 <connections>
-                                    <segue destination="wOT-cA-eNp" kind="show" id="I09-F0-bo9"/>
+                                    <segue destination="wOT-cA-eNp" kind="show" identifier="delToCom" id="I09-F0-bo9"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -851,15 +851,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="gNy-GE-HCY">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gNy-GE-HCY">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="537"/>
                                 <animations/>
-                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="t9T-Jf-qpi">
-                                        <rect key="frame" x="0.0" y="50" width="320" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell3" id="ndd-6X-tGi">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="t9T-Jf-qpi" id="tVA-Qf-Z0H">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ndd-6X-tGi" id="CLp-ms-881">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <animations/>
@@ -868,6 +868,10 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="wOT-cA-eNp" id="lGr-oT-iFu"/>
+                                    <outlet property="delegate" destination="wOT-cA-eNp" id="YkL-cr-nN0"/>
+                                </connections>
                             </tableView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2p0-V7-byk">
                                 <rect key="frame" x="0.0" y="538" width="244" height="30"/>
@@ -905,6 +909,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="inPutcommt" destination="2p0-V7-byk" id="k9g-Fi-U10"/>
+                        <outlet property="tableView" destination="gNy-GE-HCY" id="FqL-AX-VVJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LMc-fL-b7c" userLabel="First Responder" sceneMemberID="firstResponder"/>
