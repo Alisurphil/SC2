@@ -20,7 +20,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [super viewDidLoad];
     PFQuery *query=[PFQuery queryWithClassName:@"Collect"];
     [query includeKey:@"collectToHome"];
     PFUser *collectUser=[PFUser currentUser];

@@ -53,7 +53,6 @@
     UIBarButtonItem *button = [[UIBarButtonItem alloc]initWithTitle:@"菜单" style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationItem.leftBarButtonItem = button;
     
-    
 }
 - (void)dataPreparation {
     TAOverlayOptions options = TAOverlayOptionNone;
