@@ -20,9 +20,6 @@
 @implementation LoginViewController
 @synthesize status ;
 
-
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -54,7 +51,7 @@
         [self loginWithUsername:[Utilities getUserDefaults:@"userName"] andPassword:[Utilities getUserDefaults:@"password"]];
     }
     self.passwordTF.userInteractionEnabled = YES;
-    self.usernameTF.userInteractionEnabled = YES;
+    
 
 
 }

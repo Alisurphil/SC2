@@ -27,6 +27,7 @@
     [super viewDidLoad];
     [self dataPreparation];
     [self uiConfiguration];
+    
     _rect = _headerView.frame;
     _rect.size.height = 145;
     _headerView.frame = _rect;
@@ -49,6 +50,8 @@
     } else {
         self.navigationItem.title = @"我";
     }
+    UIBarButtonItem *button = [[UIBarButtonItem alloc]initWithTitle:@"菜单" style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.navigationItem.leftBarButtonItem = button;
     
     
 }
