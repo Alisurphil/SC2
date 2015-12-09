@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface SecondCollectionViewController : UICollectionViewController
-
+@property (strong, nonatomic) UIImageView *imageView;
 @end

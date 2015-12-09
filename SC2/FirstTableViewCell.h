@@ -22,4 +22,6 @@
 
 @end
 @protocol FirstTableViewCellDelegate <NSObject>
+- (void)addlike:(NSIndexPath *)indexPath;
+- (void)addunlike:(NSIndexPath *)indexpath;
 @end

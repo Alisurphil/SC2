@@ -100,9 +100,9 @@ static NSString * const reuseIdentifier = @"Cell";
     myCell.frame = CGRectMake(positonX, positionY,itemWidth,currentHeight) ;
     
     UIImage *image = [_objectsForShow objectAtIndex:indexPath.row];
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+    _imageView = [[UIImageView alloc] initWithImage:image];
     
-    [myCell setBackgroundView:imageView];
+    [myCell setBackgroundView:_imageView];
     return  myCell;
 }
 
@@ -166,5 +166,7 @@ static NSString * const reuseIdentifier = @"Cell";
 	
  }
  */
+
+
 
 @end

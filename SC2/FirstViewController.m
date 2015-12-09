@@ -27,6 +27,7 @@
     [super viewDidLoad];
     [self dataPreparation];
     [self uiConfiguration];
+    
     _rect = _headerView.frame;
     _rect.size.height = 145;
     _headerView.frame = _rect;
@@ -49,6 +50,8 @@
     } else {
         self.navigationItem.title = @"我";
     }
+    UIBarButtonItem *button = [[UIBarButtonItem alloc]initWithTitle:@"菜单" style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.navigationItem.leftBarButtonItem = button;
     
     
 }
@@ -217,7 +220,23 @@
     int page = (x + scrollviewW / 2) /  scrollviewW;
     self.pageControl.currentPage = page;
 }
+- (void)addlike:(NSIndexPath *)indexPath;{
+    PFObject *likeObject = [_objectsForShow objectAtIndex:indexPath.row];
+    NSInteger i = [likeObject[@"cellLike"]integerValue] ;
+    i ++ ;
+    likeObject[@"cellLike"] =[NSNumber numberWithInteger:i];
+    [likeObject saveInBackground];
+    [self dataPreparation];
+}
+- (void)addunlike:(NSIndexPath *)indexpath;{
+    PFObject *unlikeObject = [_objectsForShow objectAtIndex:indexpath.row];
+    NSInteger i = [unlikeObject[@"cellLike"] integerValue];
+    i++;
+    unlikeObject[@"cellUnlike"] =[NSNumber numberWithInteger:i];
+    [unlikeObject saveInBackground];
+    [self dataPreparation];
 
+}
 //- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
 //    [self removeTimer];
 //}
