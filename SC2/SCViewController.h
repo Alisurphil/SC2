@@ -21,6 +21,7 @@
 #import "UserProfileManager.h"
 #import "CallViewController.h"
 #import "TTGlobalUICommon.h"
+#import "InvitationManager.h"
 #import <AVKit/AVKit.h>
 #import <AVFoundation/AVFoundation.h>
 
@@ -29,7 +30,7 @@ static NSString *kMessageType = @"MessageType";
 static NSString *kConversationChatter = @"ConversationChatter";
 static NSString *kGroupName = @"GroupName";
 
-@interface SCViewController : UITabBarController<UITabBarControllerDelegate> {
+@interface SCViewController : UITabBarController <UITabBarControllerDelegate> {
     EMConnectionState _connectionState;
     ChatListViewController *_chatListVC;
     ContactsViewController *_contactsVC;

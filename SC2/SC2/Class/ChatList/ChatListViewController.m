@@ -85,9 +85,9 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    [self refreshDataSource];
     [self registerNotifications];
+    [self refreshDataSource];
+    
 }
 
 -(void)viewWillDisappear:(BOOL)animated
